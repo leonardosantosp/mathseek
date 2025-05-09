@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 
 const SearchPanel = () => {
   const [query, setQuery] = useState("");
-  const [time, setTime] = useState("10:32");
+  const [time, setTime] = useState('10:32');
 
   const handleSearch = () => {
     if (query) {
