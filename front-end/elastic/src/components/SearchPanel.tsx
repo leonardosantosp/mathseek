@@ -1,8 +1,8 @@
-import  { useState } from "react";
+import { useState } from "react";
 
 const SearchPanel = () => {
   const [query, setQuery] = useState("");
-  const [time, setTime] = useState('10:32');
+  const [time, setTime] = useState("10:32");
 
   const handleSearch = () => {
     if (query) {
@@ -37,16 +37,14 @@ const SearchPanel = () => {
                 Search
               </button>
             </div>
-            <div className="panel__trending">
-              <div className="panel__articles">
-                <div className="panel__article--card">
-                  <img src="moon-image.jpg" alt="Article Image" />
-                  <p>Mathematics in Nature</p>
-                </div>
-                <div className="panel__article--card">
-                  <img src="moon-image.jpg" alt="Article Image" />
-                  <p>Complex Numbers</p>
-                </div>
+            <div className="panel__favorites">
+              <div className="panel__favorites--card">
+                <img src="moon-image.jpg" alt="Article Image" />
+                <p>Mathematics in Nature</p>
+              </div>
+              <div className="panel__favorites--card">
+                <img src="moon-image.jpg" alt="Article Image" />
+                <p>Complex Numbers</p>
               </div>
             </div>
           </div>
