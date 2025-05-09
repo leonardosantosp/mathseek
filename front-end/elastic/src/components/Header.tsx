@@ -11,7 +11,7 @@ export const Header = () => {
         <h1>MathSeek</h1>
       </div>
       <div className={`header__user ${isLight && 'header__user-light'}`}>
-        <div className={'header__user--theme'} onClick={toggleTheme}>
+        <div className="header__user--theme" onClick={toggleTheme}>
           <div className={`header__user--slider ${isLight ? 'light' : 'dark'}`}>
             {isLight ? <Sun size={16} /> : <MoonStar size={16} />}
           </div>

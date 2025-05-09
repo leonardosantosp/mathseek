@@ -1,5 +1,11 @@
+import { MathTopics } from './components/MathTopics'
+
 function App() {
-  return <></>
+  return (
+    <>
+      <MathTopics />
+    </>
+  )
 }
 
 export default App

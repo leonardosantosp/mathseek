@@ -7,6 +7,7 @@
   --default-border-color-light: #babfc9;
   --border-dark: 2px solid var(--default-border-color-dark);
   --border-light: 2px solid var(--default-border-color-light);
+  --font: 'Poppins', sans-serif;
 }
 
 * {
@@ -22,9 +23,19 @@ body.light-theme {
   background-color: white;
 }
 
-body.light-theme h1 {
+body.light-theme h1,
+body.light-theme p,
+body.dark-theme h2 {
   color: black;
 }
+
+body.dark-theme h1,
+body.dark-theme p,
+body.dark-theme h2 {
+  color: white;
+}
+
+/* Header */
 
 .header {
   color: white;
@@ -41,10 +52,11 @@ body.light-theme h1 {
   color: var(--default-color);
   font-size: 60px;
   margin: 0 10px 10px 10px;
+  font-family: 'Times New Roman', sans-serif !important;
 }
 
 .header__logo h1 {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font);
 }
 
 .header__user {
@@ -99,4 +111,81 @@ body.light-theme h1 {
 
 .header__user-light .header__user-user-icon {
   color: black;
+}
+
+/* Trending Math Topics */
+
+.math-topics__title {
+  font-family: var(--font);
+  margin: 30px 0 30px 30px;
+}
+
+.math-topics__card {
+  border: 3px solid rgba(60, 63, 68, 0.2);
+  border-radius: 10px;
+  width: 95%;
+  margin-left: 1%;
+  height: 300px;
+  display: flex;
+  padding: 15px;
+  gap: 50px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.math-topics__card-item {
+  border: 3px solid rgba(60, 63, 68, 0.16);
+  border-radius: 5px;
+  width: 30%;
+  height: 85%;
+  box-shadow: 0px 0px 35px rgba(65, 70, 154, 0.25);
+  padding: 20px;
+  font-family: var(--font);
+  transition: 0.8s ease;
+}
+
+.math-topics__card-item:hover {
+  transform: scale(1.07);
+}
+
+.math-topics__card-item--header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.math-topics__card-item--header p {
+  font-size: 20px;
+}
+
+body.dark-theme .math-topics__card-item--header p {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.math-topics__card-item--search {
+  background-color: #8821c4;
+  color: white;
+  padding: 6px;
+  border-radius: 40px;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.math-topics__card-item--search:hover {
+  transform: scale(1.2);
+}
+
+.math-topics__card-item--text {
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+body.dark-theme .math-topics__card-item--text p {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
+.math-topics__card-item--text p {
+  width: 80%;
 }
