@@ -8,6 +8,12 @@
   --border-dark: 2px solid var(--default-border-color-dark);
   --border-light: 2px solid var(--default-border-color-light);
   --font: 'Poppins', sans-serif;
+  --text-gradient: linear-gradient(
+    90deg,
+    #e59cff 0%,
+    #ba9cff 50%,
+    #9cb2ff 100%
+  );
 }
 
 * {
@@ -38,6 +44,8 @@ body.dark-theme h2 {
 /* Header */
 
 .header {
+  z-index: 1;
+  position: sticky;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -46,6 +54,8 @@ body.dark-theme h2 {
 .header__logo {
   display: flex;
   align-items: center;
+  z-index: 99;
+  cursor: pointer;
 }
 
 .header__logo span {
@@ -111,6 +121,274 @@ body.dark-theme h2 {
 
 .header__user-light .header__user-user-icon {
   color: black;
+}
+
+/* SearchPanel */
+
+.container__panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.panel-background {
+  border-radius: 2.5px;
+  z-index: 1;
+  width: 90%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0 0 40px #41469a;
+}
+
+.panel {
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(
+    to bottom,
+    rgba(4, 1, 21, 0.6) 1%,
+    rgba(3, 0, 20, 0.6) 99%
+  );
+  padding: 10px 30px 30px 30px;
+  border-radius: 2.5px;
+  width: 93.7%;
+  height: 90%;
+  backdrop-filter: blur(1px);
+  z-index: 2;
+}
+
+.panel__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.panel__header--mode {
+  background-color: rgba(217, 217, 217, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 139px;
+  border: var(--border-dark);
+  border-radius: 20px;
+  gap: 20px;
+}
+
+.panel__header--mode-item {
+  border: var(--border-dark);
+  border-radius: 11px;
+  padding: 6px;
+  color: #636060;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.panel__header--mode-item:hover {
+  background-color: #585656;
+  color: white;
+}
+
+.panel__header--info {
+  display: flex;
+  font-family: var(--font);
+}
+
+.panel__header--info p {
+  color: rgba(255, 255, 255, 0.4) !important;
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+.panel__header--info-config {
+  color: white;
+  transition: transform 3s ease;
+  cursor: pointer;
+}
+
+.panel__header--info-config:hover {
+  transform: rotate(360deg);
+}
+
+.panel__search-mode {
+  padding: 10px;
+  border: var(--border-dark);
+  height: 83%;
+  border-radius: 2.5px;
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.panel__search-mode--header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.panel__search-mode--header-more-icon {
+  color: white;
+  cursor: pointer;
+}
+
+.panel__search-mode--favorites {
+  display: flex;
+}
+
+.panel__search-mode--favorites-item {
+  display: flex;
+  border: var(--border-dark);
+  border-radius: 20px;
+  padding: 8px;
+  margin-right: 10px;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.panel__search-mode--favorites-item:hover {
+  transform: scale(1.06);
+}
+
+.panel__search-mode--favorites-item p {
+  font-family: var(--font);
+  font-size: 10px;
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+.panel__search-mode--favorites-item img {
+  margin-right: 5px;
+}
+
+.panel__clock {
+  font-size: 80px;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  color: white;
+  margin-top: 30px;
+}
+
+.panel__clock--weather--info {
+  margin-bottom: 15px;
+}
+
+.panel__weather--info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.panel__weather--info-item {
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.4);
+  margin-right: 15px;
+  gap: 2px;
+  font-family: 'Poppins', sans-serif;
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.light-theme .panel__weather--info-item {
+  color: rgb(69, 67, 67);
+}
+
+.panel__search--box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-bottom: 20px;
+}
+
+#panel__search--bar {
+  width: 60%;
+  height: 30px;
+  padding: 10px 15px 10px 45px;
+  border-radius: 100px;
+  border: var(--border-dark);
+  background: none;
+  color: white;
+  margin-right: 10px;
+  transition: 0.5s ease;
+}
+
+#panel__search--bar:focus {
+  border-color: #e59cff;
+  outline: none;
+  box-shadow: 0 0 5px 6px #e59cff55;
+}
+
+.panel__search--search-icon-container {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 63%;
+  pointer-events: none;
+}
+
+.icon-container__send-icon {
+  pointer-events: all;
+}
+
+.panel__shortcuts {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.panel__shortcuts--card {
+  padding: 20px;
+  border-radius: 20px;
+  border: var(--border-dark);
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.01);
+  transition: 0.5s ease;
+}
+
+.panel__shortcuts--card:hover {
+  transform: scale(1.1);
+}
+
+.panel__shortcuts--card p {
+  font-family: var(--font);
+  margin-top: 6px;
+  font-size: 9px;
+  color: #ccc;
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.black-hole-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: inherit;
+  z-index: 2;
+}
+
+.black-hole-container .black-hole,
+.black-hole-container .black-hole-white {
+  position: absolute;
+  max-width: 100%;
+  transform: translateY(6%);
+}
+
+.black-hole-container .black-hole-white {
+  transform: translateY(10%);
 }
 
 /* Trending Math Topics */

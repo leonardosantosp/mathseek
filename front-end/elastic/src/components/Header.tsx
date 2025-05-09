@@ -1,6 +1,6 @@
 import { MoonStar, CircleUser, Sun } from 'lucide-react'
 import { useContext } from 'react'
-import { ThemeContext } from '../contexts/ThemeContext'
+import { ThemeContext } from '../context/ThemeContext'
 
 export const Header = () => {
   const { isLight, toggleTheme } = useContext(ThemeContext)
