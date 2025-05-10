@@ -44,11 +44,10 @@ body.dark-theme h2 {
 /* Header */
 
 .header {
-  z-index: 1;
-  position: sticky;
   color: white;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 100px;
 }
 
 .header__logo {
@@ -73,6 +72,7 @@ body.dark-theme h2 {
   display: flex;
   align-items: center;
   gap: 10px;
+  z-index: 99;
 }
 
 .header__user--theme {
@@ -117,6 +117,7 @@ body.dark-theme h2 {
 
 .header__user-user-icon {
   margin-right: 15px;
+  cursor: pointer;
 }
 
 .header__user-light .header__user-user-icon {
@@ -137,7 +138,7 @@ body.dark-theme h2 {
   border-radius: 2.5px;
   z-index: 1;
   width: 90%;
-  height: 90%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -376,19 +377,13 @@ body.light-theme .panel__weather--info-item {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  position: inherit;
-  z-index: 2;
 }
 
 .black-hole-container .black-hole,
 .black-hole-container .black-hole-white {
   position: absolute;
   max-width: 100%;
-  transform: translateY(6%);
-}
-
-.black-hole-container .black-hole-white {
-  transform: translateY(10%);
+  transform: translateY(2%);
 }
 
 /* Trending Math Topics */
@@ -466,4 +461,31 @@ body.dark-theme .math-topics__card-item--text p {
 
 .math-topics__card-item--text p {
   width: 80%;
+}
+
+/* Footer */
+
+.footer {
+  background-color: #020422;
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+  height: 130px;
+}
+
+.footer__copy-container {
+  display: flex;
+  font-family: var(--font);
+  font-size: 12px;
+  align-items: flex-end;
+  margin: 0 10px 10px 0;
+}
+
+.footer_logo h1,
+.footer__copy-container p {
+  color: white !important;
+}
+
+.copy-icon {
+  margin-right: 10px;
 }
