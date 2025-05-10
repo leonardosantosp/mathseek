@@ -20,6 +20,7 @@ export const SearchPanel = () => {
   const [query, setQuery] = useState('')
   const [dateTime, setDateTime] = useState(new Date())
   const { isLight } = useContext(ThemeContext)
+  const [searchMode, setSearchMode] = useState<'search' | 'chatbot'>('search')
 
   const months = [
     'JAN',
@@ -92,10 +93,20 @@ export const SearchPanel = () => {
           <div className="panel">
             <div className="panel__header">
               <div className="panel__header--mode">
-                <div className="panel__header--mode-item">
+                <div
+                  className={`panel__header--mode-item ${
+                    searchMode === 'search' && 'search-active'
+                  }`}
+                  onClick={() => setSearchMode('search')}
+                >
                   <FileSearch />
                 </div>
-                <div className="panel__header--mode-item">
+                <div
+                  className={`panel__header--mode-item ${
+                    searchMode === 'chatbot' && 'chatbot-active'
+                  }`}
+                  onClick={() => setSearchMode('chatbot')}
+                >
                   <BotMessageSquare />
                 </div>
               </div>
