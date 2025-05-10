@@ -163,6 +163,15 @@ body.dark-theme h2 {
   z-index: 2;
 }
 
+body.light-theme .panel-background {
+  border: 2px solid rgba(0, 0, 0, 0.418);
+}
+
+body.light-theme .panel {
+  border: 2px solid rgba(0, 0, 0, 0.418);
+  background: none;
+}
+
 .panel__header {
   display: flex;
   justify-content: space-between;
@@ -181,6 +190,10 @@ body.dark-theme h2 {
   gap: 20px;
 }
 
+body.light-theme .panel__header--mode {
+  border: var(--border-light);
+}
+
 .search-active,
 .chatbot-active {
   transform: scale(1.18);
@@ -188,6 +201,13 @@ body.dark-theme h2 {
   background: radial-gradient(circle, #787878 0%, #3f3b3b 100%);
   box-shadow: 0 0 7px rgba(255, 255, 255, 0.25),
     inset 0 0 4px rgba(255, 255, 255, 0.19);
+}
+
+body.light-theme .search-active,
+body.light-theme .chatbot-active {
+  background: rgb(160, 158, 158) !important;
+  box-shadow: 0 0 7px rgba(49, 48, 48, 0.25),
+    inset 0 0 4px rgba(49, 49, 49, 0.19);
 }
 
 .panel__header--mode-item {
@@ -199,9 +219,17 @@ body.dark-theme h2 {
   cursor: pointer;
 }
 
+body.light-theme .panel__header--mode-item {
+  border: var(--border-light);
+}
+
 .panel__header--mode-item:hover {
   background-color: #585656;
   color: white;
+}
+
+body.light-theme .panel__header--mode-item:hover {
+  background-color: #a29f9f;
 }
 
 .panel__header--info {
@@ -221,6 +249,11 @@ body.dark-theme h2 {
   cursor: pointer;
 }
 
+body.light-theme .panel__header--info p,
+body.light-theme .panel__header--info-config {
+  color: rgb(94, 92, 92) !important;
+}
+
 .panel__header--info-config:hover {
   transform: rotate(360deg);
 }
@@ -231,6 +264,10 @@ body.dark-theme h2 {
   height: 83%;
   border-radius: 2.5px;
   background-color: rgba(255, 255, 255, 0.03);
+}
+
+body.light-theme .panel__search-mode {
+  border: var(--border-light);
 }
 
 .panel__search-mode--header {
@@ -257,6 +294,10 @@ body.dark-theme h2 {
   cursor: pointer;
 }
 
+body.light-theme .panel__search-mode--favorites-item {
+  border: var(--border-light);
+}
+
 .panel__search-mode--favorites-item:hover {
   transform: scale(1.06);
 }
@@ -270,6 +311,13 @@ body.dark-theme h2 {
   font-weight: bold;
 }
 
+body.light-theme .panel__search-mode--favorites-item p {
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  color: rgb(84, 83, 83);
+}
+
 .panel__search-mode--favorites-item img {
   margin-right: 5px;
 }
@@ -280,6 +328,10 @@ body.dark-theme h2 {
   text-align: center;
   color: white;
   margin-top: 30px;
+}
+
+body.light-theme .panel__clock {
+  color: #908989;
 }
 
 .panel__clock--weather--info {
@@ -305,7 +357,10 @@ body.dark-theme h2 {
 }
 
 body.light-theme .panel__weather--info-item {
-  color: rgb(69, 67, 67);
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  color: #908989;
 }
 
 .panel__search--box {
@@ -315,6 +370,10 @@ body.light-theme .panel__weather--info-item {
   justify-content: center;
   color: white;
   margin-bottom: 20px;
+}
+
+body.light-theme .panel__search--box {
+  color: rgb(131, 128, 128);
 }
 
 #panel__search--bar {
@@ -333,6 +392,17 @@ body.light-theme .panel__weather--info-item {
   border-color: #e59cff;
   outline: none;
   box-shadow: 0 0 5px 6px #e59cff55;
+}
+
+body.light-theme #panel__search--bar {
+  border: var(--border-light);
+  color: #787878;
+}
+
+body.light-theme #panel__search--bar:focus {
+  border-color: #8b6ec9;
+  outline: none;
+  box-shadow: 0 0 3px 4px rgba(79, 51, 138, 0.3);
 }
 
 .panel__search--search-icon-container {
@@ -366,6 +436,10 @@ body.light-theme .panel__weather--info-item {
   transition: 0.5s ease;
 }
 
+body.light-theme .panel__shortcuts--card {
+  border: var(--border-light);
+}
+
 .panel__shortcuts--card:hover {
   transform: scale(1.1);
 }
@@ -378,6 +452,13 @@ body.light-theme .panel__weather--info-item {
   background: var(--text-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+body.light-theme .panel__shortcuts--card p {
+  color: #636060;
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
 }
 
 .black-hole-container {
