@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
 import {
   FileSearch,
@@ -18,8 +18,25 @@ import blackHoleWhite from '../assets/black-hole-white.png'
 
 export const SearchPanel = () => {
   const [query, setQuery] = useState('')
-  const [time, setTime] = useState('10:32')
+  const [dateTime, setDateTime] = useState(new Date())
   const { isLight } = useContext(ThemeContext)
+
+  const months = [
+    'JAN',
+    'FEV',
+    'MAR',
+    'ABR',
+    'MAI',
+    'JUN',
+    'JUL',
+    'AGO',
+    'SET',
+    'OUT',
+    'NOV',
+    'DEZ'
+  ]
+
+  const days = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB']
 
   const handleSearch = () => {
     if (query) {
@@ -28,6 +45,31 @@ export const SearchPanel = () => {
       alert('Por favor, insira um termo de pesquisa.')
     }
   }
+
+  const formatDateTime = (type: string) => {
+    if (type === 'day') {
+      return `${days[dateTime.getDay()]} ${String(dateTime.getDate()).padStart(
+        2,
+        '0'
+      )} `
+    }
+    if (type === 'month') {
+      return months[dateTime.getMonth()]
+    }
+    if (type === 'hour') {
+      return `${String(dateTime.getHours()).padStart(2, '0')}:${String(
+        dateTime.getMinutes()
+      ).padStart(2, '0')}`
+    }
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDateTime(new Date())
+    }, 60000)
+
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <>
@@ -58,9 +100,9 @@ export const SearchPanel = () => {
                 </div>
               </div>
               <div className="panel__header--info">
-                <p>sab</p>
-                <p>2 ABR</p>
-                <p>10:32</p>
+                <p>{formatDateTime('day')}</p>
+                <p>{formatDateTime('month')}</p>
+                <p>{formatDateTime('hour')}</p>
                 <Cog className="panel__header--info-config" />
               </div>
             </div>
@@ -99,7 +141,7 @@ export const SearchPanel = () => {
               </div>
 
               <div className="panel__clock--weather--info">
-                <p className="panel__clock">{time}</p>
+                <p className="panel__clock">{formatDateTime('hour')}</p>
                 <div className="panel__weather--info">
                   <div className="panel__weather--info-item">
                     <MapPin />

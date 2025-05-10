@@ -386,6 +386,10 @@ body.light-theme .panel__weather--info-item {
   transform: translateY(2%);
 }
 
+.black-hole-container .black-hole-white {
+  transform: translateY(-2%);
+}
+
 /* Trending Math Topics */
 
 .math-topics__title {
