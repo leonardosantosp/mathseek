@@ -25,6 +25,10 @@ a {
   text-decoration: none;
 }
 
+h1 {
+  border: none !important;
+}
+
 body.dark-theme {
   background-color: var(--background-dark);
 }
@@ -35,13 +39,16 @@ body.light-theme {
 
 body.light-theme h1,
 body.light-theme p,
-body.dark-theme h2 {
+body.light-theme h2,
+body.light-theme h3,
+body.light-theme div {
   color: black;
 }
 
 body.dark-theme h1,
 body.dark-theme p,
-body.dark-theme h2 {
+body.dark-theme h2,
+body.dark-theme h3 {
   color: white;
 }
 
@@ -69,6 +76,8 @@ body.dark-theme h2 {
 
 .header__logo h1 {
   font-family: var(--font);
+  margin-bottom: 0px !important;
+  font-weight: bold !important;
 }
 
 .header__user {
@@ -115,7 +124,7 @@ body.dark-theme h2 {
 
 .header__user--slider.dark {
   transform: translateX(38px);
-  background-color: black;
+  background-color: black !important;
 }
 
 .header__user-user-icon {
@@ -584,6 +593,7 @@ body.dark-theme .math-topics__card-item--text p {
 .footer_logo h1,
 .footer__copy-container p {
   color: white !important;
+  margin-bottom: 0 !important;
 }
 
 .copy-icon {
@@ -720,4 +730,64 @@ body.light-theme .header-content__link p {
 .results__item--go-link p {
   font-size: 13px;
   color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Wikipedia viewer */
+
+.wiki-content {
+  font-family: 'Inter', sans-serif;
+  padding: 60px !important;
+  border: var(--border-dark);
+  border-radius: 3.5px;
+  margin: 10px 40px;
+}
+
+.wiki-content a:hover {
+  color: #9318c0 !important;
+  text-decoration: none;
+}
+
+body.light-theme .wiki-content {
+  border: var(--border-light);
+}
+
+body.dark-theme .wiki-content div,
+body.dark-theme .wiki-content li,
+body.dark-theme .wiki-content ul {
+  background-color: var(--background-dark) !important;
+  color: white !important;
+}
+
+body.dark-theme .wiki-content .navbox,
+body.dark-theme .wiki-content table,
+body.dark-theme .wiki-content table th,
+body.dark-theme .wiki-content table td {
+  color: white;
+  background: var(--background-dark);
+  background-color: var(--background-dark);
+}
+
+body.dark-theme .wiki-content .navbox th,
+body.dark-theme .wiki-content .navbox td {
+  border: 1px 0 solid #636060;
+  border-color: white;
+}
+
+body.dark-theme .wiki-content a {
+  color: #5ab0ff;
+}
+
+body.dark-theme .infobox th,
+body.dark-theme .infobox td[class=''] {
+  background-color: #54567f78 !important;
+}
+
+.box-Mais_notas,
+.plainlinks,
+.hlist,
+.hatnote,
+.mobile-stack,
+.navbox,
+[data-mw-section-id='-1'] {
+  display: none;
 }

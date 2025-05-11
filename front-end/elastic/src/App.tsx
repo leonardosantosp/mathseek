@@ -2,6 +2,7 @@ import { MathTopics } from './components/MathTopics'
 import { SearchPanel } from './components/SearchPanel'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ResultPages } from './pages/ResultsPage'
+import { WikiViewer } from './pages/WikiViewer'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             }
           />
           <Route path="/result" element={<ResultPages />} />
+          <Route path="/wiki" element={<WikiViewer />} />
         </Routes>
       </BrowserRouter>
     </>
