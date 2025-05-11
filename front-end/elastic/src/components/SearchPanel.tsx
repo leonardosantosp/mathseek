@@ -7,17 +7,16 @@ import {
   EllipsisVertical,
   MapPin,
   Thermometer,
-  Cloud,
-  SendHorizonal,
-  Search
+  Cloud
 } from 'lucide-react'
 
 import wiki_icon from '../assets/wiki_icon.png'
 import blackHole from '../assets/black-hole.png'
 import blackHoleWhite from '../assets/black-hole-white.png'
+import { Link } from 'react-router-dom'
+import { SearchBar } from './SearchBar'
 
 export const SearchPanel = () => {
-  const [query, setQuery] = useState('')
   const [dateTime, setDateTime] = useState(new Date())
   const { isLight } = useContext(ThemeContext)
   const [searchMode, setSearchMode] = useState<'search' | 'chatbot'>('search')
@@ -38,14 +37,6 @@ export const SearchPanel = () => {
   ]
 
   const days = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB']
-
-  const handleSearch = () => {
-    if (query) {
-      alert(`Buscando por: ${query}`)
-    } else {
-      alert('Por favor, insira um termo de pesquisa.')
-    }
-  }
 
   const formatDateTime = (type: string) => {
     if (type === 'day') {
@@ -120,33 +111,28 @@ export const SearchPanel = () => {
             <div className="panel__search-mode">
               <div className="panel__search-mode--header">
                 <div className="panel__search-mode--favorites">
-                  <div className="panel__search-mode--favorites-item">
-                    <img
-                      src={wiki_icon}
-                      alt="wikipedia icon"
-                      width={20}
-                      height={18}
-                    />
-                    <p>Ciência da Computação</p>
-                  </div>
-                  <div className="panel__search-mode--favorites-item">
-                    <img
-                      src={wiki_icon}
-                      alt="wikipedia icon"
-                      width={20}
-                      height={18}
-                    />
-                    <p>Ciência da Computação</p>
-                  </div>
-                  <div className="panel__search-mode--favorites-item">
-                    <img
-                      src={wiki_icon}
-                      alt="wikipedia icon"
-                      width={20}
-                      height={18}
-                    />
-                    <p>Ciência da Computação</p>
-                  </div>
+                  <Link to="/result">
+                    <div className="panel__search-mode--favorites-item">
+                      <img
+                        src={wiki_icon}
+                        alt="wikipedia icon"
+                        width={20}
+                        height={18}
+                      />
+                      <p>Ciência da Computação</p>
+                    </div>
+                  </Link>
+                  <Link to="/result">
+                    <div className="panel__search-mode--favorites-item">
+                      <img
+                        src={wiki_icon}
+                        alt="wikipedia icon"
+                        width={20}
+                        height={18}
+                      />
+                      <p>Ciência da Computação</p>
+                    </div>
+                  </Link>
                 </div>
                 <EllipsisVertical className="panel__search-mode--header-more-icon" />
               </div>
@@ -168,22 +154,9 @@ export const SearchPanel = () => {
                   </div>
                 </div>
               </div>
-              <div className="panel__search--box">
-                <input
-                  type="text"
-                  id="panel__search--bar"
-                  placeholder="Search for Math Articles"
-                  value={query}
-                  onChange={e => setQuery(e.target.value)}
-                />
-                <div className="panel__search--search-icon-container">
-                  <Search />
-                  <SendHorizonal
-                    className="icon-container__send-icon"
-                    cursor={'pointer'}
-                  />
-                </div>
-              </div>
+
+              <SearchBar />
+
               <div className="panel__shortcuts">
                 <div className="panel__shortcuts--card">
                   <img
