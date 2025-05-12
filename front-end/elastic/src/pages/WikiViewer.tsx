@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { ScrollText, Route, Star } from 'lucide-react'
+import { SearchBar } from '../components/SearchBar'
 
 export const WikiViewer = () => {
   const [htmlContent, setHtmlContent] = useState('')
@@ -17,11 +19,29 @@ export const WikiViewer = () => {
   }, [title])
 
   return (
-    <div
-      className="wiki-content"
-      dangerouslySetInnerHTML={{ __html: htmlContent }}
-    >
-      {}
-    </div>
+    <>
+      <span className="result-page__search-bar-container">
+        <SearchBar />
+      </span>
+      <div className="wiki-background">
+        <div className="wiki">
+          <div className="wiki__header">
+            <h2>{title.replace(/_/g, ' ')}</h2>
+            <div className="wiki__header--menu">
+              <ScrollText className="menu-item" />
+              <Route className="menu-item" />
+              <Star className="menu-item" />
+            </div>
+          </div>
+
+          <div
+            className="wiki__content"
+            dangerouslySetInnerHTML={{ __html: htmlContent }}
+          >
+            {}
+          </div>
+        </div>
+      </div>
+    </>
   )
 }

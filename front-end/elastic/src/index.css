@@ -734,46 +734,105 @@ body.light-theme .header-content__link p {
 
 /* Wikipedia viewer */
 
-.wiki-content {
+.wiki-background {
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0 0 40px #41469a;
+  padding: 5px;
+  margin: 10px 40px;
+}
+
+.wiki {
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(
+    to bottom,
+    rgba(4, 1, 21, 0.6) 1%,
+    rgba(3, 0, 20, 0.6) 99%
+  );
+  padding: 10px 30px 30px 30px;
+  border-radius: 2.5px;
+  backdrop-filter: blur(1px);
+  z-index: 2;
+}
+
+body.light-theme .wiki-background {
+  border: 2px solid rgba(0, 0, 0, 0.418);
+}
+
+body.light-theme .wiki {
+  border: 2px solid rgba(0, 0, 0, 0.418);
+  background: none;
+}
+
+.wiki__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.wiki__header h2 {
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.wiki__header--menu {
+  display: flex;
+  gap: 20px;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.menu-item {
+  transition: 0.5s ease;
+}
+
+.menu-item:hover {
+  transform: scale(1.2);
+}
+
+.wiki__content {
   font-family: 'Inter', sans-serif;
   padding: 60px !important;
   border: var(--border-dark);
   border-radius: 3.5px;
-  margin: 10px 40px;
 }
 
-.wiki-content a:hover {
+.wiki__content a:hover {
   color: #9318c0 !important;
   text-decoration: none;
 }
 
-body.light-theme .wiki-content {
+body.light-theme .wiki__content {
   border: var(--border-light);
 }
 
-body.dark-theme .wiki-content div,
-body.dark-theme .wiki-content li,
-body.dark-theme .wiki-content ul {
+body.dark-theme .wiki__content div,
+body.dark-theme .wiki__content li,
+body.dark-theme .wiki__content ul {
   background-color: var(--background-dark) !important;
   color: white !important;
 }
 
-body.dark-theme .wiki-content .navbox,
-body.dark-theme .wiki-content table,
-body.dark-theme .wiki-content table th,
-body.dark-theme .wiki-content table td {
+body.dark-theme .wiki__content .navbox,
+body.dark-theme .wiki__content table,
+body.dark-theme .wiki__content table th,
+body.dark-theme .wiki__content table td {
   color: white;
   background: var(--background-dark);
   background-color: var(--background-dark);
 }
 
-body.dark-theme .wiki-content .navbox th,
-body.dark-theme .wiki-content .navbox td {
+body.dark-theme .wiki__content .navbox th,
+body.dark-theme .wiki__content .navbox td {
   border: 1px 0 solid #636060;
   border-color: white;
 }
 
-body.dark-theme .wiki-content a {
+body.dark-theme .wiki__content a {
   color: #5ab0ff;
 }
 
