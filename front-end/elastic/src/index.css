@@ -60,10 +60,13 @@ body.dark-theme h3 {
   justify-content: space-between;
 }
 
+.header a {
+  z-index: 99;
+}
+
 .header__logo {
   display: flex;
   align-items: center;
-  z-index: 99;
   cursor: pointer;
 }
 
@@ -738,7 +741,7 @@ body.light-theme .header-content__link p {
   border: 2px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(4px);
-  box-shadow: 0 0 40px #41469a;
+  box-shadow: inset 0 0 5px 5px rgba(255, 255, 255, 0.05), 0 0 40px #41469a;
   padding: 5px;
   margin: 10px 40px;
 }
@@ -770,6 +773,7 @@ body.light-theme .wiki {
   justify-content: space-between;
   align-items: center;
   color: white;
+  margin-bottom: 20px;
 }
 
 .wiki__header h2 {
@@ -799,6 +803,7 @@ body.light-theme .wiki {
   padding: 60px !important;
   border: var(--border-dark);
   border-radius: 3.5px;
+  line-height: 1.6;
 }
 
 .wiki__content a:hover {
@@ -812,7 +817,8 @@ body.light-theme .wiki__content {
 
 body.dark-theme .wiki__content div,
 body.dark-theme .wiki__content li,
-body.dark-theme .wiki__content ul {
+body.dark-theme .wiki__content ul,
+body.dark-theme .wiki__content figcaption {
   background-color: var(--background-dark) !important;
   color: white !important;
 }
@@ -847,6 +853,82 @@ body.dark-theme .infobox td[class=''] {
 .hatnote,
 .mobile-stack,
 .navbox,
-[data-mw-section-id='-1'] {
+[data-mw-section-id='-1'],
+.navigation-box {
   display: none;
+}
+
+.wiki__content .infobox {
+  float: right;
+  clear: right;
+  margin: 0 0 1em 1em;
+  width: auto;
+  padding: 0.4em;
+  border: 1px solid #aaa;
+  font-size: 90%;
+}
+
+.wiki__content .infobox caption {
+  font-weight: bold;
+  font-size: 110%;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.wiki__content .infobox td,
+.wiki__content .infobox th {
+  padding: 0.2em 0.4em;
+  vertical-align: top;
+}
+
+.wiki__content .thumb {
+  margin: 1em;
+  border: none;
+}
+
+.wiki__content h1,
+.wiki__content h2,
+.wiki__content h3 {
+  color: #f9f9f9;
+  padding-bottom: 0.3rem;
+  margin-top: 2rem;
+}
+
+.wiki__content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+.wiki__content .thumb img {
+  border: 1px solid #ccc;
+}
+
+.wiki__content .thumbcaption {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 0.4em;
+}
+
+.wiki__content img {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  height: auto;
+  float: none !important; /* impede float do Wikipedia */
+}
+
+.wiki__content figure {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 100%;
+  float: none !important;
+}
+
+.wiki__content figcaption {
+  font-size: 0.7rem;
+  color: #ccc;
+  margin-top: 8px;
 }
