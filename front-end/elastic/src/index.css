@@ -8,6 +8,8 @@
   --border-dark: 2px solid var(--default-border-color-dark);
   --border-light: 2px solid var(--default-border-color-light);
   --font: 'Poppins', sans-serif;
+  --color-background-signup-button-intial: #2E4CEE;
+  --color-background-signup-button-final: #040F75;
   --text-gradient: linear-gradient(
     90deg,
     #e59cff 0%,
@@ -850,3 +852,158 @@ body.dark-theme .infobox td[class=''] {
 [data-mw-section-id='-1'] {
   display: none;
 }
+
+
+/* Definindo a imagem de fundo */
+.signup-container {
+  background-image: url('../src/assets/sign-up-background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%; /* A imagem ocupa toda a altura da página */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  transition: background-color 0.3s ease;
+  color: white !important;
+}
+
+/* Estilos para o formulário */
+.signup_form {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(6px);
+  /* -webkit-backdrop-filter: blur(4px); */
+  display: flex;
+  flex-direction: column;
+}
+
+.signup_form--border{
+  width: 100%;
+  border: 1px solid #040F75;
+  border-radius: 10px;
+}
+
+.signup_form h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Input Fields */
+.signup_form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup_form label {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.signup_form input {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #FFFFFF;
+  background-color: rgba(0, 0, 0, 0);  /* fundo transparente */  color: white;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+.signup_form input::placeholder{
+  color: #FFFFFF
+}
+
+/* Estilos para o botão */
+.signup-btn {
+  background-color: #4a90e2;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+
+  background: linear-gradient(to right,
+  var(--color-background-signup-button-intial), var(--color-background-signup-button-final));
+}
+
+.signup-btn:hover {
+  background-color: #357ab7;
+}
+
+/* Estilos para a linha com o "OR" */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid #363636;
+}
+
+.divider span {
+  margin: 0 10px;
+  font-size: 16px;
+  color: #363636; 
+}
+
+.google_login {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.google_login button {
+  background-color: rgb(0, 0, 0, 0);  /* Fundo transparente */  
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.google_login img {
+  width: 30px;
+}
+
+.google-btn:hover {
+  background-color: #c1351d;
+}
+
+.login-link {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.login-link a {
+  color: #4a90e2;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Definir os temas de fundo */
+body.light-theme .signup-container {
+  background-color: white; /* Cor do fundo claro */
+}
+
+body.dark-theme .signup-container {
+  background-color: #121212; /* Cor de fundo escuro */
+}
+
+
+/* ================ */
+/* FIM SIGN UP PAGE */
+/* ================ */
