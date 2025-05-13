@@ -948,22 +948,34 @@ body.dark-theme .infobox td[class=''] {
 
 /* Login Page */
 
+<<<<<<< HEAD
 .login__header {
   background-color: #0f0f0f;
 }
 
 .login-page {
+=======
+.signup__header {
+  background-color: #0f0f0f;
+}
+
+.signup-page {
+>>>>>>> c49c57f (feat: add signup page)
   width: 100%;
   height: 100vh;
   background-color: #0f0f0f;
   font-family: 'Noto Sans', sans-serif;
 }
 
+<<<<<<< HEAD
 .login-page__title {
   width: 40%;
 }
 
 .login-page__title h1 {
+=======
+.signup-page__title h1 {
+>>>>>>> c49c57f (feat: add signup page)
   font-size: 76px;
   width: 160%;
 }
@@ -996,14 +1008,24 @@ body.dark-theme .infobox td[class=''] {
   justify-content: center;
 }
 
+<<<<<<< HEAD
 .login-page__container {
   display: flex;
+=======
+.signup-page__container {
+  display: flex;
+  justify-content: space-between;
+>>>>>>> c49c57f (feat: add signup page)
   height: 80vh;
   align-items: center;
   padding: 40px;
 }
 
+<<<<<<< HEAD
 .login-page__card {
+=======
+.signup-page__card {
+>>>>>>> c49c57f (feat: add signup page)
   border-radius: 20px;
   background: linear-gradient(
     180deg,
@@ -1016,13 +1038,19 @@ body.dark-theme .infobox td[class=''] {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
   padding: 40px 40px 30px 40px;
   gap: 20px;
+=======
+  padding: 40px 40px 10px 40px;
+  gap: 10px;
+>>>>>>> c49c57f (feat: add signup page)
   height: 100%;
   width: 30%;
   z-index: 2;
 }
 
+<<<<<<< HEAD
 .login-page__card p {
   font-size: 12px;
 }
@@ -1032,11 +1060,26 @@ body.dark-theme .infobox td[class=''] {
   padding: 4%;
   background: none;
   border: 2px solid #575b61;
+=======
+.signup-page__card p {
+  font-size: 12px;
+}
+
+.signup-page__card input {
+  border-radius: 8px;
+  padding: 4%;
+  background: none;
+  border: 2px solid #20262e;
+>>>>>>> c49c57f (feat: add signup page)
   color: white;
   outline: none;
 }
 
+<<<<<<< HEAD
 .login-page__card input:focus {
+=======
+.signup-page__card input:focus {
+>>>>>>> c49c57f (feat: add signup page)
   border: 2px solid #872feb;
 }
 
@@ -1053,6 +1096,7 @@ body.dark-theme .infobox td[class=''] {
   background: linear-gradient(90deg, #2f64eb 0%, #8428e1 53%, #360347 100%);
 }
 
+<<<<<<< HEAD
 .forgot-button {
   background: linear-gradient(90deg, #e948c5 0%, #cd407b 53%, #75042d 100%);
 }
@@ -1083,17 +1127,22 @@ body.dark-theme .infobox td[class=''] {
   align-items: end;
 }
 
+=======
+>>>>>>> c49c57f (feat: add signup page)
 .forgot {
   background: none;
   border: none;
   font-size: 16px;
   color: white;
   margin-top: 10px;
+<<<<<<< HEAD
   cursor: pointer;
 }
 
 .forgot:hover {
   text-decoration: underline;
+=======
+>>>>>>> c49c57f (feat: add signup page)
 }
 
 .or {
@@ -1129,6 +1178,7 @@ body.dark-theme .infobox td[class=''] {
   margin-top: 20px;
 }
 
+<<<<<<< HEAD
 .dont-have-account span {
   cursor: pointer;
   margin-left: 10px;
@@ -1139,6 +1189,10 @@ body.dark-theme .infobox td[class=''] {
 }
 
 .login-guest-container {
+=======
+.login-guest-container {
+  height: 100%;
+>>>>>>> c49c57f (feat: add signup page)
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
@@ -1165,11 +1219,19 @@ body.dark-theme .infobox td[class=''] {
 
 .first-planet {
   top: -40%;
+<<<<<<< HEAD
   left: 13%;
 }
 
 .second-planet {
   bottom: -45%;
+=======
+  left: 15%;
+}
+
+.second-planet {
+  bottom: -40%;
+>>>>>>> c49c57f (feat: add signup page)
   right: 8%;
 }
 
