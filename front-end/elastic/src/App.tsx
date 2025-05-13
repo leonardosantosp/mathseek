@@ -3,6 +3,7 @@ import { SearchPanel } from './components/SearchPanel'
 import { Routes, Route } from 'react-router-dom'
 import { ResultPages } from './pages/ResultsPage'
 import { WikiViewer } from './pages/WikiViewer'
+import { LoginPage } from './pages/SignUpPage'
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
 
         <Route path="/result" element={<ResultPages />} />
         <Route path="/wiki" element={<WikiViewer />} />
+
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </>
   )
