@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pontano+Sans:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pontano+Sans:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
   --background-dark: #030014;
@@ -7,9 +7,11 @@
   --default-border-color-light: #babfc9;
   --border-dark: 2px solid var(--default-border-color-dark);
   --border-light: 2px solid var(--default-border-color-light);
-  --font: 'Poppins', sans-serif;
-  --color-background-signup-button-intial: #2E4CEE;
-  --color-background-signup-button-final: #040F75;
+  --font: "Poppins", sans-serif;
+  --color-background-signup-button-intial: #2e4cee;
+  --color-background-signup-button-final: #040f75;
+  --color-border-initial: #afafaf;
+  --color-border-final: #60606000;
   --text-gradient: linear-gradient(
     90deg,
     #e59cff 0%,
@@ -73,7 +75,7 @@ body.dark-theme h3 {
   color: var(--default-color);
   font-size: 60px;
   margin: 0 10px 10px 10px;
-  font-family: 'Times New Roman', sans-serif !important;
+  font-family: "Times New Roman", sans-serif !important;
 }
 
 .header__logo h1 {
@@ -340,7 +342,7 @@ body.light-theme .panel__search-mode--favorites-item p {
 
 .panel__clock {
   font-size: 80px;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   text-align: center;
   color: white;
   margin-top: 30px;
@@ -366,7 +368,7 @@ body.light-theme .panel__clock {
   color: rgba(255, 255, 255, 0.4);
   margin-right: 15px;
   gap: 2px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background: var(--text-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -691,7 +693,7 @@ body.light-theme .result-page__number-of-results__buttons .active {
   align-items: center;
   gap: 10px;
   background: var(--text-gradient);
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bold;
@@ -705,7 +707,7 @@ body.light-theme .header-content__title {
 }
 
 .header-content__link p {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 10px;
   font-weight: bold;
   color: #a959d6 !important;
@@ -717,7 +719,7 @@ body.light-theme .header-content__link p {
 }
 
 .results__item--content {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 12px;
   width: 40%;
 }
@@ -776,7 +778,7 @@ body.light-theme .wiki {
 
 .wiki__header h2 {
   border: none;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 30px;
   font-weight: bold;
 }
@@ -797,7 +799,7 @@ body.light-theme .wiki {
 }
 
 .wiki__content {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   padding: 60px !important;
   border: var(--border-dark);
   border-radius: 3.5px;
@@ -839,7 +841,7 @@ body.dark-theme .wiki__content a {
 }
 
 body.dark-theme .infobox th,
-body.dark-theme .infobox td[class=''] {
+body.dark-theme .infobox td[class=""] {
   background-color: #54567f78 !important;
 }
 
@@ -849,14 +851,16 @@ body.dark-theme .infobox td[class=''] {
 .hatnote,
 .mobile-stack,
 .navbox,
-[data-mw-section-id='-1'] {
+[data-mw-section-id="-1"] {
   display: none;
 }
 
+/* =================== */
+/* INICIO SIGN UP PAGE */
+/* =================== */
 
-/* Definindo a imagem de fundo */
-.signup-container {
-  background-image: url('../src/assets/sign-up-background.png');
+.signup_container {
+  background-image: url("../src/assets/sign-up-background.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -870,20 +874,19 @@ body.dark-theme .infobox td[class=''] {
   color: white !important;
 }
 
-/* Estilos para o formulário */
 .signup_form {
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0);
-  backdrop-filter: blur(6px);
-  /* -webkit-backdrop-filter: blur(4px); */
   display: flex;
   flex-direction: column;
 }
 
-.signup_form--border{
-  width: 100%;
-  border: 1px solid #040F75;
+.signup_form--border {
   border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(6px);
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  border:1px solid #636363;
 }
 
 .signup_form h1 {
@@ -891,7 +894,6 @@ body.dark-theme .infobox td[class=''] {
   margin-bottom: 20px;
 }
 
-/* Input Fields */
 .signup_form {
   display: flex;
   flex-direction: column;
@@ -905,17 +907,17 @@ body.dark-theme .infobox td[class=''] {
 .signup_form input {
   padding: 12px;
   border-radius: 12px;
-  border: 1px solid #FFFFFF;
-  background-color: rgba(0, 0, 0, 0);  /* fundo transparente */  color: white;
+  border: 1px solid #ffffff;
+  background-color: rgba(0, 0, 0, 0); /* fundo transparente */
+  color: white;
   font-size: 16px;
   margin-bottom: 15px;
 }
-.signup_form input::placeholder{
-  color: #FFFFFF
+.signup_form input::placeholder {
+  color: #ffffff;
 }
 
-/* Estilos para o botão */
-.signup-btn {
+.signup_form--sign--button {
   background-color: #4a90e2;
   padding: 12px;
   border: none;
@@ -926,15 +928,17 @@ body.dark-theme .infobox td[class=''] {
   transition: background-color 0.3s ease;
   width: 100%;
 
-  background: linear-gradient(to right,
-  var(--color-background-signup-button-intial), var(--color-background-signup-button-final));
+  background: linear-gradient(
+    to right,
+    var(--color-background-signup-button-intial),
+    var(--color-background-signup-button-final)
+  );
 }
 
 .signup-btn:hover {
   background-color: #357ab7;
 }
 
-/* Estilos para a linha com o "OR" */
 .divider {
   display: flex;
   align-items: center;
@@ -952,7 +956,7 @@ body.dark-theme .infobox td[class=''] {
 .divider span {
   margin: 0 10px;
   font-size: 16px;
-  color: #363636; 
+  color: #363636;
 }
 
 .google_login {
@@ -962,7 +966,7 @@ body.dark-theme .infobox td[class=''] {
 }
 
 .google_login button {
-  background-color: rgb(0, 0, 0, 0);  /* Fundo transparente */  
+  background-color: rgb(0, 0, 0, 0); /* Fundo transparente */
   padding: 12px;
   border: none;
   border-radius: 8px;
@@ -979,30 +983,20 @@ body.dark-theme .infobox td[class=''] {
   background-color: #c1351d;
 }
 
-.login-link {
+.signup_login--link {
   text-align: center;
   font-size: 14px;
   margin-top: 15px;
 }
 
-.login-link a {
+.signup_login--link a {
   color: #4a90e2;
   text-decoration: none;
 }
 
-.login-link a:hover {
+.signup_login--link a:hover {
   text-decoration: underline;
 }
-
-/* Definir os temas de fundo */
-body.light-theme .signup-container {
-  background-color: white; /* Cor do fundo claro */
-}
-
-body.dark-theme .signup-container {
-  background-color: #121212; /* Cor de fundo escuro */
-}
-
 
 /* ================ */
 /* FIM SIGN UP PAGE */
