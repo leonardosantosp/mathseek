@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Login } from '../components/Login'
 import { useState } from 'react'
 
@@ -15,18 +16,24 @@ export const LoginPage = () => {
 import { EyeClosed, Eye, ArrowRight } from 'lucide-react'
 import google from '../assets/google.png'
 import planet from '../assets/planet-purple.png'
+=======
+import { Login } from '../components/Login'
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
 import { useState } from 'react'
 
 export const LoginPage = () => {
-  const [viewPassword, setViewPassword] = useState(false)
-  const handdleViewPassword = () => {
-    setViewPassword(!viewPassword)
-  }
+  const [loginType, setLoginType] = useState<'login' | 'signup' | 'forgot'>(
+    'login'
+  )
 
   return (
     <>
+<<<<<<< HEAD
       <div className="signup__header">
 >>>>>>> c49c57f (feat: add signup page)
+=======
+      <div className="login__header">
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
         <Link to="/">
           <div className="header__logo">
             <span>π</span>
@@ -35,6 +42,9 @@ export const LoginPage = () => {
         </Link>
       </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
       {loginType === 'login' ? (
         <Login
           title="Welcome Back !"
@@ -63,6 +73,7 @@ export const LoginPage = () => {
           setType={(type: 'login' | 'signup' | 'forgot') => setLoginType(type)}
         />
       )}
+<<<<<<< HEAD
 =======
       <div className="signup-page">
         <div className="signup-page__container">
@@ -136,6 +147,8 @@ export const LoginPage = () => {
         </div>
       </div>
 >>>>>>> c49c57f (feat: add signup page)
+=======
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
     </>
   )
 }

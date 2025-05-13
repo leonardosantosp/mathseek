@@ -51,8 +51,13 @@ export const Login = ({
                 : planetPink
             }
             alt="planet"
+<<<<<<< HEAD
             width={260}
             height={260}
+=======
+            width={302}
+            height={302}
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
             className="planet first-planet"
           />
           <div className="login-page__card">
@@ -85,8 +90,13 @@ export const Login = ({
                 : planetPink
             }
             alt="planet"
+<<<<<<< HEAD
             width={180}
             height={180}
+=======
+            width={220}
+            height={220}
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
             className="planet second-planet"
           />
         </div>

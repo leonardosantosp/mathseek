@@ -949,6 +949,7 @@ body.dark-theme .infobox td[class=''] {
 /* Login Page */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .login__header {
   background-color: #0f0f0f;
 }
@@ -961,6 +962,13 @@ body.dark-theme .infobox td[class=''] {
 
 .signup-page {
 >>>>>>> c49c57f (feat: add signup page)
+=======
+.login__header {
+  background-color: #0f0f0f;
+}
+
+.login-page {
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
   width: 100%;
   height: 100vh;
   background-color: #0f0f0f;
@@ -968,14 +976,20 @@ body.dark-theme .infobox td[class=''] {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
 .login-page__title {
   width: 40%;
 }
 
 .login-page__title h1 {
+<<<<<<< HEAD
 =======
 .signup-page__title h1 {
 >>>>>>> c49c57f (feat: add signup page)
+=======
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
   font-size: 76px;
   width: 160%;
 }
@@ -1009,6 +1023,7 @@ body.dark-theme .infobox td[class=''] {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .login-page__container {
   display: flex;
 =======
@@ -1016,16 +1031,24 @@ body.dark-theme .infobox td[class=''] {
   display: flex;
   justify-content: space-between;
 >>>>>>> c49c57f (feat: add signup page)
+=======
+.login-page__container {
+  display: flex;
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
   height: 80vh;
   align-items: center;
   padding: 40px;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .login-page__card {
 =======
 .signup-page__card {
 >>>>>>> c49c57f (feat: add signup page)
+=======
+.login-page__card {
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
   border-radius: 20px;
   background: linear-gradient(
     180deg,
@@ -1039,17 +1062,23 @@ body.dark-theme .infobox td[class=''] {
   display: flex;
   flex-direction: column;
 <<<<<<< HEAD
+<<<<<<< HEAD
   padding: 40px 40px 30px 40px;
   gap: 20px;
 =======
   padding: 40px 40px 10px 40px;
   gap: 10px;
 >>>>>>> c49c57f (feat: add signup page)
+=======
+  padding: 40px 40px 20px 40px;
+  gap: 20px;
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
   height: 100%;
   width: 30%;
   z-index: 2;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 .login-page__card p {
   font-size: 12px;
@@ -1062,24 +1091,35 @@ body.dark-theme .infobox td[class=''] {
   border: 2px solid #575b61;
 =======
 .signup-page__card p {
+=======
+.login-page__card p {
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
   font-size: 12px;
 }
 
-.signup-page__card input {
+.login-page__card input {
   border-radius: 8px;
   padding: 4%;
   background: none;
+<<<<<<< HEAD
   border: 2px solid #20262e;
 >>>>>>> c49c57f (feat: add signup page)
+=======
+  border: 2px solid #575b61;
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
   color: white;
   outline: none;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .login-page__card input:focus {
 =======
 .signup-page__card input:focus {
 >>>>>>> c49c57f (feat: add signup page)
+=======
+.login-page__card input:focus {
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
   border: 2px solid #872feb;
 }
 
@@ -1097,6 +1137,9 @@ body.dark-theme .infobox td[class=''] {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
 .forgot-button {
   background: linear-gradient(90deg, #e948c5 0%, #cd407b 53%, #75042d 100%);
 }
@@ -1127,8 +1170,11 @@ body.dark-theme .infobox td[class=''] {
   align-items: end;
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> c49c57f (feat: add signup page)
+=======
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
 .forgot {
   background: none;
   border: none;
@@ -1136,13 +1182,19 @@ body.dark-theme .infobox td[class=''] {
   color: white;
   margin-top: 10px;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
   cursor: pointer;
 }
 
 .forgot:hover {
   text-decoration: underline;
+<<<<<<< HEAD
 =======
 >>>>>>> c49c57f (feat: add signup page)
+=======
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
 }
 
 .or {
@@ -1179,6 +1231,9 @@ body.dark-theme .infobox td[class=''] {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
 .dont-have-account span {
   cursor: pointer;
   margin-left: 10px;
@@ -1188,11 +1243,15 @@ body.dark-theme .infobox td[class=''] {
   text-decoration: underline;
 }
 
+<<<<<<< HEAD
 .login-guest-container {
 =======
 .login-guest-container {
   height: 100%;
 >>>>>>> c49c57f (feat: add signup page)
+=======
+.login-guest-container {
+>>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
