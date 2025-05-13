@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import googleLogo from "../assets/google-icon.png";
 // import { ThemeContext } from "../context/ThemeContext";
 
@@ -22,12 +22,12 @@ const SignUpPage = () => {
 
   return (
     <>
-      <div className="signup-container">
+      <div className="signup_container">
         {/* <div className={`signup-container ${isLight ? "light-theme" : "dark-theme"}`}> */}
         <div className="signup_form">
           <div className="signup_form--border">
             <h1>Signup</h1>
-            <span>Just some details to get you in.!</span>
+            <span>Just some details to get you in!</span>
             <form onSubmit={handleSignup}>
               <div className="signup_form">
                 <input
@@ -69,7 +69,7 @@ const SignUpPage = () => {
                   required
                 />
               </div>
-              <button type="submit" className="signup-btn">
+              <button type="submit" className="signup_form--sign--button">
                 Signup
               </button>
             </form>
@@ -88,7 +88,7 @@ const SignUpPage = () => {
               </button>
             </div>
 
-            <div className="login-link">
+            <div className="signup_login--link">
               <p>
                 Already Registered? <a href="/login">Login</a>
               </p>
