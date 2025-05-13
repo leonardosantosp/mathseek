@@ -3,8 +3,10 @@ import { SearchPanel } from './components/SearchPanel'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ResultPages } from './pages/ResultsPage'
 import { WikiViewer } from './pages/WikiViewer'
+import SignUpPage  from './components/SignUpPage'
 
 function App() {
+
   return (
     <>
       <BrowserRouter>
@@ -20,6 +22,7 @@ function App() {
           />
           <Route path="/result" element={<ResultPages />} />
           <Route path="/wiki" element={<WikiViewer />} />
+          <Route path="/signup" element={<SignUpPage />}/>
         </Routes>
       </BrowserRouter>
     </>
