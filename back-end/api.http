@@ -1,5 +1,9 @@
 ###
+<<<<<<< HEAD
 GET http://localhost:3333/wikipedia/search?query=albedo
+=======
+GET http://localhost:3333/search?query=albedo
+>>>>>>> 54fb40c (feat: initialize backend and add routes for Elasticsearch queries and document retrieval by ID and update image sizes on frontend)
 
 ###
 GET http://localhost:3333/wikipedia/10

@@ -1063,6 +1063,7 @@ body.dark-theme .infobox td[class=''] {
   flex-direction: column;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   padding: 40px 40px 30px 40px;
   gap: 20px;
 =======
@@ -1071,6 +1072,9 @@ body.dark-theme .infobox td[class=''] {
 >>>>>>> c49c57f (feat: add signup page)
 =======
   padding: 40px 40px 20px 40px;
+=======
+  padding: 40px 40px 30px 40px;
+>>>>>>> 54fb40c (feat: initialize backend and add routes for Elasticsearch queries and document retrieval by ID and update image sizes on frontend)
   gap: 20px;
 >>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
   height: 100%;
@@ -1279,6 +1283,7 @@ body.dark-theme .infobox td[class=''] {
 .first-planet {
   top: -40%;
 <<<<<<< HEAD
+<<<<<<< HEAD
   left: 13%;
 }
 
@@ -1291,6 +1296,13 @@ body.dark-theme .infobox td[class=''] {
 .second-planet {
   bottom: -40%;
 >>>>>>> c49c57f (feat: add signup page)
+=======
+  left: 13%;
+}
+
+.second-planet {
+  bottom: -45%;
+>>>>>>> 54fb40c (feat: initialize backend and add routes for Elasticsearch queries and document retrieval by ID and update image sizes on frontend)
   right: 8%;
 }
 
