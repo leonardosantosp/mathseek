@@ -1010,7 +1010,7 @@ body.dark-theme .infobox td[class=''] {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  padding: 40px 40px 20px 40px;
+  padding: 40px 40px 30px 40px;
   gap: 20px;
   height: 100%;
   width: 30%;
@@ -1159,11 +1159,11 @@ body.dark-theme .infobox td[class=''] {
 
 .first-planet {
   top: -40%;
-  left: 15%;
+  left: 13%;
 }
 
 .second-planet {
-  bottom: -40%;
+  bottom: -45%;
   right: 8%;
 }
 
