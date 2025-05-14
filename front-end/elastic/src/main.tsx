@@ -5,13 +5,27 @@ import App from './App.tsx'
 import { Header } from './components/Header.tsx'
 import { ThemeProvider } from './context/ThemeContext.tsx'
 import { Footer } from './components/Footer.tsx'
+import { BrowserRouter, useLocation } from 'react-router-dom'
+
+function LayoutWrapper() {
+  const location = useLocation()
+  const hideLayout = location.pathname === '/login'
+
+  return (
+    <>
+      {!hideLayout && <Header />}
+      <App />
+      {!hideLayout && <Footer />}
+    </>
+  )
+}
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeProvider>
-      <Header />
-      <App />
-      <Footer />
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider>
+        <LayoutWrapper />
+      </ThemeProvider>
+    </BrowserRouter>
   </StrictMode>
 )

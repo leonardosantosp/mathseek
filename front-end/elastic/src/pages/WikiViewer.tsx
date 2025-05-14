@@ -12,9 +12,14 @@ export const WikiViewer = () => {
         `https://pt.wikipedia.org/api/rest_v1/page/html/${title}`
       )
       let html = await response.text()
-      html = html.replace(/<\/?(html|body)[^>]*>/gi, '')
+
+      html = html.replace(/<\/?(html|body|base)[^>]*>/gi, '')
+      html = html.replace(/<a [^>]*>/gi, '')
+      html = html.replace(/<\/a>/gi, '')
+
       setHtmlContent(html)
     }
+
     fetchWiki()
   }, [title])
 

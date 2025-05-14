@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pontano+Sans:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Pontano+Sans:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
   --background-dark: #030014;
@@ -62,10 +62,13 @@ body.dark-theme h3 {
   justify-content: space-between;
 }
 
+.header a {
+  z-index: 99;
+}
+
 .header__logo {
   display: flex;
   align-items: center;
-  z-index: 99;
   cursor: pointer;
 }
 
@@ -725,13 +728,20 @@ body.light-theme .header-content__link p {
 .results__item--go-link {
   color: rgba(255, 255, 255, 0.5);
   display: flex;
+  align-items: center;
   cursor: pointer;
+  gap: 3px;
   margin-top: 5px;
 }
 
 .results__item--go-link p {
+  font-family: var(--font);
   font-size: 13px;
   color: rgba(255, 255, 255, 0.5) !important;
+}
+
+body.light-theme .results__item--go-link p {
+  color: #312f2f !important;
 }
 
 /* Wikipedia viewer */
@@ -740,7 +750,7 @@ body.light-theme .header-content__link p {
   border: 2px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(4px);
-  box-shadow: 0 0 40px #41469a;
+  box-shadow: inset 0 0 5px 5px rgba(255, 255, 255, 0.05), 0 0 40px #41469a;
   padding: 5px;
   margin: 10px 40px;
 }
@@ -772,6 +782,7 @@ body.light-theme .wiki {
   justify-content: space-between;
   align-items: center;
   color: white;
+  margin-bottom: 20px;
 }
 
 .wiki__header h2 {
@@ -801,6 +812,7 @@ body.light-theme .wiki {
   padding: 60px !important;
   border: var(--border-dark);
   border-radius: 3.5px;
+  line-height: 1.6;
 }
 
 .wiki__content a:hover {
@@ -814,7 +826,8 @@ body.light-theme .wiki__content {
 
 body.dark-theme .wiki__content div,
 body.dark-theme .wiki__content li,
-body.dark-theme .wiki__content ul {
+body.dark-theme .wiki__content ul,
+body.dark-theme .wiki__content figcaption {
   background-color: var(--background-dark) !important;
   color: white !important;
 }
@@ -849,161 +862,343 @@ body.dark-theme .infobox td[class=''] {
 .hatnote,
 .mobile-stack,
 .navbox,
-[data-mw-section-id='-1'] {
+[data-mw-section-id='-1'],
+.navigation-box {
   display: none;
 }
 
-
-/* Definindo a imagem de fundo */
-.signup-container {
-  background-image: url('../src/assets/sign-up-background.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100%; /* A imagem ocupa toda a altura da página */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 20px;
-  transition: background-color 0.3s ease;
-  color: white !important;
+.wiki__content .infobox {
+  float: right;
+  clear: right;
+  margin: 0 0 1em 1em;
+  width: auto;
+  padding: 0.4em;
+  border: 1px solid #aaa;
+  font-size: 90%;
 }
 
-/* Estilos para o formulário */
-.signup_form {
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0);
-  backdrop-filter: blur(6px);
-  /* -webkit-backdrop-filter: blur(4px); */
-  display: flex;
-  flex-direction: column;
-}
-
-.signup_form--border{
-  width: 100%;
-  border: 1px solid #040F75;
-  border-radius: 10px;
-}
-
-.signup_form h1 {
+.wiki__content .infobox caption {
+  font-weight: bold;
+  font-size: 110%;
+  margin-bottom: 0.5em;
   text-align: center;
-  margin-bottom: 20px;
 }
 
-/* Input Fields */
-.signup_form {
-  display: flex;
-  flex-direction: column;
+.wiki__content .infobox td,
+.wiki__content .infobox th {
+  padding: 0.2em 0.4em;
+  vertical-align: top;
 }
 
-.signup_form label {
-  margin-bottom: 5px;
-  font-size: 14px;
-}
-
-.signup_form input {
-  padding: 12px;
-  border-radius: 12px;
-  border: 1px solid #FFFFFF;
-  background-color: rgba(0, 0, 0, 0);  /* fundo transparente */  color: white;
-  font-size: 16px;
-  margin-bottom: 15px;
-}
-.signup_form input::placeholder{
-  color: #FFFFFF
-}
-
-/* Estilos para o botão */
-.signup-btn {
-  background-color: #4a90e2;
-  padding: 12px;
+.wiki__content .thumb {
+  margin: 1em;
   border: none;
-  border-radius: 8px;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+}
+
+.wiki__content h1,
+.wiki__content h2,
+.wiki__content h3 {
+  color: #f9f9f9;
+  padding-bottom: 0.3rem;
+  margin-top: 2rem;
+}
+
+.wiki__content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+.wiki__content .thumb img {
+  border: 1px solid #ccc;
+}
+
+.wiki__content .thumbcaption {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 0.4em;
+}
+
+.wiki__content img {
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  height: auto;
+  float: none !important; /* impede float do Wikipedia */
+}
+
+.wiki__content figure {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 100%;
+  float: none !important;
+}
+
+.wiki__content figcaption {
+  font-size: 0.7rem;
+  color: #ccc;
+  margin-top: 8px;
+}
+
+/* Login Page */
+
+.login__header {
+  background-color: #0f0f0f;
+}
+
+.login-page {
   width: 100%;
-
-  background: linear-gradient(to right,
-  var(--color-background-signup-button-intial), var(--color-background-signup-button-final));
+  height: 100vh;
+  background-color: #0f0f0f;
+  font-family: 'Noto Sans', sans-serif;
 }
 
-.signup-btn:hover {
-  background-color: #357ab7;
+.login-page__title {
+  width: 40%;
 }
 
-/* Estilos para a linha com o "OR" */
-.divider {
+.login-page__title h1 {
+  font-size: 76px;
+  width: 160%;
+}
+
+.dashed-container {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 20px 0;
+  width: 185%;
 }
 
-.divider::before,
-.divider::after {
-  content: "";
-  flex: 1;
-  border-top: 1px solid #363636;
-}
-
-.divider span {
-  margin: 0 10px;
-  font-size: 16px;
-  color: #363636; 
-}
-
-.google_login {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-}
-
-.google_login button {
-  background-color: rgb(0, 0, 0, 0);  /* Fundo transparente */  
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
+.dashed-line {
   margin-top: 10px;
+
+  width: 100%;
+  height: 2px;
+  background-image: repeating-linear-gradient(
+    to right,
+    #555,
+    #555 10px,
+    transparent 10px,
+    transparent 20px
+  );
 }
 
-.google_login img {
-  width: 30px;
+.dashed-line__text {
+  border: 2px solid white;
+  width: 35%;
+  padding: 10px 0 10px 10px;
+  display: flex;
+  justify-content: center;
 }
 
-.google-btn:hover {
-  background-color: #c1351d;
+.login-page__container {
+  display: flex;
+  height: 80vh;
+  align-items: center;
+  padding: 40px;
 }
 
-.login-link {
-  text-align: center;
-  font-size: 14px;
-  margin-top: 15px;
+.login-page__card {
+  border-radius: 20px;
+  background: linear-gradient(
+    180deg,
+    rgba(191, 191, 191, 0.001) 0%,
+    rgba(0, 0, 0, 0.07) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(53px);
+  -webkit-backdrop-filter: blur(53px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  padding: 40px 40px 20px 40px;
+  gap: 20px;
+  height: 100%;
+  width: 30%;
+  z-index: 2;
 }
 
-.login-link a {
-  color: #4a90e2;
-  text-decoration: none;
+.login-page__card p {
+  font-size: 12px;
 }
 
-.login-link a:hover {
+.login-page__card input {
+  border-radius: 8px;
+  padding: 4%;
+  background: none;
+  border: 2px solid #575b61;
+  color: white;
+  outline: none;
+}
+
+.login-page__card input:focus {
+  border: 2px solid #872feb;
+}
+
+.login-button {
+  background: linear-gradient(90deg, #628eff 0%, #9752dc 53%, #6a1985 100%);
+  border-radius: 8px;
+  padding: 4%;
+  border: none;
+  color: white;
+  font-size: 15px;
+}
+
+.login-button:hover {
+  background: linear-gradient(90deg, #2f64eb 0%, #8428e1 53%, #360347 100%);
+}
+
+.forgot-button {
+  background: linear-gradient(90deg, #e948c5 0%, #cd407b 53%, #75042d 100%);
+}
+
+.signup-button {
+  background: linear-gradient(90deg, #2e4cee 0%, #221ebf 53%, #040f75 100%);
+}
+
+.signup-button:hover {
+  background: linear-gradient(90deg, #1635e3 0%, #0f0cb8 53%, #030945 100%);
+}
+
+.forgot-button:hover {
+  background: linear-gradient(90deg, #d11caa 0%, #c61860 53%, #420219 100%);
+}
+
+.input-forgot:focus {
+  border: 2px solid #c61860 !important;
+}
+
+.input-signup:focus {
+  border: 2px solid #2e4cee !important;
+}
+
+.forgot-no-account__container {
+  height: 50%;
+  display: flex;
+  align-items: end;
+}
+
+.forgot {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: white;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.forgot:hover {
   text-decoration: underline;
 }
 
-/* Definir os temas de fundo */
-body.light-theme .signup-container {
-  background-color: white; /* Cor do fundo claro */
+.or {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-body.dark-theme .signup-container {
-  background-color: #121212; /* Cor de fundo escuro */
+.or__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
 }
 
+.or__bar {
+  border-bottom: 2px solid #4d4d4d;
+  width: 40%;
+}
 
-/* ================ */
-/* FIM SIGN UP PAGE */
-/* ================ */
+.login-options {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.dont-have-account {
+  font-size: 16px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.dont-have-account span {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.dont-have-account span:hover {
+  text-decoration: underline;
+}
+
+.login-guest-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.login-guest {
+  gap: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.arrow {
+  transition: 0.5s ease;
+}
+
+.login-guest:hover .arrow {
+  transform: translateX(10px);
+}
+
+.planet {
+  position: relative;
+}
+
+.first-planet {
+  top: -40%;
+  left: 15%;
+}
+
+.second-planet {
+  bottom: -40%;
+  right: 8%;
+}
+
+.card__password {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.card__password input {
+  width: 91%;
+}
+
+.card__password--icon-container {
+  position: absolute;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+@media (min-width: 1800px) {
+  .signup-page__card {
+    height: 70%;
+    width: 20%;
+  }
+
+  .first-planet {
+    top: -25%;
+    left: 15%;
+  }
+
+  .second-planet {
+    bottom: -30%;
+    right: 10%;
+  }
+}
