@@ -1,5 +1,5 @@
 ###
-GET http://localhost:3333/search?query=albedo
+GET http://localhost:3333/wikipedia/search?query=albedo
 
 ###
 GET http://localhost:3333/wikipedia/10
