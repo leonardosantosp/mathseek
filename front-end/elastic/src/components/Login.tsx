@@ -51,8 +51,8 @@ export const Login = ({
                 : planetPink
             }
             alt="planet"
-            width={302}
-            height={302}
+            width={260}
+            height={260}
             className="planet first-planet"
           />
           <div className="login-page__card">
@@ -85,8 +85,8 @@ export const Login = ({
                 : planetPink
             }
             alt="planet"
-            width={220}
-            height={220}
+            width={180}
+            height={180}
             className="planet second-planet"
           />
         </div>

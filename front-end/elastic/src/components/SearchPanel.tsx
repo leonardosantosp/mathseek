@@ -15,6 +15,7 @@ import blackHole from '../assets/black-hole.png'
 import blackHoleWhite from '../assets/black-hole-white.png'
 import { Link } from 'react-router-dom'
 import { SearchBar } from './SearchBar'
+import { WeatherInfo } from './weatherInfo'
 
 export const SearchPanel = () => {
   const [dateTime, setDateTime] = useState(new Date())
@@ -139,20 +140,7 @@ export const SearchPanel = () => {
 
               <div className="panel__clock--weather--info">
                 <p className="panel__clock">{formatDateTime('hour')}</p>
-                <div className="panel__weather--info">
-                  <div className="panel__weather--info-item">
-                    <MapPin />
-                    <span>Alfenas MG</span>
-                  </div>
-                  <div className="panel__weather--info-item">
-                    <Thermometer />
-                    <span>16°C</span>
-                  </div>
-                  <div className="panel__weather--info-item">
-                    <Cloud />
-                    <span>Nublado</span>
-                  </div>
-                </div>
+                <WeatherInfo />
               </div>
 
               <SearchBar />
