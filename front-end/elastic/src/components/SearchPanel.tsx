@@ -4,10 +4,7 @@ import {
   FileSearch,
   BotMessageSquare,
   Cog,
-  EllipsisVertical,
-  MapPin,
-  Thermometer,
-  Cloud
+  EllipsisVertical
 } from 'lucide-react'
 
 import wiki_icon from '../assets/wiki_icon.png'
@@ -15,7 +12,7 @@ import blackHole from '../assets/black-hole.png'
 import blackHoleWhite from '../assets/black-hole-white.png'
 import { Link } from 'react-router-dom'
 import { SearchBar } from './SearchBar'
-import { WeatherInfo } from './weatherInfo'
+import { WeatherInfo } from './WeatherInfo'
 
 export const SearchPanel = () => {
   const [dateTime, setDateTime] = useState(new Date())

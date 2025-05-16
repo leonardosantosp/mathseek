@@ -1,6 +1,6 @@
-import { Cloud, MapPin, Thermometer, WheatIcon } from 'lucide-react'
+import { MapPin, Thermometer } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { WeatherIcon } from '../components/WeatherIcon'
+import { WeatherIcon } from './WeatherIcon'
 
 export const WeatherInfo = () => {
   const [weather, setWeather] = useState('')

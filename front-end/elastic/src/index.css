@@ -528,7 +528,6 @@ body.light-theme .panel__shortcuts--card p {
   border-radius: 5px;
   width: 30%;
   height: 85%;
-  box-shadow: 0px 0px 35px rgba(65, 70, 154, 0.25);
   padding: 20px;
   font-family: var(--font);
   transition: 0.8s ease;

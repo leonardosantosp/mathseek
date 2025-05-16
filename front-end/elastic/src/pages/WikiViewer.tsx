@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ScrollText, Route, Star } from 'lucide-react'
 import { SearchBar } from '../components/SearchBar'
-import { WeatherInfo } from '../components/weatherInfo'
+import { WeatherInfo } from '../components/WeatherInfo'
 
 export const WikiViewer = () => {
   const [htmlContent, setHtmlContent] = useState('')
