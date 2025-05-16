@@ -361,6 +361,10 @@ body.light-theme .panel__clock {
   align-items: center;
 }
 
+body.light-theme .weather-icon {
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.9));
+}
+
 .panel__weather--info-item {
   display: flex;
   align-items: center;
