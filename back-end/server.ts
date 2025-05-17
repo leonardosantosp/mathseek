@@ -15,7 +15,7 @@ import { loginRoute } from './routes/login'
 import { profile } from './routes/profile'
 
 dotenv.config()
-const jwtSecret = process.env.ACCESS_TOKEN_SECRET
+const jwtSecret = process.env.DEFAULT_TOKEN_SECRET
 
 const app = fastify()
 
@@ -34,10 +34,10 @@ app.register(fastifyJwt, {
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 
-// app.register(cors, {
-//   origin: 'http://localhost:5173',
-//   methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH']
-// })
+app.register(cors, {
+  origin: 'http://localhost:5173',
+  methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH']
+})
 
 app.register(fastifySwagger, {
   openapi: {

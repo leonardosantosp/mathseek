@@ -1,5 +1,6 @@
 import { verifyPassword } from '../utils/hash'
 import dotenv from 'dotenv'
+import jwt from 'jsonwebtoken'
 
 export function loginRoute(app) {
   dotenv.config()
@@ -17,12 +18,17 @@ export function loginRoute(app) {
     }
 
     //dados do usuário
-    const accessToken = app.jwt.sign(
+    const accessToken = jwt.sign(
       { id: '1', email: email },
+      process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: '10s' }
     )
 
-    const refreshToken = app.jwt.sign({ id: '1' }, { expiresIn: '7d' })
+    const refreshToken = jwt.sign(
+      { id: '1' },
+      process.env.REFRESH_TOKEN_SECRET,
+      { expiresIn: '7d' }
+    )
 
     return res.status(200).send({ accessToken, refreshToken })
   })
@@ -31,10 +37,11 @@ export function loginRoute(app) {
     try {
       const refreshToken = req.body.refreshToken
 
-      const decoded = app.jwt.verify(refreshToken)
+      const decoded = jwt.verify(refreshToken)
 
-      const newAccessToken = app.jwt.sign(
+      const newAccessToken = jwt.sign(
         { id: decoded.id },
+        process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: '30s' }
       )
 
