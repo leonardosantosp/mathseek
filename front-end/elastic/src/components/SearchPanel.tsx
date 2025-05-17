@@ -7,7 +7,13 @@ import {
   EllipsisVertical,
   X,
   ImagePlus,
-  MonitorCog
+  MonitorCog,
+  History,
+  Star,
+  Route,
+  RouteIcon,
+  Pencil,
+  Folders
 } from 'lucide-react'
 
 import wiki_icon from '../assets/wiki_icon.png'
@@ -20,6 +26,7 @@ import { WeatherInfo } from './WeatherInfo'
 export const SearchPanel = () => {
   const [dateTime, setDateTime] = useState(new Date())
   const [viewSidebar, setViewSidebar] = useState(false)
+  const [sidebarSearchMode, setSidebarSearchMode] = useState(false)
   const { isLight } = useContext(ThemeContext)
   const [searchMode, setSearchMode] = useState<'search' | 'chatbot'>('search')
 
@@ -135,11 +142,47 @@ export const SearchPanel = () => {
                 <p>{formatDateTime('hour')}</p>
                 <Cog
                   className="panel__header--info-config"
-                  onClick={() => setViewSidebar(true)}
+                  onClick={() => {
+                    setViewSidebar(true)
+                    setSidebarSearchMode(false)
+                  }}
                 />
               </div>
             </div>
             <div className="panel__search-mode">
+              <div className={`${sidebarSearchMode && 'sidebar-search-mode'}`}>
+                <div className="search__side-bar">
+                  <div className="search__side-bar--header">
+                    <X
+                      className="close-icon"
+                      onClick={() => setSidebarSearchMode(false)}
+                      cursor={'pointer'}
+                    />
+                  </div>
+                  <div className="search__side-bar--menu">
+                    <div className="side-bar--menu-item">
+                      <History />
+                      <p>History</p>
+                    </div>
+                    <div className="side-bar--menu-item">
+                      <Star />
+                      <p>Favorites</p>
+                    </div>
+                    <div className="side-bar--menu-item">
+                      <RouteIcon />
+                      <p>Shortcuts</p>
+                    </div>
+                    <div className="side-bar--menu-item">
+                      <Pencil />
+                      <p>Edit</p>
+                    </div>
+                    <div className="side-bar--menu-item">
+                      <Folders />
+                      <p>Folders</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div className="panel__search-mode--header">
                 <div className="panel__search-mode--favorites">
                   <Link to="/result">
@@ -165,7 +208,13 @@ export const SearchPanel = () => {
                     </div>
                   </Link>
                 </div>
-                <EllipsisVertical className="panel__search-mode--header-more-icon" />
+                <EllipsisVertical
+                  className="panel__search-mode--header-more-icon"
+                  onClick={() => {
+                    setSidebarSearchMode(true)
+                    setViewSidebar(false)
+                  }}
+                />
               </div>
 
               <div className="panel__clock--weather--info">
