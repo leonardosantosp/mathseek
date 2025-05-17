@@ -11,3 +11,34 @@ GET http://localhost:3333/wikipedia/search?query=albedo
 
 ###
 GET http://localhost:3333/wikipedia/10
+
+###
+POST http://localhost:3333/signup
+Content-Type: application/json
+
+{
+  "user": "admin",
+  "email": "meu@email.com",
+  "password": "0000"
+}
+
+###
+POST http://localhost:3333/login
+Content-Type: application/json
+
+{
+  "email": "meu@email.com",
+  "password": "0000"
+}
+
+###
+GET http://localhost:3333/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJpYXQiOjE3NDc0Mjg2ODEsImV4cCI6MTc0NzQyODcxMX0.mpzvYNQAh5-UoXkjdOUjbPIbuxojHQmPQiCpb9vIErA
+
+###
+POST http://localhost:3333/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJpYXQiOjE3NDc0Mjg1MzMsImV4cCI6MTc0ODAzMzMzM30.fiRVTBp1MsYkV_ROpyT66sC4QHpgT62KtFix72ciFlk"
+}
