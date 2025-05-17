@@ -4,7 +4,10 @@ import {
   FileSearch,
   BotMessageSquare,
   Cog,
-  EllipsisVertical
+  EllipsisVertical,
+  X,
+  ImagePlus,
+  MonitorCog
 } from 'lucide-react'
 
 import wiki_icon from '../assets/wiki_icon.png'
@@ -16,6 +19,7 @@ import { WeatherInfo } from './WeatherInfo'
 
 export const SearchPanel = () => {
   const [dateTime, setDateTime] = useState(new Date())
+  const [viewSidebar, setViewSidebar] = useState(false)
   const { isLight } = useContext(ThemeContext)
   const [searchMode, setSearchMode] = useState<'search' | 'chatbot'>('search')
 
@@ -79,6 +83,32 @@ export const SearchPanel = () => {
 
       <div className="container__panel">
         <div className="panel-background">
+          <div className={`${viewSidebar && 'sidebar-blur__active'}`}>
+            <div className="panel__side-bar">
+              <div className="panel__side-bar--header">
+                <X
+                  className="close-icon"
+                  onClick={() => setViewSidebar(false)}
+                  cursor={'pointer'}
+                />
+              </div>
+              <div className="side-bar__menu">
+                <div className="side-bar__menu--items">
+                  <div className="menu--items-container">
+                    <ImagePlus />
+                    Customize
+                  </div>
+                </div>
+                <div className="side-bar__menu--items">
+                  <div className="menu--items-container">
+                    <MonitorCog />
+                    Advanced Configs
+                  </div>
+                </div>
+                <div className="side-bar__menu--items"></div>
+              </div>
+            </div>
+          </div>
           <div className="panel">
             <div className="panel__header">
               <div className="panel__header--mode">
@@ -103,7 +133,10 @@ export const SearchPanel = () => {
                 <p>{formatDateTime('day')}</p>
                 <p>{formatDateTime('month')}</p>
                 <p>{formatDateTime('hour')}</p>
-                <Cog className="panel__header--info-config" />
+                <Cog
+                  className="panel__header--info-config"
+                  onClick={() => setViewSidebar(true)}
+                />
               </div>
             </div>
             <div className="panel__search-mode">
