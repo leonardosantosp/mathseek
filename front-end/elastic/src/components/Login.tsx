@@ -39,7 +39,7 @@ export const Login = ({
               <div className="dashed-line__text">
                 <p>{subtitle}</p>
               </div>
-              <div class="dashed-line"></div>
+              <div className="dashed-line"></div>
             </div>
           </div>
           <img
@@ -51,18 +51,8 @@ export const Login = ({
                 : planetPink
             }
             alt="planet"
-<<<<<<< HEAD
-<<<<<<< HEAD
             width={260}
             height={260}
-=======
-            width={302}
-            height={302}
->>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
-=======
-            width={260}
-            height={260}
->>>>>>> 54fb40c (feat: initialize backend and add routes for Elasticsearch queries and document retrieval by ID and update image sizes on frontend)
             className="planet first-planet"
           />
           <div className="login-page__card">
@@ -95,18 +85,8 @@ export const Login = ({
                 : planetPink
             }
             alt="planet"
-<<<<<<< HEAD
-<<<<<<< HEAD
             width={180}
             height={180}
-=======
-            width={220}
-            height={220}
->>>>>>> 9a934c7 (feat: add login (signin-signup-forgot) component)
-=======
-            width={180}
-            height={180}
->>>>>>> 54fb40c (feat: initialize backend and add routes for Elasticsearch queries and document retrieval by ID and update image sizes on frontend)
             className="planet second-planet"
           />
         </div>
