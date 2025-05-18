@@ -2,41 +2,17 @@ import { SearchBar } from '../components/SearchBar'
 import { ResultDocument } from '../components/ResultDocument'
 import { useState } from 'react'
 import { Pagination } from '../components/Pagination'
-
-const documents = [
-  true,
-  true,
-  false,
-  false,
-  true,
-  false,
-  true,
-  true,
-  false,
-  false,
-  true,
-  false,
-  true,
-  true,
-  false,
-  false,
-  true,
-  false,
-  true,
-  true,
-  false,
-  false,
-  true,
-  false
-]
+import { useLocation } from 'react-router-dom'
 
 export const ResultPages = () => {
+  const location = useLocation()
+  const results = location.state?.results || []
   const [numberOfResults, setNumberOfResults] = useState(10)
   const [page, setPage] = useState(0)
 
   const firstIndex = page * numberOfResults
   const lastIndex = (page + 1) * numberOfResults
-  const numberPages = Math.ceil(documents.length / numberOfResults)
+  const numberPages = Math.ceil(results.length / numberOfResults)
 
   return (
     <>
@@ -76,8 +52,8 @@ export const ResultPages = () => {
         </div>
       </div>
       <div className="results-container">
-        {documents.slice(firstIndex, lastIndex).map((item, index) => (
-          <ResultDocument key={index} favorite={item} />
+        {results.slice(firstIndex, lastIndex).map((item, index) => (
+          <ResultDocument key={index} result={item} />
         ))}
         <Pagination
           changePage={(newPage: number) => setPage(newPage)}

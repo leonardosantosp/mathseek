@@ -3,6 +3,7 @@ import { Client, errors } from '@elastic/elasticsearch'
 type WikipediaDocument = {
   title: string
   url: string
+  content: string
   dt_creation: string
   reading_time: number
   access_count?: number
@@ -51,6 +52,7 @@ export const getDocByIdWikipediaService = async (id: string) => {
       _id,
       title: resultSource.title,
       url: resultSource.url,
+      content: resultSource.content,
       reading_time: resultSource.reading_time,
       access_count: resultSource.access_count
         ? resultSource.access_count + 1

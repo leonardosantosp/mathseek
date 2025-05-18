@@ -35,6 +35,16 @@ input[type='number']::-webkit-outer-spin-button {
   margin: 0;
 }
 
+input:-webkit-autofill {
+  -webkit-text-fill-color: white !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: white !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
 body.dark-theme {
   background-color: var(--background-dark);
 }
