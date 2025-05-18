@@ -10,7 +10,6 @@ import {
   MonitorCog,
   History,
   Star,
-  Route,
   RouteIcon,
   Pencil,
   Folders
