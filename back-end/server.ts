@@ -19,7 +19,7 @@ import { authentication } from './routes/authentication'
 
 
 dotenv.config()
-// const jwtSecret = process.env.REGISTER_TOKEN_SECRET
+const jwtSecret = process.env.DEFAULT_TOKEN_SECRET
 
 const app = fastify()
 
@@ -51,10 +51,10 @@ app.register(authentication)
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 
-// app.register(cors, {
-//   origin: 'http://localhost:5173',
-//   methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH']
-// })
+app.register(cors, {
+  origin: 'http://localhost:5173',
+  methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH']
+})
 
 app.register(fastifySwagger, {
   openapi: {

@@ -1,33 +1,36 @@
-import { ArrowRight, Star, StarOff } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import wiki from '../assets/wiki_icon.png'
 
-type ResultDocumentProps = {
-  favorite: boolean
+type Result = {
+  _id: number
+  title: string
+  url: string
+  content: string
+  reading_time: number
+  access_count: number
+  dt_creation: string
 }
 
-export const ResultDocument = ({ favorite }: ResultDocumentProps) => {
+type ResultDocumentProps = {
+  result: Result
+}
+
+export const ResultDocument = ({ result }: ResultDocumentProps) => {
   return (
     <div className="results__item">
       <div className="results__item-header">
         <img src={wiki} alt="wikipedia" height={28} width={30} />
         <div className="results__item-header-content">
           <div className="header-content__title">
-            <p>Ciência da Computação</p>
-            {favorite ? <Star size={15} /> : <StarOff size={15} />}
+            <p>{result.title}</p>
           </div>
           <div className="header-content__link">
-            <p>http://mathseek/documents/ciencia-da-computação</p>
+            <p>{result.url}</p>
           </div>
         </div>
       </div>
       <div className="results__item--content">
-        <p>
-          Computer science is the study of computation, information, and
-          automation. Computer science spans theoretical disciplines (such as
-          algorithms, theory of computation, and information theory) to applied
-          disciplines (including the design and implementation of hardware and
-          software).
-        </p>
+        <p>{result.content}</p>
       </div>
       <div className="results__item--go-link">
         <p>Go</p>

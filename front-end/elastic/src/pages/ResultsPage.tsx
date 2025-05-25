@@ -1,38 +1,18 @@
 import { SearchBar } from '../components/SearchBar'
 import { ResultDocument } from '../components/ResultDocument'
 import { useState } from 'react'
-
-const documents = [
-  true,
-  true,
-  false,
-  false,
-  true,
-  false,
-  true,
-  true,
-  false,
-  false,
-  true,
-  false,
-  true,
-  true,
-  false,
-  false,
-  true,
-  false,
-  true,
-  true,
-  false,
-  false,
-  true,
-  false
-]
+import { Pagination } from '../components/Pagination'
+import { useLocation } from 'react-router-dom'
 
 export const ResultPages = () => {
+  const location = useLocation()
+  const results = location.state?.results || []
   const [numberOfResults, setNumberOfResults] = useState(10)
+  const [page, setPage] = useState(0)
 
-  const results = documents.slice(0, numberOfResults)
+  const firstIndex = page * numberOfResults
+  const lastIndex = (page + 1) * numberOfResults
+  const numberPages = Math.ceil(results.length / numberOfResults)
 
   return (
     <>
@@ -43,19 +23,28 @@ export const ResultPages = () => {
           <div className="result-page__number-of-results__buttons">
             <button
               className={`${numberOfResults === 5 && 'active'}`}
-              onClick={() => setNumberOfResults(5)}
+              onClick={() => {
+                setNumberOfResults(5)
+                setPage(0)
+              }}
             >
               5
             </button>
             <button
               className={`${numberOfResults === 10 && 'active'}`}
-              onClick={() => setNumberOfResults(10)}
+              onClick={() => {
+                setNumberOfResults(10)
+                setPage(0)
+              }}
             >
               10
             </button>
             <button
               className={`${numberOfResults === 15 && 'active'}`}
-              onClick={() => setNumberOfResults(15)}
+              onClick={() => {
+                setNumberOfResults(15)
+                setPage(0)
+              }}
             >
               15
             </button>
@@ -63,9 +52,15 @@ export const ResultPages = () => {
         </div>
       </div>
       <div className="results-container">
-        {results.map((item, index) => (
-          <ResultDocument key={index} favorite={item} />
+        {results.slice(firstIndex, lastIndex).map((item, index) => (
+          <ResultDocument key={index} result={item} />
         ))}
+        <Pagination
+          changePage={(newPage: number) => setPage(newPage)}
+          numPages={numberPages}
+          page={page}
+          pageInfo={true}
+        />
       </div>
     </>
   )
