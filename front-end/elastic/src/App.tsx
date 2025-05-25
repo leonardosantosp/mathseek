@@ -6,6 +6,7 @@ import { WikiViewer } from './pages/WikiViewer'
 import { LoginPage } from './pages/SignUpPage'
 
 function App() {
+
   return (
     <>
       <Routes>
