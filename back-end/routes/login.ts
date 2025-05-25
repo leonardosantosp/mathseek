@@ -30,8 +30,8 @@ export function loginRoute(app) {
       { expiresIn: '7d' }
     )
 
-//     return res.status(200).send({ accessToken: accessToken, refreshToken: refreshToken, accessSecret: process.env.ACCESS_TOKEN_SECRET, refreshSecret:process.env.REFRESH_TOKEN_SECRET })
-//   })
+    return res.status(200).send({ accessToken: accessToken, refreshToken: refreshToken, accessSecret: process.env.ACCESS_TOKEN_SECRET, refreshSecret:process.env.REFRESH_TOKEN_SECRET })
+  })
 
   app.post('/refresh', async (req, res) => {
     try {
