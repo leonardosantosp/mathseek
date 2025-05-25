@@ -71,6 +71,7 @@ export const ResultPages = () => {
           numPages={numberPages}
           page={page}
           pageInfo={true}
+          showNumbers={true}
         />
       </div>
     </>

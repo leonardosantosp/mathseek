@@ -6,13 +6,15 @@ type PaginationProps = {
   page: number
   changePage: (newPage: number) => void
   pageInfo: boolean
+  showNumbers: boolean
 }
 
 export const Pagination = ({
   numPages,
   page,
   changePage,
-  pageInfo
+  pageInfo,
+  showNumbers
 }: PaginationProps) => {
   const [inputPage, setInputPage] = useState('')
 
@@ -58,7 +60,7 @@ export const Pagination = ({
             >
               {}
             </button>
-            <p>{pageNumber}</p>
+            {showNumbers && <p>{pageNumber}</p>}
           </div>
         ))}
         <button className="pagination__button" disabled={page === numPages}>
