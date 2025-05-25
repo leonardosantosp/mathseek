@@ -19,7 +19,7 @@ function App() {
           }
         />
 
-        <Route path="/result" element={<ResultPages />} />
+        <Route path="/search" element={<ResultPages />} />
         <Route path="/wiki" element={<WikiViewer />} />
 
         <Route path="/login" element={<LoginPage />} />

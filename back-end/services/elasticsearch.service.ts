@@ -20,9 +20,15 @@ export const elasticClient = new Client({
   }
 })
 
-export const getDocsWikipediaService = async (query: string) => {
+export const getDocsWikipediaService = async (
+  query: string,
+  page: number,
+  pageSize: number
+) => {
   const results = await elasticClient.search<WikipediaDocument>({
     index: 'wikipedia',
+    from: (page - 1) * pageSize,
+    size: pageSize,
     query: {
       match: {
         content: query
@@ -30,10 +36,16 @@ export const getDocsWikipediaService = async (query: string) => {
     }
   })
 
-  return results.hits.hits.map(item => ({
-    _id: item._id,
-    ...item._source
-  }))
+  return {
+    total:
+      typeof results.hits.total === 'number'
+        ? results.hits.total
+        : results.hits.total?.value,
+    results: results.hits.hits.map(item => ({
+      _id: item._id,
+      ...item._source
+    }))
+  }
 }
 
 export const getDocByIdWikipediaService = async (id: string) => {

@@ -4,10 +4,10 @@ import {
 } from '../services/elasticsearch.service'
 
 export const getDocsWikipediaController = async (req, res) => {
-  const { query } = req.query
+  const { query, page, pageSize } = req.query
 
   try {
-    const results = await getDocsWikipediaService(query)
+    const results = await getDocsWikipediaService(query, page, pageSize)
     return res.status(200).send(results)
   } catch (error) {
     console.error('Error while fetching query', error)

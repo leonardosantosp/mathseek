@@ -764,6 +764,17 @@ body.light-theme .panel__shortcuts--card p {
   outline: none;
 }
 
+.pagination_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.pagination_wrapper p {
+  font-size: 10px;
+}
+
 .pagination__dots {
   width: 10px;
   height: 10px;
@@ -929,6 +940,18 @@ body.light-theme .result-page__number-of-results__buttons .active {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.results__query {
+  font-family: var(--font);
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.total-results {
+  font-family: var(--font);
+  font-size: 12px;
+  margin-bottom: 20px;
 }
 
 .results__item {

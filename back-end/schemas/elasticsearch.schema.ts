@@ -7,5 +7,5 @@ export const resultSchema = z.object({
   content: z.string(),
   reading_time: z.number(),
   access_count: z.number().optional(),
-  dt_creation: z.string(),
+  dt_creation: z.string()
 })

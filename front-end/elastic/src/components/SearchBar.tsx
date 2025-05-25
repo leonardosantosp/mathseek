@@ -9,19 +9,8 @@ export const SearchBar = () => {
   const handleSearch = async () => {
     if (!input.trim()) return
 
-    try {
-      const response = await fetch(
-        `http://localhost:3333/wikipedia/search?query=${encodeURIComponent(
-          input
-        )}`
-      )
-      const data = await response.json()
-
-      // Redireciona para a página de resultados, enviando os dados
-      navigate('/result', { state: { results: data } })
-    } catch (error) {
-      console.error('Erro na busca:', error)
-    }
+    // Redireciona para a página de resultados, enviando os dados
+    navigate(`/search?query=${encodeURIComponent(input)}&page=1&pageSize=10`)
   }
 
   return (

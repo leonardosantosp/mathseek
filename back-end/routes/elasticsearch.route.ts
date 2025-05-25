@@ -15,12 +15,17 @@ export function searchRoutes(app) {
           'Search for Wikipedia documents in the Elasticsearch index based on a query string.',
         tags: ['Wikipedia', 'Elasticsearch'],
         querystring: z.object({
-          query: z.string()
+          query: z.string(),
+          page: z.coerce.number(),
+          pageSize: z.coerce.number()
         }),
         response: {
-          200: z
-            .array(resultSchema)
-            .describe('List of documents matching the search query'),
+          200: z.object({
+            total: z.number(),
+            results: z
+              .array(resultSchema)
+              .describe('List of documents matching the search query')
+          }),
           500: z
             .object({
               error: z.string(),
