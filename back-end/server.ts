@@ -9,40 +9,20 @@ import { fastifySwagger } from '@fastify/swagger'
 import { fastifySwaggerUi } from '@fastify/swagger-ui'
 import { searchRoutes } from './routes/elasticsearch.route'
 import { authRoute } from './routes/signup'
-import fastifyJwt from '@fastify/jwt'
 import dotenv from 'dotenv'
-// import { loginRoute } from './routes/login'
+import { loginRoute } from './routes/login'
 import { authServer } from './routes/authServer'
 import { profile } from './routes/profile'
-import { authentication } from './routes/authentication'
-// import jwt from 'jsonwebtoken'
 
 
 dotenv.config()
-const jwtSecret = process.env.DEFAULT_TOKEN_SECRET
 
 const app = fastify()
 
-const posts = [
-  {
-    username: 'Kyle',
-    title: 'Post 1'
-  },
-  {
-    username: 'Jim',
-    title: 'Post 2'
-  }
-]
-
-
-// if (!jwtSecret) {
-//   throw new Error('REGISTER_TOKEN_SECRET is not defined in .env')
-// }
-
 app.register(authRoute)
-app.register(authServer)
+app.register(loginRoute)
 app.register(profile)
-app.register(authentication)
+app.register(authServer)
 
 // app.register(fastifyJwt, {
 //   secret: jwtSecret
