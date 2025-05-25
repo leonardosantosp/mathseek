@@ -39,7 +39,7 @@ export const Login = ({
               <div className="dashed-line__text">
                 <p>{subtitle}</p>
               </div>
-              <div class="dashed-line"></div>
+              <div className="dashed-line"></div>
             </div>
           </div>
           <img

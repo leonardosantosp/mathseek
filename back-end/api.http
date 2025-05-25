@@ -1,7 +1,4 @@
 ###
-GET http://localhost:3333/wikipedia/search?query=quadratic+equation&page=1&pageSize=10
-
-###
 GET http://localhost:3333/wikipedia/10
 
 ###
