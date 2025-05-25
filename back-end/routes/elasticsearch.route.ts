@@ -1,7 +1,8 @@
 import { z } from 'zod'
 import {
   getDocsWikipediaController,
-  getDocByIdWikipediaController
+  getDocByIdWikipediaController,
+  getMostViewedDocsWikipediaController
 } from '../controllers/elasticsearch.controller'
 import { resultSchema } from '../schemas/elasticsearch.schema'
 
@@ -66,5 +67,33 @@ export function searchRoutes(app) {
       }
     },
     getDocByIdWikipediaController
+  )
+
+  app.get(
+    '/wikipedia/mostViews/:limit',
+    {
+      schema: {
+        summary: 'Get the most viewed Wikipedia documents',
+        description:
+          'Retrieves the top N Wikipedia documents based on their access count, ordered from most to least viewed. The number of documents to retrieve is defined by the `limit` path parameter.',
+        tags: ['Wikipedia', 'Elasticsearch'],
+        params: z.object({
+          limit: z.coerce.number()
+        }),
+        response: {
+          200: z.array(
+            resultSchema.describe('Document successfully retrieved')
+          ),
+          400: z.object({
+            message: z.string()
+          }),
+          500: z.object({
+            message: z.string(),
+            error: z.string()
+          })
+        }
+      }
+    },
+    getMostViewedDocsWikipediaController
   )
 }

@@ -78,6 +78,34 @@ export const getDocByIdWikipediaService = async (id: string) => {
   }
 }
 
+export const getMostViewedDocsWikipediaService = async (limit: number) => {
+  const results = await elasticClient.search<WikipediaDocument>({
+    index: 'wikipedia',
+    size: limit,
+    sort: [
+      {
+        access_count: {
+          order: 'desc',
+          missing: '_last'
+        }
+      },
+      {
+        dt_creation: {
+          order: 'desc'
+        }
+      }
+    ],
+    query: {
+      match_all: {}
+    }
+  })
+
+  return results.hits.hits.map(item => ({
+    _id: item._id,
+    ...item._source
+  }))
+}
+
 export const addNumView = async (id: string) => {
   await elasticClient.update({
     index: 'wikipedia',
