@@ -3,6 +3,7 @@ import { ResultDocument } from '../components/ResultDocument'
 import { useEffect, useState } from 'react'
 import { Pagination } from '../components/Pagination'
 import { useSearchParams } from 'react-router-dom'
+import { searchDocs, type Result } from '../api-client/elastic'
 
 export const ResultPages = () => {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -10,17 +11,14 @@ export const ResultPages = () => {
   const page = parseInt(searchParams.get('page') || '1', 10)
   const pageSize = parseInt(searchParams.get('pageSize') || '10', 10)
 
-  const [results, setResults] = useState([])
+  const [results, setResults] = useState<Result[]>([])
   const [total, setTotal] = useState(0)
 
   useEffect(() => {
     const fetchDocuments = async () => {
-      const response = await fetch(
-        `http://localhost:3333/wikipedia/search?query=${query}&page=${page}&pageSize=${pageSize}`
-      )
-      const data = await response.json()
-      setResults(data.results)
-      setTotal(data.total)
+      const response = await searchDocs(query, page, pageSize)
+      setResults(response.results)
+      setTotal(response.total)
     }
 
     fetchDocuments()
