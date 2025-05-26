@@ -1,16 +1,7 @@
 import { Search } from 'lucide-react'
 import { Pagination } from './Pagination'
 import { useEffect, useState } from 'react'
-
-type Result = {
-  _id: number
-  title: string
-  url: string
-  content: string
-  reading_time: number
-  access_count: number
-  dt_creation: string
-}
+import { type Result, getMostViewedDocs } from '../api-client/elastic'
 
 export const MathTopics = () => {
   const [page, setPage] = useState(1)
@@ -21,10 +12,8 @@ export const MathTopics = () => {
 
   useEffect(() => {
     const fetchMostViewDocuments = async () => {
-      const response = await fetch(
-        `http://localhost:3333/wikipedia/mostViews/${totalDocuments}`
-      )
-      setDocuments(await response.json())
+      const response = await getMostViewedDocs(totalDocuments)
+      setDocuments(response)
     }
     fetchMostViewDocuments()
   }, [])

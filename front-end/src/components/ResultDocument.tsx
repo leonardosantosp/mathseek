@@ -1,15 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import wiki from '../assets/wiki_icon.png'
-
-type Result = {
-  _id: number
-  title: string
-  url: string
-  content: string
-  reading_time: number
-  access_count: number
-  dt_creation: string
-}
+import type { Result } from '../api-client/elastic'
 
 type ResultDocumentProps = {
   result: Result
