@@ -9,8 +9,11 @@ export function authRoute(app) {
     const user = {
       name: name,
       email: email,
-      password: hashedPassword
+      password: password,
+      hashedPassword: hashedPassword
     }
+
+    // TODO - salvar no banco
 
     return res.status(201).send(user)
   })
