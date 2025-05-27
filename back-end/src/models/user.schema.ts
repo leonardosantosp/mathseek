@@ -3,16 +3,22 @@ import { InterfaceConfig, configSchema } from "./config.schema";
 
 export interface InterfaceUser extends Document { // extends Document traz .save(), _id, .toJSON()
   username: string,
+  email: string,
   password: string,
   hashedPassword: string,
   avatar?: BufferSource, // optional usuario pode ter foto padrao (sem foto) // arruma BufferSource
   status?: string,
+  historico: [ string ],
   config: InterfaceConfig
 }
 
 // todo usuario vai ter um subschema de preferencia
 const userSchema = new mongoose.Schema({
   username: {
+    type: String,
+    required: true
+  },
+  email: {
     type: String,
     required: true
   },
@@ -23,6 +29,10 @@ const userSchema = new mongoose.Schema({
   hashedPassword: {
     type: String,
     required: true
+  },
+  historico: {
+    type: String,
+    required: false
   },
   avatar: {
     type: String, // Ref outside bd
@@ -36,7 +46,9 @@ const userSchema = new mongoose.Schema({
     type: configSchema,
     default: () => ({})
   }
-})
+},
+  { timestamps: true }
+)
 
 // userSchema.virtual('coverImagePath').get(function() {
 //     if (this.coverImage != null && this.coverImageType != null) {
