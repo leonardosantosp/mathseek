@@ -8,18 +8,31 @@ import cors from '@fastify/cors'
 import { fastifySwagger } from '@fastify/swagger'
 import { fastifySwaggerUi } from '@fastify/swagger-ui'
 import { searchRoutes } from './routes/elasticsearch.route'
-import { authRoute } from './routes/signup'
+import { signRoute } from './routes/signup'
 import dotenv from 'dotenv'
 import { loginRoute } from './routes/login'
 import { authServer } from './routes/authServer'
 import { profile } from './routes/profile'
 
+// criando conexao com mongo
+
+import mongoose from 'mongoose'
+
+const uri = "mongodb://localhost:27017/elastic_db"
+
+mongoose.connect ( uri ).then(() => console.log( 'MongoDB conectado em ', uri ))
+                        .catch( err => {
+                          console.log( "Erro na conexao com MongoDB", err )
+                          process.exit(1)
+                        });
+                      
+// ===============
 
 dotenv.config()
 
 const app = fastify()
 
-app.register(authRoute)
+app.register(signRoute)
 app.register(loginRoute)
 app.register(profile)
 app.register(authServer)
