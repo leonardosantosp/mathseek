@@ -604,6 +604,16 @@ body.light-theme #panel__search--bar:focus {
   box-shadow: 0 0 3px 4px rgba(79, 51, 138, 0.3);
 }
 
+body.light-theme input:-webkit-autofill {
+  -webkit-text-fill-color: black !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+body.light-theme input:-webkit-autofill:focus {
+  -webkit-text-fill-color: black !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
 .panel__search--search-icon-container {
   position: absolute;
   display: flex;
@@ -708,7 +718,6 @@ body.light-theme .panel__shortcuts--card p {
   border: 3px solid rgba(60, 63, 68, 0.16);
   border-radius: 5px;
   width: 30%;
-  height: 85%;
   padding: 20px;
   font-family: var(--font);
   transition: 0.8s ease;
@@ -760,8 +769,9 @@ body.light-theme .panel__shortcuts--card p {
   border-radius: 3px;
 }
 
-.pagination__info input:focus {
-  outline: none;
+body.light-theme .pagination__info input {
+  background-color: var(--default-border-color-light);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .pagination_wrapper {
@@ -785,8 +795,16 @@ body.light-theme .panel__shortcuts--card p {
   cursor: pointer;
 }
 
+body.light-theme .pagination__dots {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 .pagination__dots-active {
   background-color: rgba(136, 33, 196, 0.3);
+}
+
+body.light-theme .pagination__dots-active {
+  background-color: rgba(136, 33, 196, 0.9);
 }
 
 .pagination__buttons {
@@ -799,6 +817,10 @@ body.light-theme .panel__shortcuts--card p {
   color: white;
   border: none;
   cursor: pointer;
+}
+
+body.light-theme .pagination__button {
+  color: rgb(109, 109, 109);
 }
 
 .pagination__button:disabled {
