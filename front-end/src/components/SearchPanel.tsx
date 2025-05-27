@@ -4,23 +4,15 @@ import {
   FileSearch,
   BotMessageSquare,
   Cog,
-  EllipsisVertical,
   X,
   ImagePlus,
-  MonitorCog,
-  History,
-  Star,
-  RouteIcon,
-  Pencil,
-  Folders
+  MonitorCog
 } from 'lucide-react'
 
-import wiki_icon from '../assets/wiki_icon.png'
 import blackHole from '../assets/black-hole.png'
 import blackHoleWhite from '../assets/black-hole-white.png'
-import { Link } from 'react-router-dom'
-import { SearchBar } from './SearchBar'
-import { WeatherInfo } from './WeatherInfo'
+import { PanelSearch } from './PanelSearch'
+import { PanelChatBot } from './PanelChatBot'
 
 export const SearchPanel = () => {
   const [dateTime, setDateTime] = useState(new Date())
@@ -61,6 +53,7 @@ export const SearchPanel = () => {
         dateTime.getMinutes()
       ).padStart(2, '0')}`
     }
+    return ''
   }
 
   useEffect(() => {
@@ -148,138 +141,18 @@ export const SearchPanel = () => {
                 />
               </div>
             </div>
-            <div className="panel__search-mode">
-              <div className={`${sidebarSearchMode && 'sidebar-search-mode'}`}>
-                <div className="search__side-bar">
-                  <div className="search__side-bar--header">
-                    <X
-                      className="close-icon"
-                      onClick={() => setSidebarSearchMode(false)}
-                      cursor={'pointer'}
-                    />
-                  </div>
-                  <div className="search__side-bar--menu">
-                    <div className="side-bar--menu-item">
-                      <History />
-                      <p>History</p>
-                    </div>
-                    <div className="side-bar--menu-item">
-                      <Star />
-                      <p>Favorites</p>
-                    </div>
-                    <div className="side-bar--menu-item">
-                      <RouteIcon />
-                      <p>Shortcuts</p>
-                    </div>
-                    <div className="side-bar--menu-item">
-                      <Pencil />
-                      <p>Edit</p>
-                    </div>
-                    <div className="side-bar--menu-item">
-                      <Folders />
-                      <p>Folders</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="panel__search-mode--header">
-                <div className="panel__search-mode--favorites">
-                  <Link to="/result">
-                    <div className="panel__search-mode--favorites-item">
-                      <img
-                        src={wiki_icon}
-                        alt="wikipedia icon"
-                        width={20}
-                        height={18}
-                      />
-                      <p>Ciência da Computação</p>
-                    </div>
-                  </Link>
-                  <Link to="/result">
-                    <div className="panel__search-mode--favorites-item">
-                      <img
-                        src={wiki_icon}
-                        alt="wikipedia icon"
-                        width={20}
-                        height={18}
-                      />
-                      <p>Ciência da Computação</p>
-                    </div>
-                  </Link>
-                </div>
-                <EllipsisVertical
-                  className="panel__search-mode--header-more-icon"
-                  onClick={() => {
-                    setSidebarSearchMode(true)
-                    setViewSidebar(false)
-                  }}
-                />
-              </div>
-
-              <div className="panel__clock--weather--info">
-                <p className="panel__clock">{formatDateTime('hour')}</p>
-                <WeatherInfo />
-              </div>
-
-              <SearchBar />
-
-              <div className="panel__shortcuts">
-                <div className="panel__shortcuts--card">
-                  <img
-                    src={wiki_icon}
-                    alt="Article Image"
-                    width={40}
-                    height={37}
-                  />
-                  <p>Mathematics in Nature</p>
-                </div>
-                <div className="panel__shortcuts--card">
-                  <img
-                    src={wiki_icon}
-                    alt="Article Image"
-                    width={40}
-                    height={37}
-                  />
-                  <p>Complex Numbers</p>
-                </div>
-                <div className="panel__shortcuts--card">
-                  <img
-                    src={wiki_icon}
-                    alt="Article Image"
-                    width={40}
-                    height={37}
-                  />
-                  <p>Complex Numbers</p>
-                </div>
-                <div className="panel__shortcuts--card">
-                  <img
-                    src={wiki_icon}
-                    alt="Article Image"
-                    width={40}
-                    height={37}
-                  />
-                  <p>Complex Numbers</p>
-                </div>
-                <div className="panel__shortcuts--card">
-                  <img
-                    src={wiki_icon}
-                    alt="Article Image"
-                    width={40}
-                    height={37}
-                  />
-                  <p>Complex Numbers</p>
-                </div>
-                <div className="panel__shortcuts--card">
-                  <img
-                    src={wiki_icon}
-                    alt="Article Image"
-                    width={40}
-                    height={37}
-                  />
-                  <p>Complex Numbers</p>
-                </div>
-              </div>
-            </div>
+            {searchMode === 'search' ? (
+              <PanelSearch
+                formatDateTime={(type: string) => formatDateTime(type)}
+                setSidebarSearchMode={(type: boolean) =>
+                  setSidebarSearchMode(type)
+                }
+                sidebarSearchMode={sidebarSearchMode}
+                setViewSidebar={(type: boolean) => setViewSidebar(type)}
+              />
+            ) : (
+              <PanelChatBot />
+            )}
           </div>
         </div>
       </div>
