@@ -1,6 +1,7 @@
 import { ArrowRight } from 'lucide-react'
 import wiki from '../assets/wiki_icon.png'
 import type { Result } from '../api-client/elastic'
+import { Link } from 'react-router-dom'
 
 type ResultDocumentProps = {
   result: Result
@@ -23,10 +24,12 @@ export const ResultDocument = ({ result }: ResultDocumentProps) => {
       <div className="results__item--content">
         <p>{result.content}</p>
       </div>
-      <div className="results__item--go-link">
-        <p>Go</p>
-        <ArrowRight size={13} />
-      </div>
+      <Link to={`/wiki/${result.title}`}>
+        <div className="results__item--go-link">
+          <p>Go</p>
+          <ArrowRight size={13} />
+        </div>
+      </Link>
     </div>
   )
 }
