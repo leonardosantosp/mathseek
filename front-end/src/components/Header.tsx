@@ -2,6 +2,7 @@ import { MoonStar, CircleUser, Sun } from 'lucide-react'
 import { useContext } from 'react'
 import { ThemeContext } from '../context/ThemeContext'
 import { Link } from 'react-router-dom'
+import piLogo from '../assets/piLogo.png'
 
 export const Header = () => {
   const { isLight, toggleTheme } = useContext(ThemeContext)
@@ -9,7 +10,7 @@ export const Header = () => {
     <div className="header">
       <Link to="/">
         <div className="header__logo">
-          <span>π</span>
+          <img src={piLogo} alt="" />
           <h1>MathSeek</h1>
         </div>
       </Link>

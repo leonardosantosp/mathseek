@@ -1,10 +1,10 @@
 import { Copyright } from 'lucide-react'
-
+import piLogo from '../assets/piLogo.png'
 export const Footer = () => {
   return (
     <div className="footer">
       <div className="header__logo footer_logo">
-        <span>π</span>
+        <img src={piLogo} alt="" />
         <h1>MathSeek</h1>
       </div>
       <div className="footer__copy-container">
