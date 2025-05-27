@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react'
 import { ScrollText, Route, Star } from 'lucide-react'
 import { SearchBar } from '../components/SearchBar'
-import { WeatherInfo } from '../components/WeatherInfo'
+import { useParams } from 'react-router-dom'
 
 export const WikiViewer = () => {
   const [htmlContent, setHtmlContent] = useState('')
-  const title = 'Inteligência_artificial'
+  const { title } = useParams()
 
   useEffect(() => {
     const fetchWiki = async () => {
       const response = await fetch(
-        `https://pt.wikipedia.org/api/rest_v1/page/html/${title}`
+        `https://en.wikipedia.org/api/rest_v1/page/html/${title}`
       )
       let html = await response.text()
 
@@ -24,11 +24,16 @@ export const WikiViewer = () => {
     fetchWiki()
   }, [title])
 
+  if (!title) return
+
   return (
     <>
-      <span className="result-page__search-bar-container">
-        <SearchBar />
-      </span>
+      <div className="result-page--wrapper">
+        <span className="result-page__search-bar-container">
+          <SearchBar />
+        </span>
+      </div>
+
       <div className="wiki-background">
         <div className="wiki">
           <div className="wiki__header">

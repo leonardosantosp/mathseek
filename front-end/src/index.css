@@ -912,6 +912,13 @@ body.dark-theme .math-topics__card-item--text p {
   -webkit-backdrop-filter: blur(10px);
 }
 
+.result-page--wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .result-page__search-bar-container {
   display: flex;
   justify-content: flex-end;
@@ -1089,6 +1096,14 @@ body.light-theme .results__item--go-link p {
   margin: 10px 40px;
 }
 
+.mwe-math-fallback-image-inline,
+.mwe-math-element {
+  margin: 0;
+  font-size: 1.1em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .wiki {
   border: 2px solid rgba(255, 255, 255, 0.1);
   background: linear-gradient(
@@ -1159,6 +1174,7 @@ body.light-theme .wiki__content {
 }
 
 body.dark-theme .wiki__content div,
+body.dark-theme .wiki__content dd,
 body.dark-theme .wiki__content li,
 body.dark-theme .wiki__content ul,
 body.dark-theme .wiki__content figcaption {
@@ -1201,6 +1217,11 @@ body.dark-theme .infobox td[class=''] {
   display: none;
 }
 
+body.dark-theme img.mwe-math-fallback-image-inline.mw-invert.skin-invert,
+body.dark-theme .mw-invert {
+  filter: invert(1);
+}
+
 .wiki__content .infobox {
   float: right;
   clear: right;
@@ -1209,6 +1230,92 @@ body.dark-theme .infobox td[class=''] {
   padding: 0.4em;
   border: 1px solid #aaa;
   font-size: 90%;
+}
+
+.wikitable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  background-color: #1e1e2e;
+  color: #ffffff;
+}
+
+.wikitable caption {
+  caption-side: top;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 0.5rem;
+  color: #ffcc00;
+}
+
+.wikitable th,
+.wikitable td {
+  border: 1px solid #444;
+  padding: 6px 10px;
+  text-align: right;
+}
+
+.wikitable thead th {
+  background-color: #2a2a3b;
+  color: #ffffff;
+}
+
+.wikitable tbody tr:nth-child(even) {
+  background-color: #2d2d3d;
+}
+
+.wikitable tbody tr:nth-child(odd) {
+  background-color: #252534;
+}
+
+.wikitable tbody tr:hover {
+  background-color: #444466;
+  cursor: pointer;
+}
+
+body.light-theme .wikitable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  background-color: #ffffff;
+  color: #111111;
+}
+
+body.light-theme .wikitable caption {
+  caption-side: top;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 0.5rem;
+  color: #d48806; /* dourado suave */
+}
+
+body.light-theme .wikitable th,
+body.light-theme .wikitable td {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  text-align: right;
+}
+
+body.light-theme .wikitable thead th {
+  background-color: #f0f0f0;
+  color: #000000;
+}
+
+body.light-theme .wikitable tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+body.light-theme .wikitable tbody tr:nth-child(odd) {
+  background-color: #f5f5f5;
+}
+
+body.light-theme .wikitable tbody tr:hover {
+  background-color: #e6f7ff;
+  cursor: pointer;
 }
 
 .wiki__content .infobox caption {
@@ -1260,7 +1367,7 @@ body.dark-theme .infobox td[class=''] {
   margin: 20px auto;
   max-width: 100%;
   height: auto;
-  float: none !important; /* impede float do Wikipedia */
+  float: none !important;
 }
 
 .wiki__content figure {
