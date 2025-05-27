@@ -569,6 +569,7 @@ body.light-theme .panel__weather--info-item {
   justify-content: center;
   color: white;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 body.light-theme .panel__search--box {
@@ -738,6 +739,7 @@ body.light-theme .panel__shortcuts--card p {
 }
 
 .pagination-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -889,11 +891,30 @@ body.dark-theme .math-topics__card-item--text p {
 
 /* Result Page */
 
-.result-page__search-bar-container {
+.search-container {
+  width: 70%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-left: 30px;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.search-container .black-hole-container,
+.search-container .black-hole-container img {
+  z-index: 0;
+  width: 28%;
+  margin-top: 0;
+}
+
+.results-container .search-container .panel__search--box #panel__search--bar {
+  background-color: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.result-page__search-bar-container {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .result-page__search-bar-container .panel__search--search-icon-container {
@@ -910,6 +931,7 @@ body.dark-theme .math-topics__card-item--text p {
   margin-right: 30px;
   border-radius: 3.5px;
   padding: 20px;
+  z-index: 2;
 }
 
 body.light-theme .result-page__number-of-results {
@@ -920,6 +942,7 @@ body.light-theme .result-page__number-of-results {
   text-align: center;
   font-family: var(--font);
   font-size: 12px;
+  width: 100%;
 }
 
 .result-page__number-of-results__buttons button {
@@ -961,23 +984,31 @@ body.light-theme .result-page__number-of-results__buttons .active {
   margin: 20px 0 0 20px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+}
+
+.query-container {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
 }
 
 .results__query {
   font-family: var(--font);
-  font-size: 20px;
   margin-bottom: 20px;
 }
 
 .total-results {
   font-family: var(--font);
-  font-size: 12px;
-  margin-bottom: 20px;
+  font-size: 14px;
+  margin-bottom: 35px;
 }
 
 .results__item {
   margin-bottom: 15px;
+  width: 50%;
 }
 
 .results__item-header {
@@ -1016,10 +1047,16 @@ body.light-theme .header-content__link p {
   color: #2b32aa !important;
 }
 
+.results-item__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .results__item--content {
   font-family: 'Inter', sans-serif;
   font-size: 12px;
-  width: 40%;
+  width: 100%;
 }
 
 .results__item--go-link {

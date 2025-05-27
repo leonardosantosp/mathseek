@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { Pagination } from '../components/Pagination'
 import { useSearchParams } from 'react-router-dom'
 import { searchDocs, type Result } from '../api-client/elastic'
+import blackHole from '../assets/black-hole.png'
 
 export const ResultPages = () => {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -40,8 +41,6 @@ export const ResultPages = () => {
   return (
     <>
       <div className="result-page__search-bar-container">
-        <SearchBar />
-
         <div className="result-page__number-of-results">
           <p>number of results per page:</p>
           <div className="result-page__number-of-results__buttons">
@@ -59,11 +58,22 @@ export const ResultPages = () => {
       </div>
 
       <div className="results-container">
-        <p className="results__query">{query}</p>
-        <p className="total-results">Total Results: {total}</p>
-        {results.map((item, index) => (
-          <ResultDocument key={index} result={item} />
-        ))}
+        <div className="search-container">
+          <div className="black-hole-container">
+            <img src={blackHole} alt="black hole" className="black-hole" />
+          </div>
+          <SearchBar />
+        </div>
+        <div className="query-container">
+          <h1 className="results__query">{query}</h1>
+          <p className="total-results">Total Results: {total}</p>
+        </div>
+        <div className="results-item__container">
+          {results.map(item => (
+            <ResultDocument key={item._id} result={item} />
+          ))}
+        </div>
+
         <Pagination
           changePage={(newPage: number) => updatePagination(newPage)}
           numPages={numberPages}
