@@ -1,7 +1,5 @@
 // esse schema contem todos as preferencias do usuario
 import { Schema } from "mongoose";
-import mongoose from "mongoose";
-
 
 // tipagem do schema folders
 interface InterfaceFolders {
@@ -12,12 +10,12 @@ interface InterfaceFolders {
 //tipagem do schema user 
 export interface InterfaceConfig{
     backgroundImage: string,    
-    favorite: [ string ],
+    favorite: [ number ],
     fontFamily: string,
     folders: InterfaceFolders[],
     outputMethod: 'sameScreen' | 'diffScreen', // sameScreen na mesma tela do inicio
                                                // diffScreen redireciona para tela de resultados  
-    quickAccess: [ string ],
+    quickAccess: [ number ],
     themeColor: string
 }
 
@@ -42,7 +40,7 @@ export const configSchema = new Schema<InterfaceConfig>( // garantindo que o sch
             default: ''
         },
         favorite: { // lista
-            type: [ String ],
+            type: [ Number ],
             default: () => []
         },
         fontFamily: {
@@ -59,7 +57,7 @@ export const configSchema = new Schema<InterfaceConfig>( // garantindo que o sch
             default: 'diffScreen'
         },
         quickAccess: {
-            type: [ String ],
+            type: [ Number ],
             default: () => []
         },
         themeColor: {
