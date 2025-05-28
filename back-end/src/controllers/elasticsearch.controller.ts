@@ -1,7 +1,8 @@
 import {
   getDocsWikipediaService,
   getDocByIdWikipediaService,
-  getMostViewedDocsWikipediaService
+  getMostViewedDocsWikipediaService,
+  addNumViewDocService
 } from '../services/elasticsearch.service'
 
 export const getDocsWikipediaController = async (req, res) => {
@@ -42,6 +43,20 @@ export const getMostViewedDocsWikipediaController = async (req, res) => {
       return res.status(400).send({ message: 'Invalid params' })
     }
     console.error('Internal server error', error)
+    return res.status(500).send({ message: 'Internal server error' })
+  }
+}
+
+export const addNumViewDocController = async (req, res) => {
+  const { id } = req.params
+  try {
+    const result = await addNumViewDocService(id)
+    return res.status(204).send()
+  } catch (error) {
+    if (error instanceof Error && error.message === 'document not found') {
+      return res.status(404).send({ message: 'document not found' })
+    }
+    console.error(error)
     return res.status(500).send({ message: 'Internal server error' })
   }
 }

@@ -58,8 +58,6 @@ export const getDocByIdWikipediaService = async (id: string) => {
     const _id = result._id
     const resultSource = result._source as WikipediaDocument
 
-    addNumView(id)
-
     return {
       _id,
       title: resultSource.title,
@@ -104,6 +102,17 @@ export const getMostViewedDocsWikipediaService = async (limit: number) => {
     _id: item._id,
     ...item._source
   }))
+}
+
+export const addNumViewDocService = async (id: string) => {
+  try {
+    const response = await addNumView(id)
+    return response
+  } catch (error) {
+    if (error instanceof errors.ResponseError && error.statusCode === 404) {
+      throw new Error('document not found')
+    }
+  }
 }
 
 export const addNumView = async (id: string) => {
