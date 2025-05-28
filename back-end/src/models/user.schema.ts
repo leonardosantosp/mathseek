@@ -4,11 +4,10 @@ import { InterfaceConfig, configSchema } from "./config.schema";
 export interface InterfaceUser extends Document { // extends Document traz .save(), _id, .toJSON()
   username: string,
   email: string,
-  password: string,
   hashedPassword: string,
   avatar?: BufferSource, // optional usuario pode ter foto padrao (sem foto) // arruma BufferSource
   status?: string,
-  historico: [ string ],
+  history: [ number ],
   config: InterfaceConfig
 }
 
@@ -22,16 +21,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  password: {
-    type: String,
-    required: true
-  },
   hashedPassword: {
     type: String,
     required: true
   },
-  historico: {
-    type: String,
+  history: {
+    type: Number,
     required: false
   },
   avatar: {
