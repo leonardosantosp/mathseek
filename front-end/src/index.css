@@ -1177,7 +1177,8 @@ body.dark-theme .wiki__content div,
 body.dark-theme .wiki__content dd,
 body.dark-theme .wiki__content li,
 body.dark-theme .wiki__content ul,
-body.dark-theme .wiki__content figcaption {
+body.dark-theme .wiki__content figcaption,
+body.dark-theme .wiki__content pre {
   background-color: var(--background-dark) !important;
   color: white !important;
 }

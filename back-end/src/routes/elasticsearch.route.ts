@@ -2,7 +2,8 @@ import { z } from 'zod'
 import {
   getDocsWikipediaController,
   getDocByIdWikipediaController,
-  getMostViewedDocsWikipediaController
+  getMostViewedDocsWikipediaController,
+  addNumViewDocController
 } from '../controllers/elasticsearch.controller'
 import { resultSchema } from '../schemas/elasticsearch.schema'
 
@@ -95,5 +96,34 @@ export function searchRoutes(app) {
       }
     },
     getMostViewedDocsWikipediaController
+  )
+
+  app.get(
+    '/wikipedia/increment/:id',
+    {
+      schema: {
+        summary: 'Increment the view count of a Wikipedia document',
+        description:
+          'This route increments the access_count field of a Wikipedia document stored in Elasticsearch based on the provided ID.',
+        tags: ['Wikipedia', 'ElasticSearch'],
+        params: z.object({
+          id: z.string()
+        }),
+        response: {
+          204: {
+            description:
+              'View count successfully incremented (no content returned)'
+          },
+          404: z.object({
+            message: z.string()
+          }),
+          500: z.object({
+            message: z.string(),
+            error: z.string()
+          })
+        }
+      }
+    },
+    addNumViewDocController
   )
 }
