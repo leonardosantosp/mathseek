@@ -1,13 +1,20 @@
 import { ArrowRight } from 'lucide-react'
 import wiki from '../assets/wiki_icon.png'
-import type { Result } from '../api-client/elastic'
-import { Link } from 'react-router-dom'
+import { addNumViewDoc, type Result } from '../api-client/elastic'
+import { Link, useNavigate } from 'react-router-dom'
 
 type ResultDocumentProps = {
   result: Result
 }
 
 export const ResultDocument = ({ result }: ResultDocumentProps) => {
+  const navigate = useNavigate()
+
+  const handleClick = async () => {
+    await addNumViewDoc(result._id.toString())
+    navigate(`/wiki/${result.title}`)
+  }
+
   return (
     <div className="results__item">
       <div className="results__item-header">
@@ -24,12 +31,10 @@ export const ResultDocument = ({ result }: ResultDocumentProps) => {
       <div className="results__item--content">
         <p>{result.content}</p>
       </div>
-      <Link to={`/wiki/${result.title}`}>
-        <div className="results__item--go-link">
-          <p>Go</p>
-          <ArrowRight size={13} />
-        </div>
-      </Link>
+      <div className="results__item--go-link" onClick={handleClick}>
+        <p>Go</p>
+        <ArrowRight size={13} />
+      </div>
     </div>
   )
 }
