@@ -13,22 +13,26 @@ import dotenv from 'dotenv'
 import { loginRoute } from './routes/login'
 import { authServer } from './routes/authServer'
 import { profile } from './routes/profile'
+import { connectDb, mongoose } from './config/connect'
+
+dotenv.config()
 
 // criando conexao com mongo
 
-// import mongoose from 'mongoose'
+const uri = "mongodb://localhost:27017/elastic_db"
 
-// const uri = "mongodb://localhost:27017/elastic_db"
 
-// mongoose.connect ( uri ).then(() => console.log( 'MongoDB conectado em ', uri ))
-//                         .catch( err => {
-//                           console.log( "Erro na conexao com MongoDB", err )
-//                           process.exit(1)
-//                         });
 
+
+mongoose.connect ( uri ).then(() => console.log( 'MongoDB conectado em ', uri ))
+                        .catch( err => {
+                          console.log( "Erro na conexao com MongoDB", err )
+                          process.exit(1)
+                        });
+                      
 // ===============
 
-dotenv.config()
+// connectDb() // conectando com o atlas db
 
 const app = fastify()
 
