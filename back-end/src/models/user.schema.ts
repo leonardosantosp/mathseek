@@ -15,11 +15,11 @@ export interface InterfaceUser extends Document { // extends Document traz .save
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
-    required: true
+    required: true,
   },
   hashedPassword: {
     type: String,
