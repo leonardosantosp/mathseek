@@ -3,12 +3,16 @@
 GET http://localhost:3333/wikipedia/search?query=quadratic+equation&page=1&pageSize=10
 
 ###
-GET http://localhost:3333/wikipedia/9
+GET http://localhost:3333/wikipedia/332
 
 ###
 GET http://localhost:3333/wikipedia/mostViews/9
 
 ###
+GET http://localhost:3333/wikipedia/increment/332
+
+###
+
 POST http://localhost:3333/signup
 Content-Type: application/json
 

@@ -30,3 +30,7 @@ export const searchDocs = async (
   )
   return response.data
 }
+
+export const addNumViewDoc = async (id: string) => {
+  await API.get(`/wikipedia/increment/${id}`)
+}

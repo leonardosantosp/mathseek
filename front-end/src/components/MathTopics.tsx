@@ -2,6 +2,7 @@ import { Search } from 'lucide-react'
 import { Pagination } from './Pagination'
 import { useEffect, useState } from 'react'
 import { type Result, getMostViewedDocs } from '../api-client/elastic'
+import { Link } from 'react-router-dom'
 
 export const MathTopics = () => {
   const [page, setPage] = useState(1)
@@ -31,7 +32,9 @@ export const MathTopics = () => {
               <div className="math-topics__card-item">
                 <div className="math-topics__card-item--header">
                   <p>{document.title}</p>
-                  <Search className="math-topics__card-item--search" />
+                  <Link to={`/wiki/${document.title}`}>
+                    <Search className="math-topics__card-item--search" />
+                  </Link>
                 </div>
                 <div className="math-topics__card-item--text">
                   <p>{document.content}</p>

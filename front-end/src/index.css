@@ -569,6 +569,7 @@ body.light-theme .panel__weather--info-item {
   justify-content: center;
   color: white;
   margin-bottom: 20px;
+  width: 100%;
 }
 
 body.light-theme .panel__search--box {
@@ -738,6 +739,7 @@ body.light-theme .panel__shortcuts--card p {
 }
 
 .pagination-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -889,11 +891,37 @@ body.dark-theme .math-topics__card-item--text p {
 
 /* Result Page */
 
-.result-page__search-bar-container {
+.search-container {
+  width: 70%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-left: 30px;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.search-container .black-hole-container,
+.search-container .black-hole-container img {
+  z-index: 0;
+  width: 28%;
+  margin-top: 0;
+}
+
+.results-container .search-container .panel__search--box #panel__search--bar {
+  background-color: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.result-page--wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-page__search-bar-container {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .result-page__search-bar-container .panel__search--search-icon-container {
@@ -910,6 +938,7 @@ body.dark-theme .math-topics__card-item--text p {
   margin-right: 30px;
   border-radius: 3.5px;
   padding: 20px;
+  z-index: 2;
 }
 
 body.light-theme .result-page__number-of-results {
@@ -920,6 +949,7 @@ body.light-theme .result-page__number-of-results {
   text-align: center;
   font-family: var(--font);
   font-size: 12px;
+  width: 100%;
 }
 
 .result-page__number-of-results__buttons button {
@@ -961,23 +991,31 @@ body.light-theme .result-page__number-of-results__buttons .active {
   margin: 20px 0 0 20px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+}
+
+.query-container {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
 }
 
 .results__query {
   font-family: var(--font);
-  font-size: 20px;
   margin-bottom: 20px;
 }
 
 .total-results {
   font-family: var(--font);
-  font-size: 12px;
-  margin-bottom: 20px;
+  font-size: 14px;
+  margin-bottom: 35px;
 }
 
 .results__item {
   margin-bottom: 15px;
+  width: 50%;
 }
 
 .results__item-header {
@@ -1016,10 +1054,16 @@ body.light-theme .header-content__link p {
   color: #2b32aa !important;
 }
 
+.results-item__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .results__item--content {
   font-family: 'Inter', sans-serif;
   font-size: 12px;
-  width: 40%;
+  width: 100%;
 }
 
 .results__item--go-link {
@@ -1050,6 +1094,14 @@ body.light-theme .results__item--go-link p {
   box-shadow: inset 0 0 5px 5px rgba(255, 255, 255, 0.05), 0 0 40px #41469a;
   padding: 5px;
   margin: 10px 40px;
+}
+
+.mwe-math-fallback-image-inline,
+.mwe-math-element {
+  margin: 0;
+  font-size: 1.1em;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .wiki {
@@ -1122,9 +1174,11 @@ body.light-theme .wiki__content {
 }
 
 body.dark-theme .wiki__content div,
+body.dark-theme .wiki__content dd,
 body.dark-theme .wiki__content li,
 body.dark-theme .wiki__content ul,
-body.dark-theme .wiki__content figcaption {
+body.dark-theme .wiki__content figcaption,
+body.dark-theme .wiki__content pre {
   background-color: var(--background-dark) !important;
   color: white !important;
 }
@@ -1164,6 +1218,11 @@ body.dark-theme .infobox td[class=''] {
   display: none;
 }
 
+body.dark-theme img.mwe-math-fallback-image-inline.mw-invert.skin-invert,
+body.dark-theme .mw-invert {
+  filter: invert(1);
+}
+
 .wiki__content .infobox {
   float: right;
   clear: right;
@@ -1172,6 +1231,92 @@ body.dark-theme .infobox td[class=''] {
   padding: 0.4em;
   border: 1px solid #aaa;
   font-size: 90%;
+}
+
+.wikitable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  background-color: #1e1e2e;
+  color: #ffffff;
+}
+
+.wikitable caption {
+  caption-side: top;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 0.5rem;
+  color: #ffcc00;
+}
+
+.wikitable th,
+.wikitable td {
+  border: 1px solid #444;
+  padding: 6px 10px;
+  text-align: right;
+}
+
+.wikitable thead th {
+  background-color: #2a2a3b;
+  color: #ffffff;
+}
+
+.wikitable tbody tr:nth-child(even) {
+  background-color: #2d2d3d;
+}
+
+.wikitable tbody tr:nth-child(odd) {
+  background-color: #252534;
+}
+
+.wikitable tbody tr:hover {
+  background-color: #444466;
+  cursor: pointer;
+}
+
+body.light-theme .wikitable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  background-color: #ffffff;
+  color: #111111;
+}
+
+body.light-theme .wikitable caption {
+  caption-side: top;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 0.5rem;
+  color: #d48806; /* dourado suave */
+}
+
+body.light-theme .wikitable th,
+body.light-theme .wikitable td {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  text-align: right;
+}
+
+body.light-theme .wikitable thead th {
+  background-color: #f0f0f0;
+  color: #000000;
+}
+
+body.light-theme .wikitable tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+body.light-theme .wikitable tbody tr:nth-child(odd) {
+  background-color: #f5f5f5;
+}
+
+body.light-theme .wikitable tbody tr:hover {
+  background-color: #e6f7ff;
+  cursor: pointer;
 }
 
 .wiki__content .infobox caption {
@@ -1223,7 +1368,7 @@ body.dark-theme .infobox td[class=''] {
   margin: 20px auto;
   max-width: 100%;
   height: auto;
-  float: none !important; /* impede float do Wikipedia */
+  float: none !important;
 }
 
 .wiki__content figure {
