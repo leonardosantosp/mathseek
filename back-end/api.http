@@ -1,5 +1,4 @@
 ###
-
 GET http://localhost:3333/wikipedia/search?query=quadratic+equation&page=1&pageSize=10
 
 ###
@@ -12,13 +11,12 @@ GET http://localhost:3333/wikipedia/mostViews/9
 GET http://localhost:3333/wikipedia/increment/332
 
 ###
-
 POST http://localhost:3333/signup
 Content-Type: application/json
 
 {
-  "user": "admin",
-  "email": "meu@email.com",
+  "username": "admin5",
+  "email": "meu@email5.com",
   "password": "0000"
 }
 
@@ -27,18 +25,25 @@ POST http://localhost:3333/login
 Content-Type: application/json
 
 {
-  "email": "meu@email.com",
+  "username": "admin3",
   "password": "0000"
 }
 
 ###
-GET http://localhost:3333/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJpYXQiOjE3NDc0Mjg2ODEsImV4cCI6MTc0NzQyODcxMX0.mpzvYNQAh5-UoXkjdOUjbPIbuxojHQmPQiCpb9vIErA
+GET http://localhost:3333/user/6837225fc464463f10ccfdf1
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NDg0NTMxODIsImV4cCI6MTc0ODQ1MzM2Mn0.3EkbKRnWibw3vRSweO2qqbC2kZjGxXRMfdD_uU8e1qg
 
 ###
+GET http://localhost:3333/user/search/admin3
+
+###
+GET http://localhost:3333/authenticate
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMyIsImlkIjoiNjgzODY5NzgxMmEyNzM0Mjg4ZWEyZWQ3IiwiaWF0IjoxNzQ4NTUwNDI1LCJleHAiOjE3NDg1NTA2MDV9.PyejHLEW3VzhozDSe6OqbY_PUh9MM10ZR--JWM9rexQ
+###
+
 POST http://localhost:3333/refresh
 Content-Type: application/json
 
 {
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJpYXQiOjE3NDc0Mjg1MzMsImV4cCI6MTc0ODAzMzMzM30.fiRVTBp1MsYkV_ROpyT66sC4QHpgT62KtFix72ciFlk"
+  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMyIsImlkIjoiNjgzODY5NzgxMmEyNzM0Mjg4ZWEyZWQ3IiwiaWF0IjoxNzQ4NTI3NTM0LCJleHAiOjE3NDg1MjgxMzR9.NZIfjQuYsi_58Ej1Ooscp1tpcazXognHOQUDo1p-Ep4"
 }
