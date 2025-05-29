@@ -15,8 +15,8 @@ POST http://localhost:3333/signup
 Content-Type: application/json
 
 {
-  "username": "admin5",
-  "email": "meu@email5.com",
+  "username": "admin53",
+  "email": "meu@email53.com",
   "password": "0000"
 }
 
@@ -38,7 +38,7 @@ GET http://localhost:3333/user/search/admin3
 
 ###
 GET http://localhost:3333/authenticate
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMyIsImlkIjoiNjgzODY5NzgxMmEyNzM0Mjg4ZWEyZWQ3IiwiaWF0IjoxNzQ4NTUwNDI1LCJleHAiOjE3NDg1NTA2MDV9.PyejHLEW3VzhozDSe6OqbY_PUh9MM10ZR--JWM9rexQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMyIsImlkIjoiNjgzODY5NzgxMmEyNzM0Mjg4ZWEyZWQ3IiwiaWF0IjoxNzQ4NTU1NTcyLCJleHAiOjE3NDg1NTU3NTJ9.3ohv3IjNVlUIGhMOUWh_gF9JxniMml0oieqQapT7SR8
 ###
 
 POST http://localhost:3333/refresh
