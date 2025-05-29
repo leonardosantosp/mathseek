@@ -1,5 +1,5 @@
-import mongoose, { Document, Model } from 'mongoose'
-import { InterfaceConfig, configSchema } from './config.model'
+import mongoose, { type Document, type Model } from 'mongoose'
+import { type InterfaceConfig, configSchema } from './config.model'
 
 export interface InterfaceUser extends Document {
   // extends Document traz .save(), _id, .toJSON()
@@ -17,11 +17,13 @@ const userSchema = new mongoose.Schema(
   {
     username: {
       type: String,
-      required: true
+      required: true,
+      unique: true
     },
     email: {
       type: String,
-      required: true
+      required: true,
+      unique: true
     },
     hashedPassword: {
       type: String,

@@ -8,7 +8,6 @@ const mongoURI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PA
 export async function connectDb() {
   try {
     await mongoose.connect(mongoURI)
-    console.log('Connected')
   } catch (error) {
     console.error('Erro ao conectar ao MongoDB:', error)
     process.exit(1)
