@@ -155,7 +155,7 @@ body.dark-theme h3 {
   color: black;
 }
 
-/* SearchPanel */
+/* PanelCard */
 
 .container__panel {
   margin-bottom: 10%;
@@ -670,6 +670,219 @@ body.light-theme .panel__shortcuts--card p {
   -webkit-background-clip: initial;
   -webkit-text-fill-color: initial;
 }
+
+/* Panel ChatBot */
+
+.panel__search-mode {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-mode__chat {
+  padding: 10px;
+  height: 80%;
+  display: flex;
+  justify-content: space-between;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px; /* largura da barra de scroll */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(217, 217, 217, 0.1); /* cor do fundo do track */
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #434345; /* cor do scroll */
+    border-radius: 4px;
+
+    &:hover {
+      background: #5c62cd; /* cor quando hover */
+    }
+  }
+}
+
+.search-mode__chat--query {
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-mode__chat--response {
+  width: 40%;
+}
+.chat-bubble {
+  margin-top: 3%;
+  padding: 15px;
+  font-size: 12px;
+  font-family: var(--font);
+  border: none;
+  width: fit-content;
+  color: white;
+  max-width: 200px;
+}
+
+.chat--query-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 0 20px 20px 0;
+}
+
+.search-mode__chat--query .chat-bubble {
+  position: relative;
+  z-index: 1;
+  margin-right: 20px;
+}
+
+.search-mode__chat--response .chat-bubble {
+  position: relative;
+  margin: 5px 0 0 5px;
+  z-index: 1;
+  max-width: 300px;
+}
+
+.chat--response-item {
+  margin-top: 50px;
+}
+
+.search-mode__chat--query .chat-bubble::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('./assets/Rectangle 32.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  transform: rotateY(180deg);
+  z-index: -1;
+}
+
+.search-mode__chat--response .chat-bubble::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('./assets/Rectangle 32.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  z-index: -1;
+}
+
+.bot-results {
+  margin-top: 10px;
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  color: #5c62cd;
+}
+
+.bot-results span {
+  cursor: pointer;
+}
+
+.bot-results span svg {
+  margin-right: 2px;
+}
+
+.bot-results span:hover {
+  color: rgb(127, 132, 237);
+}
+
+.input-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.input-container {
+  margin-top: 20px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  width: 40%;
+}
+
+.input-container input {
+  position: relative;
+  width: 100%;
+  padding: 12px;
+  background: none;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  color: white;
+  text-align: center;
+}
+
+.input-container input:focus {
+  border-color: #e59cff;
+  outline: none;
+  box-shadow: 0 0 5px 6px #e59cff55;
+}
+
+.input-icon__container {
+  position: absolute;
+  width: 90%;
+  padding: 0 20px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  color: white;
+  align-items: center;
+}
+
+.search-document__bubble {
+  width: 47%;
+  margin-top: 30px;
+}
+
+.search-document__bubble p {
+  font-size: 11px;
+}
+
+.typing-effect {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  background: linear-gradient(
+    90deg,
+    #5c62cd 25%,
+    /* Azul elétrico */ #00d1ff 50%,
+    /* Ciano brilhante */ #5c62cd 75% /* Azul elétrico */
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  animation: shimmer 1.5s infinite linear;
+
+  /* ✨ ESSENCIAIS para evitar as bordas brancas */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: none; /* Garante que o texto não seja visível por baixo */
+}
+
+.search-mode__chat--response .chat-bubble::before {
+  z-index: -1;
+}
+
+/* Animação ajustada */
+@keyframes shimmer {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+/* Black Hole */
 
 .black-hole-container {
   width: 100%;
