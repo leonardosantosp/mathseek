@@ -14,7 +14,7 @@ import blackHoleWhite from '../assets/black-hole-white.png'
 import { PanelSearch } from './PanelSearch'
 import { PanelChatBot } from './PanelChatBot'
 
-export const SearchPanel = () => {
+export const PanelCard = () => {
   const [dateTime, setDateTime] = useState(new Date())
   const [viewSidebar, setViewSidebar] = useState(false)
   const [sidebarSearchMode, setSidebarSearchMode] = useState(false)
@@ -159,5 +159,3 @@ export const SearchPanel = () => {
     </>
   )
 }
-
-export default SearchPanel

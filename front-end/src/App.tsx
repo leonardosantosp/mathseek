@@ -1,5 +1,5 @@
 import { MathTopics } from './components/MathTopics'
-import { SearchPanel } from './components/SearchPanel'
+import { PanelCard } from './components/PanelCard'
 import { Routes, Route } from 'react-router-dom'
 import { ResultPages } from './pages/ResultsPage'
 import { WikiViewer } from './pages/WikiViewer'
@@ -13,7 +13,7 @@ function App() {
           path="/"
           element={
             <>
-              <SearchPanel />
+              <PanelCard />
               <MathTopics />
             </>
           }
