@@ -32,7 +32,10 @@ export const MathTopics = () => {
               <div className="math-topics__card-item">
                 <div className="math-topics__card-item--header">
                   <p>{document.title}</p>
-                  <Link to={`/wiki/${document.title}`}>
+                  <Link
+                    to={`/wiki/${document.title}`}
+                    state={{ id: document._id }}
+                  >
                     <Search className="math-topics__card-item--search" />
                   </Link>
                 </div>
