@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react'
 import { ScrollText, Route, Star } from 'lucide-react'
 import { SearchBar } from '../components/SearchBar'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
+import { addNumViewDoc } from '../api-client/elastic'
 
 export const WikiViewer = () => {
+  const location = useLocation()
+  const documentId = location.state?.id
   const [htmlContent, setHtmlContent] = useState('')
   const { title } = useParams()
 
@@ -19,10 +22,11 @@ export const WikiViewer = () => {
       html = html.replace(/<\/a>/gi, '')
 
       setHtmlContent(html)
+      await addNumViewDoc(documentId)
     }
 
     fetchWiki()
-  }, [title])
+  }, [title, documentId])
 
   if (!title) return
 
