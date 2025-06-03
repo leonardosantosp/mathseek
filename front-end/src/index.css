@@ -784,12 +784,20 @@ body.light-theme .panel__shortcuts--card p {
   cursor: pointer;
 }
 
+body.light-theme .bot-results span {
+  color: rgb(52, 59, 176);
+}
+
 .bot-results span svg {
   margin-right: 2px;
 }
 
 .bot-results span:hover {
   color: rgb(127, 132, 237);
+}
+
+body.light-theme .bot-results span:hover {
+  color: rgb(10, 15, 116);
 }
 
 .input-wrapper {
@@ -817,10 +825,19 @@ body.light-theme .panel__shortcuts--card p {
   text-align: center;
 }
 
+body.light-theme .input-container input {
+  border: 2px solid rgba(7, 7, 7, 0.3);
+  color: black;
+}
+
 .input-container input:focus {
   border-color: #e59cff;
   outline: none;
   box-shadow: 0 0 5px 6px #e59cff55;
+}
+
+body.light-theme .input-container input:focus {
+  box-shadow: 0 0 5px 6px rgba(156, 65, 189, 0.33);
 }
 
 .input-icon__container {
@@ -848,11 +865,12 @@ body.light-theme .panel__shortcuts--card p {
   font-size: 18px;
   font-weight: bold;
   text-align: center;
+
   background: linear-gradient(
     90deg,
-    #5c62cd 25%,
-    /* Azul elétrico */ #00d1ff 50%,
-    /* Ciano brilhante */ #5c62cd 75% /* Azul elétrico */
+    rgb(197, 194, 194) 25%,
+    rgb(95, 93, 93) 50%,
+    rgb(197, 194, 194) 75%
   );
   background-size: 200% 100%;
   background-clip: text;
@@ -860,20 +878,34 @@ body.light-theme .panel__shortcuts--card p {
   color: transparent;
   -webkit-text-fill-color: transparent;
 
-  animation: shimmer 1.5s infinite linear;
+  animation: shimmerGray 2s infinite linear;
 
-  /* ✨ ESSENCIAIS para evitar as bordas brancas */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-shadow: none; /* Garante que o texto não seja visível por baixo */
+  text-shadow: none;
 }
 
-.search-mode__chat--response .chat-bubble::before {
-  z-index: -1;
+body.dark-theme .typing-effect {
+  background: linear-gradient(
+    90deg,
+    rgb(197, 194, 194) 25%,
+    rgb(64, 62, 62) 50%,
+    rgb(197, 194, 194) 75%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+
+  animation: shimmerGray 2s infinite linear;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: none;
 }
 
-/* Animação ajustada */
-@keyframes shimmer {
+@keyframes shimmerGray {
   0% {
     background-position: 200% center;
   }
