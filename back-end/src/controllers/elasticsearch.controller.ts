@@ -5,58 +5,58 @@ import {
   addNumViewDocService
 } from '../services/elasticsearch.service'
 
-export const getDocsWikipediaController = async (req, res) => {
-  const { query, page, pageSize } = req.query
+export const getDocsWikipediaController = async (request, reply) => {
+  const { query, page, pageSize } = request.query
 
   try {
     const results = await getDocsWikipediaService(query, page, pageSize)
-    return res.status(200).send(results)
+    return reply.code(200).send(results)
   } catch (error) {
     console.error('Error while fetching query', error)
-    return res.status(500).send({ message: 'Internal Server Error' })
+    return reply.code(500).send({ message: 'Internal Server Error' })
   }
 }
 
-export const getDocByIdWikipediaController = async (req, res) => {
-  const { id } = req.params
+export const getDocByIdWikipediaController = async (request, reply) => {
+  const { id } = request.params
 
   try {
     const result = await getDocByIdWikipediaService(id)
-    return res.status(200).send(result)
+    return reply.code(200).send(result)
   } catch (error) {
     if (error instanceof Error && error.message === 'document not found') {
-      return res.status(404).send({ message: 'document not found' })
+      return reply.code(404).send({ message: 'document not found' })
     }
     console.error('Error while fetching document', error)
-    return res.status(500).send({ message: 'Internal server error' })
+    return reply.code(500).send({ message: 'Internal server error' })
   }
 }
 
-export const getMostViewedDocsWikipediaController = async (req, res) => {
-  const { limit } = req.params
+export const getMostViewedDocsWikipediaController = async (request, reply) => {
+  const { limit } = request.params
 
   try {
     const results = await getMostViewedDocsWikipediaService(limit)
-    return res.status(200).send(results)
+    return reply.code(200).send(results)
   } catch (error) {
     if (error instanceof Error && error.message === 'Invalid params') {
-      return res.status(400).send({ message: 'Invalid params' })
+      return reply.code(400).send({ message: 'Invalid params' })
     }
     console.error('Internal server error', error)
-    return res.status(500).send({ message: 'Internal server error' })
+    return reply.code(500).send({ message: 'Internal server error' })
   }
 }
 
-export const addNumViewDocController = async (req, res) => {
-  const { id } = req.params
+export const addNumViewDocController = async (request, reply) => {
+  const { id } = request.params
   try {
-    const result = await addNumViewDocService(id)
-    return res.status(204).send()
+    await addNumViewDocService(id)
+    return reply.status(204).send()
   } catch (error) {
     if (error instanceof Error && error.message === 'document not found') {
-      return res.status(404).send({ message: 'document not found' })
+      return reply.status(404).send({ message: 'document not found' })
     }
     console.error(error)
-    return res.status(500).send({ message: 'Internal server error' })
+    return reply.status(500).send({ message: 'Internal server error' })
   }
 }
