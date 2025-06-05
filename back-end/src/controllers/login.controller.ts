@@ -1,33 +1,33 @@
 import { loginService, refreshService } from '../services/login.service'
 
-export const loginController = async (req, res) => {
-  const { username, password } = req.body
+export const loginController = async (request, reply) => {
+  const { username, password } = request.body
 
   try {
     const authenticateUser = await loginService(username, password)
-    return res.status(200).send(authenticateUser)
+    return reply.code(200).send(authenticateUser)
   } catch (error) {
     if (error instanceof Error && error.message === 'User not found') {
-      return res.status(404).send({ message: 'user not found' })
+      return reply.code(404).send({ message: 'user not found' })
     }
     if (error instanceof Error && error.message === 'Invalid Password') {
-      return res.status(401).send({ message: 'Invalid Password' })
+      return reply.code(401).send({ message: 'Invalid Password' })
     }
     console.error(error)
-    return res.status(500).send({ message: 'Internal server error' })
+    return reply.code(500).send({ message: 'Internal server error' })
   }
 }
 
-export const refreshController = async (req, res) => {
-  const { refreshToken } = req.body
+export const refreshController = async (request, reply) => {
+  const { refreshToken } = request.body
 
   if (refreshToken === null)
-    return res.status(401).send({ message: 'Invalid refresh token' })
+    return reply.code(401).send({ message: 'Invalid refresh token' })
 
   try {
     const newAccessToken = await refreshService(refreshToken)
-    return res.status(200).send(newAccessToken)
+    return reply.code(200).send(newAccessToken)
   } catch (error) {
-    return res.status(401).send({ message: 'Invalid refresh token' })
+    return reply.code(401).send({ message: 'Invalid refresh token' })
   }
 }

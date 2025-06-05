@@ -1,17 +1,17 @@
 import { getUserByUsernameService } from '../services/user.service'
 
-export const authServerController = async (req, res) => {
-  const username = req.user.username
+export const authServerController = async (request, reply) => {
+  const username = request.user.username
 
   try {
     const userExist = await getUserByUsernameService(username)
-    if (!userExist) return res.status(404).send({ message: 'user not found' })
-    return res.status(200).send(userExist)
+    if (!userExist) return reply.code(404).send({ message: 'user not found' })
+    return reply.code(200).send(userExist)
   } catch (error) {
     if (error instanceof Error && error.message === 'user not found') {
-      return res.status(404).send({ message: 'user not found' })
+      return reply.code(404).send({ message: 'user not found' })
     }
     console.error(error)
-    return res.status(500).send({ message: 'Internal server error' })
+    return reply.code(500).send({ message: 'Internal server error' })
   }
 }
