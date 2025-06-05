@@ -13,15 +13,14 @@ import { authenticateToken } from '../services/registerAuthServer.service'
 export function profile(app: FastifyInstance) {
   // encontra usuario
   app.get(
-    '/user/:id',
+    '/user/me',
     {
+      preHandler: authenticateToken,
       schema: {
         summary: '',
         description: '',
         tags: [''],
-        params: z.object({
-          id: z.string()
-        }),
+
         response: {
           200: userSchema,
           400: z.object({
