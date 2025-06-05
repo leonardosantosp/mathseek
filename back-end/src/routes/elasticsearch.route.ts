@@ -98,7 +98,7 @@ export function searchRoutes(app) {
     getMostViewedDocsWikipediaController
   )
 
-  app.get(
+  app.patch(
     '/wikipedia/increment/:id',
     {
       schema: {
