@@ -68,5 +68,5 @@ export const configSchema = new Schema<InterfaceConfig>( // garantindo que o sch
     }
   },
 
-  { _id: false } // nao precisamos de um id para config ja vai estar importado em user
+  { _id: false } 
 )
