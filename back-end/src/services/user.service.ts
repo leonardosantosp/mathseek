@@ -1,6 +1,7 @@
 import { CreateUserDto } from '../dto/user/createUser.dto'
 import {
   createUser,
+  deleteUser,
   getUserById,
   getUserByUsername
 } from '../repository/user.repository'
@@ -43,4 +44,10 @@ export const createUserService = async (user: CreateUserDto) => {
     console.error('Erro ao criar usuário:', error)
     throw new Error('Error while creating user')
   }
+}
+
+export const deleteUserService = async (id: string) => {
+  const response = await deleteUser(id)
+
+  if (!response) throw new Error('User not found')
 }

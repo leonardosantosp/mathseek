@@ -1,5 +1,4 @@
 import { UserSchema } from '../models/user.model'
-import { CreateUserDto } from '../dto/user/createUser.dto'
 
 type ReturnedUser = {
   username: string
@@ -18,4 +17,8 @@ export const getUserByUsername = async (username: string) => {
 
 export const createUser = async (user: ReturnedUser) => {
   return await UserSchema.create(user)
+}
+
+export const deleteUser = async (id: string) => {
+  return await UserSchema.findByIdAndDelete(id)
 }

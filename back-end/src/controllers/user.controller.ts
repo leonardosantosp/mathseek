@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 import {
   createUserService,
+  deleteUserService,
   getUserByIdService,
   getUserByUsernameService
 } from '../services/user.service'
@@ -54,5 +55,24 @@ export const createUserController = async (req, res) => {
     }
     console.error(error)
     return res.status(500).send({ message: 'Internal server error' })
+  }
+}
+
+export const deleteUserController = async (request, reply) => {
+  const id = request.user?.id
+
+  if (!mongoose.isValidObjectId(id)) {
+    return reply.code(400).send({ message: 'invalid id format' })
+  }
+
+  try {
+    await deleteUserService(id)
+    return reply.code(204).send()
+  } catch (error) {
+    if (error instanceof Error && error.message === 'User not found') {
+      return reply.code(404).send({ message: 'User not found' })
+    }
+    console.error(error)
+    return reply.code(500).send({ message: 'Internal server error' })
   }
 }

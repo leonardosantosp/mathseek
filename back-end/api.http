@@ -37,8 +37,12 @@ GET http://localhost:3333/user/6837225fc464463f10ccfdf1
 GET http://localhost:3333/user/search/admin3
 
 ###
+
+DELETE http://localhost:3333/user/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMyIsImlkIjoiNjgzODY5NzgxMmEyNzM0Mjg4ZWEyZWQ3IiwiaWF0IjoxNzQ5MTI1MzYxLCJleHAiOjE3NDkxMjU1NDF9.SQjPh0OUsEUeFvjM8Y6zPMFBIL2Ykchko_FOtALkFzk
+###
 GET http://localhost:3333/authenticate
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMyIsImlkIjoiNjgzODY5NzgxMmEyNzM0Mjg4ZWEyZWQ3IiwiaWF0IjoxNzQ4NTU1NTcyLCJleHAiOjE3NDg1NTU3NTJ9.3ohv3IjNVlUIGhMOUWh_gF9JxniMml0oieqQapT7SR8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMyIsImlkIjoiNjgzODY5NzgxMmEyNzM0Mjg4ZWEyZWQ3IiwiaWF0IjoxNzQ5MTI1MzYxLCJleHAiOjE3NDkxMjU1NDF9.SQjPh0OUsEUeFvjM8Y6zPMFBIL2Ykchko_FOtALkFzk
 ###
 
 POST http://localhost:3333/refresh

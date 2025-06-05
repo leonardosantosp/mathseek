@@ -1,4 +1,4 @@
-import mongoose, { type Document, type Model } from 'mongoose'
+import mongoose, { set, type Document, type Model } from 'mongoose'
 import { type InterfaceConfig, configSchema } from './config.model'
 
 export interface InterfaceUser extends Document {
@@ -30,7 +30,8 @@ const userSchema = new mongoose.Schema(
       required: true
     },
     history: {
-      type: Number,
+      type: [Number],
+      set: arr => Array.from(new Set(arr)),
       required: false
     },
     avatar: {
