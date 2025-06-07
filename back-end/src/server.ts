@@ -13,6 +13,7 @@ import { loginRoute } from './routes/login.route'
 import { authServer } from './routes/authServer.route'
 import { profile } from './routes/profile.route'
 import { connectDb } from './config/connect'
+import { historyRoute } from './routes/hisory.route'
 
 // criando conexao com mongo
 
@@ -24,6 +25,7 @@ app.register(signRoute)
 app.register(loginRoute)
 app.register(profile)
 app.register(authServer)
+app.register(historyRoute)
 
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)

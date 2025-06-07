@@ -51,3 +51,7 @@ Content-Type: application/json
 {
   "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMyIsImlkIjoiNjgzODY5NzgxMmEyNzM0Mjg4ZWEyZWQ3IiwiaWF0IjoxNzQ4NTI3NTM0LCJleHAiOjE3NDg1MjgxMzR9.NZIfjQuYsi_58Ej1Ooscp1tpcazXognHOQUDo1p-Ep4"
 }
+
+###
+GET http://localhost:3333/users/me/history
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMiIsImlkIjoiNjgzODY4YWJlNDRkM2UzNjk1M2U4NmJkIiwiaWF0IjoxNzQ5MjU0NjIwLCJleHAiOjE3NDkyNTQ4MDB9.UArIoEbXC7OfONsDaQADp4C4S0eEszblI1GyH5jqVN4
