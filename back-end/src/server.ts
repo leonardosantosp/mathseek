@@ -15,6 +15,7 @@ import { profile } from './routes/profile.route'
 import { connectDb } from './config/connect'
 import { historyRoute } from './routes/hisory.route'
 import { favoriteRoute } from './routes/favorite.route'
+import { shortcutRoute } from './routes/shortcut.route'
 
 // criando conexao com mongo
 
@@ -28,6 +29,7 @@ app.register(profile)
 app.register(authServer)
 app.register(historyRoute)
 app.register(favoriteRoute)
+app.register(shortcutRoute)
 
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
