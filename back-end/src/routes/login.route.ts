@@ -1,23 +1,24 @@
-import dotenv from 'dotenv'
+import dotenv from "dotenv";
 import {
   loginController,
   refreshController
-} from '../controllers/login.controller'
-import { z } from 'zod'
-import { createLoginDto } from '../dto/login/createLogin.dto'
-import { userSchema } from '../schemas/user.schema'
+} from "../controllers/login.controller";
+import { z } from "zod";
+import { createLoginDto } from "../dto/login/createLogin.dto";
+import { userSchema } from "../schemas/user.schema";
 
 export function loginRoute(app) {
-  dotenv.config()
+  dotenv.config();
 
   // loga usuario e gera access_token e refreseh_token
   app.post(
-    '/login',
+    "/login",
     {
       schema: {
-        summary: '',
-        description: '',
-        tags: [''],
+        summary: "Authenticate User",
+        description:
+          "Authenticates a user using email and password credentials. Returns user info and JWT tokens (access and refresh).",
+        tags: ["Auth"],
         body: createLoginDto,
         response: {
           200: z.object({
@@ -40,21 +41,16 @@ export function loginRoute(app) {
       }
     },
     loginController
-  )
-
-  // TO-DO: melhorar implementacao
-  // gera o access_token
-  // function generateAccessToken ( user ) {
-  //   return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn : '3m' })
-  // }
+  );
 
   app.post(
-    '/refresh',
+    "/refresh",
     {
       schema: {
-        summary: '',
-        description: '',
-        tags: [''],
+        summary: "Refresh Access Token",
+        description:
+          "Generates a new access token using a valid refresh token. The refresh token must be provided in the request body.",
+        tags: ["Auth"],
         body: z.object({
           refreshToken: z.string()
         }),
@@ -69,5 +65,5 @@ export function loginRoute(app) {
       }
     },
     refreshController
-  )
+  );
 }

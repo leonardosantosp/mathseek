@@ -1,16 +1,17 @@
-import { getShortcutsController } from '../controllers/shortcut.controller'
-import { z } from 'zod'
-import { authenticateToken } from '../services/registerAuthServer.service'
+import { getShortcutsController } from "../controllers/shortcut.controller";
+import { z } from "zod";
+import { authenticateToken } from "../services/registerAuthServer.service";
 
 export function shortcutRoute(app) {
   app.get(
-    '/users/me/shortcuts',
+    "/users/me/shortcuts",
     {
       preHandler: authenticateToken,
       schema: {
-        summary: '',
-        description: '',
-        tags: [''],
+        summary: "Get User Shortcuts",
+        description:
+          "Retrieves the list of shortcut IDs associated with the currently authenticated user.",
+        tags: ["User Shortcuts"],
         response: {
           200: z.array(z.number()),
           404: z.object({
@@ -24,5 +25,5 @@ export function shortcutRoute(app) {
       }
     },
     getShortcutsController
-  )
+  );
 }

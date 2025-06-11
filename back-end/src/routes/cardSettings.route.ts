@@ -8,13 +8,19 @@ export function cardSettingsRoute(app) {
     {
       preHandler: authenticateToken,
       schema: {
-        summary: "",
-        description: "",
-        tags: [""],
+        summary: "Get Card Settings",
+        description:
+          "Returns the authenticated user's card settings, including preferred font, folders, quick access items, favorites, and history. Requires a valid access token in the Authorization header.",
+        tags: ["User", "Card Settings"],
         response: {
           200: z.object({
             fontFamily: z.string(),
-            folders: z.array(z.number()),
+            folders: z.array(
+              z.object({
+                folderName: z.string(),
+                list: z.array(z.number())
+              })
+            ),
             quickAccess: z.array(z.number()),
             favorite: z.array(z.number()),
             history: z.array(z.number())
