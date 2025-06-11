@@ -1,25 +1,26 @@
-import type { FastifyInstance } from 'fastify'
-import { z } from 'zod'
-import { userSchema } from '../schemas/user.schema'
+import type { FastifyInstance } from "fastify";
+import { z } from "zod";
+import { userSchema } from "../schemas/user.schema";
 import {
   deleteUserController,
   getUserByIdController,
   getUserByUsernameController
-} from '../controllers/user.controller'
-import { authenticateToken } from '../services/registerAuthServer.service'
+} from "../controllers/user.controller";
+import { authenticateToken } from "../services/registerAuthServer.service";
 
 // calls para recuperar info de user
 
 export function profile(app: FastifyInstance) {
   // encontra usuario
   app.get(
-    '/user/me',
+    "/user/me",
     {
       preHandler: authenticateToken,
       schema: {
-        summary: '',
-        description: '',
-        tags: [''],
+        summary: "Get Authenticated User",
+        description:
+          "Retrieves the profile information of the currently authenticated user.",
+        tags: ["User"],
 
         response: {
           200: userSchema,
@@ -37,15 +38,16 @@ export function profile(app: FastifyInstance) {
       }
     },
     getUserByIdController
-  )
+  );
 
   app.get(
-    '/user/search/:username',
+    "/user/search/:username",
     {
       schema: {
-        summary: '',
-        description: '',
-        tags: [''],
+        summary: "Search User by Username",
+        description:
+          "Searches for a user by their username and returns their public profile information.",
+        tags: ["User"],
         params: z.object({
           username: z.string()
         }),
@@ -62,20 +64,21 @@ export function profile(app: FastifyInstance) {
       }
     },
     getUserByUsernameController
-  )
+  );
 
   app.delete(
-    '/user/me',
+    "/user/me",
     {
       preHandler: authenticateToken,
       schema: {
-        summary: '',
-        description: '',
-        tags: [''],
+        summary: "Delete Authenticated User",
+        description:
+          "Deletes the currently authenticated user from the system.",
+        tags: ["User"],
         response: {
           204: {
-            description: 'no content',
-            type: 'null'
+            description: "no content",
+            type: "null"
           },
           400: z.object({
             message: z.string()
@@ -91,5 +94,5 @@ export function profile(app: FastifyInstance) {
       }
     },
     deleteUserController
-  )
+  );
 }

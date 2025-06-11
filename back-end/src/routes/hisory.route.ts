@@ -1,16 +1,17 @@
-import { getHistoryController } from '../controllers/history.controller'
-import { authenticateToken } from '../services/registerAuthServer.service'
-import { z } from 'zod'
+import { getHistoryController } from "../controllers/history.controller";
+import { authenticateToken } from "../services/registerAuthServer.service";
+import { z } from "zod";
 
 export function historyRoute(app) {
   app.get(
-    '/users/me/history',
+    "/users/me/history",
     {
       preHandler: authenticateToken,
       schema: {
-        summary: '',
-        description: '',
-        tags: [''],
+        summary: "Get User History",
+        description:
+          "Retrieves the history of accessed or used items for the authenticated user. Requires a valid access token in the Authorization header.",
+        tags: ["User", "History"],
         response: {
           200: z.array(z.number()),
           404: z.object({
@@ -24,5 +25,5 @@ export function historyRoute(app) {
       }
     },
     getHistoryController
-  )
+  );
 }

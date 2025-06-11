@@ -1,18 +1,19 @@
-import { createUserController } from '../controllers/user.controller'
-import { createUserDto } from '../dto/user/createUser.dto'
-import { userSchema } from '../schemas/user.schema'
-import { z } from 'zod'
+import { createUserController } from "../controllers/user.controller";
+import { createUserDto } from "../dto/user/createUser.dto";
+import { userSchema } from "../schemas/user.schema";
+import { z } from "zod";
 
 // calls para criacao de usuario
 export function signRoute(app) {
   // sign um usuario
   app.post(
-    '/signup',
+    "/signup",
     {
       schema: {
-        summary: '',
-        description: '',
-        tags: [''],
+        summary: "Register a New User",
+        description:
+          "Creates a new user account in the system. Requires a unique username and a valid email. Returns the newly created user object upon success.",
+        tags: ["Auth"],
         body: createUserDto,
         response: {
           201: userSchema,
@@ -30,5 +31,5 @@ export function signRoute(app) {
       }
     },
     createUserController
-  )
+  );
 }
