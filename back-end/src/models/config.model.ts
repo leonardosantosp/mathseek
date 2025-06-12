@@ -1,22 +1,22 @@
 // esse schema contem todos as preferencias do usuario
-import { Schema } from 'mongoose'
+import { Schema } from "mongoose";
 
 // tipagem do schema folders
 interface InterfaceFolders {
-  folderName: string
-  wikipages: number[]
+  folderName: string;
+  wikipages: number[];
 }
 
 //tipagem do schema user
 export interface InterfaceConfig {
-  backgroundImage: string
-  favorite: [number]
-  fontFamily: string
-  folders: InterfaceFolders[]
-  outputMethod: 'sameScreen' | 'diffScreen' // sameScreen na mesma tela do inicio
+  backgroundImage: string;
+  favorite: number[];
+  fontFamily: string;
+  folders: InterfaceFolders[];
+  outputMethod: "sameScreen" | "diffScreen"; // sameScreen na mesma tela do inicio
   // diffScreen redireciona para tela de resultados
-  quickAccess: [number]
-  themeColor: string
+  quickAccess: number[];
+  themeColor: string;
 }
 
 const folderSchema = new Schema<InterfaceFolders>(
@@ -31,13 +31,13 @@ const folderSchema = new Schema<InterfaceFolders>(
     }
   },
   { _id: false }
-)
+);
 
 export const configSchema = new Schema<InterfaceConfig>( // garantindo que o schema seja equivalente a interface
   {
     backgroundImage: {
       type: String,
-      default: ''
+      default: ""
     },
     favorite: {
       // lista
@@ -46,7 +46,7 @@ export const configSchema = new Schema<InterfaceConfig>( // garantindo que o sch
     },
     fontFamily: {
       type: String,
-      default: ''
+      default: ""
     },
     folders: {
       // vai ser uma lista de objetos. dentro de folders -> folder -> wikipages (id : inteiro)
@@ -55,8 +55,8 @@ export const configSchema = new Schema<InterfaceConfig>( // garantindo que o sch
     },
     outputMethod: {
       type: String,
-      enum: ['sameScreen', 'diffScreen'],
-      default: 'diffScreen'
+      enum: ["sameScreen", "diffScreen"],
+      default: "diffScreen"
     },
     quickAccess: {
       type: [Number],
@@ -64,9 +64,9 @@ export const configSchema = new Schema<InterfaceConfig>( // garantindo que o sch
     },
     themeColor: {
       type: String,
-      default: ''
+      default: ""
     }
   },
 
-  { _id: false } 
-)
+  { _id: false }
+);
