@@ -20,10 +20,10 @@ export const getHistoryController = async (request, reply) => {
 
 export const updateHistoryController = async (request, reply) => {
   const id = request.user?.id;
-  const newHistory = request.body;
+  const { history } = request.body;
 
   try {
-    const updatedUser = await updateHistoryService(id, newHistory);
+    const updatedUser = await updateHistoryService(id, history);
     return reply.code(200).send(updatedUser);
   } catch (error) {
     if (error instanceof Error && error.message === "User not found") {
