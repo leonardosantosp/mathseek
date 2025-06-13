@@ -13,6 +13,6 @@ export const updateHistoryService = async (
 ) => {
   const user = await getUserById(id);
   if (!user) throw new Error("User not found");
-  user.history = updateHistory;
-  return await updateUser(id, user);
+
+  return await updateUser(id, { history: updateHistory });
 };

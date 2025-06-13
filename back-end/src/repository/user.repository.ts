@@ -18,5 +18,5 @@ export const deleteUser = async (id: string) => {
 };
 
 export const updateUser = async (id: string, user: any) => {
-  return await UserSchema.updateOne({ _id: id }, user);
+  return await UserSchema.findByIdAndUpdate({ _id: id }, user, { new: true });
 };
