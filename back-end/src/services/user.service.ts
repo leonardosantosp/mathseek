@@ -1,9 +1,11 @@
+import { UpdateProfileDto } from "../dto/profile/updateProfile.dto";
 import { CreateUserDto } from "../dto/user/createUser.dto";
 import {
   createUser,
   deleteUser,
   getUserById,
-  getUserByUsername
+  getUserByUsername,
+  updateUser
 } from "../repository/user.repository";
 import { hashPassword } from "../utils/hash";
 
@@ -20,37 +22,48 @@ export const getUserByUsernameService = async (username: string) => {
 };
 
 export const createUserService = async (user: CreateUserDto) => {
-  try {
-    const newUser = {
-      username: user.username,
-      email: user.email,
-      hashedPassword: await hashPassword(user.password),
-      history: [],
-      avatar: "",
-      status: "",
-      config: {
-        backgroundImage: "",
-        fontFamily: "",
-        outputMethod: "diffScreen",
-        themeColor: "",
-        favorite: [],
-        folders: [],
-        quickAccess: []
-      }
-    };
-    const response = await createUser(newUser);
-    return response;
-  } catch (error: any) {
-    if (error.code === 11000) {
-      throw new Error("already exists");
+  const existUser = await getUserByUsername(user.username);
+  if (existUser) throw new Error("User already exists");
+
+  const newUser = {
+    username: user.username,
+    email: user.email,
+    hashedPassword: await hashPassword(user.password),
+    history: [],
+    avatar: "",
+    status: "",
+    config: {
+      backgroundImage: "",
+      fontFamily: "",
+      outputMethod: "diffScreen",
+      themeColor: "",
+      favorite: [],
+      folders: [],
+      quickAccess: []
     }
-    console.error("Erro ao criar usuário:", error);
-    throw new Error("Error while creating user");
-  }
+  };
+  const response = await createUser(newUser);
+  return response;
 };
 
 export const deleteUserService = async (id: string) => {
   const response = await deleteUser(id);
 
   if (!response) throw new Error("User not found");
+};
+
+export const updateProfileService = async (
+  id: string,
+  profile: UpdateProfileDto
+) => {
+  const user = await getUserById(id);
+  if (!user) throw new Error("User not found");
+
+  const updateFields: Record<string, any> = {};
+
+  if (profile.username !== undefined) updateFields.username = profile.username;
+  if (profile.status !== undefined) updateFields.status = profile.status;
+  if (profile.avatar !== undefined) updateFields.avatar = profile.avatar;
+
+  return await updateUser(id, updateFields);
 };
