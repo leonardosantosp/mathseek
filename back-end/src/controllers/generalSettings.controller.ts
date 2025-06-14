@@ -1,16 +1,35 @@
-import { getGeneralSettingsService } from '../services/generalSettings.service'
+import {
+  getGeneralSettingsService,
+  updateGeneralSettingsService
+} from "../services/generalSettings.service";
 
 export const getGeneralSettingsController = async (request, reply) => {
-  const id = request.user?.id
+  const id = request.user?.id;
 
   try {
-    const generalSettings = await getGeneralSettingsService(id)
-    return reply.code(200).send(generalSettings)
+    const generalSettings = await getGeneralSettingsService(id);
+    return reply.code(200).send(generalSettings);
   } catch (error) {
-    if (error instanceof Error && error.message === 'User not found') {
-      return reply.code(404).send({ message: 'User not found' })
+    if (error instanceof Error && error.message === "User not found") {
+      return reply.code(404).send({ message: "User not found" });
     }
-    console.error(error)
-    return reply.code(500).send({ message: 'Internal server error' })
+    console.error(error);
+    return reply.code(500).send({ message: "Internal server error" });
   }
-}
+};
+
+export const updateGeneralSettinsController = async (request, reply) => {
+  const id = request.user?.id;
+  const generalSettings = request.body;
+
+  try {
+    const newUser = await updateGeneralSettingsService(id, generalSettings);
+    return reply.code(200).send(newUser);
+  } catch (error) {
+    if (error instanceof Error && error.message === "User not found") {
+      return reply.code(404).send({ message: "User not found" });
+    }
+    console.error(error);
+    return reply.code(500).send({ message: "Internal server error" });
+  }
+};
