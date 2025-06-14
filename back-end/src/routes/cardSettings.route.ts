@@ -1,6 +1,11 @@
-import { getCardSettingsController } from "../controllers/cardSettings.controller";
+import {
+  getCardSettingsController,
+  updateCardSettingsController
+} from "../controllers/cardSettings.controller";
 import { z } from "zod";
 import { authenticateToken } from "../services/registerAuthServer.service";
+import { updateCardSettingsDto } from "../dto/cardSettings/updateCardSettings.dto";
+import { userSchema } from "../schemas/user.schema";
 
 export function cardSettingsRoute(app) {
   app.get(
@@ -36,5 +41,29 @@ export function cardSettingsRoute(app) {
       }
     },
     getCardSettingsController
+  );
+
+  app.patch(
+    "/users/me/card-settings",
+    {
+      preHandler: authenticateToken,
+      schema: {
+        summary: "",
+        description: "",
+        tags: [""],
+        body: updateCardSettingsDto,
+        response: {
+          200: userSchema,
+          404: z.object({
+            message: z.string()
+          }),
+          500: z.object({
+            message: z.string(),
+            error: z.string()
+          })
+        }
+      }
+    },
+    updateCardSettingsController
   );
 }
