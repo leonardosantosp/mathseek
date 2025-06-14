@@ -4,9 +4,11 @@ import { userSchema } from "../schemas/user.schema";
 import {
   deleteUserController,
   getUserByIdController,
-  getUserByUsernameController
+  getUserByUsernameController,
+  updateProfileController
 } from "../controllers/user.controller";
 import { authenticateToken } from "../services/registerAuthServer.service";
+import { updateProfileDto } from "../dto/profile/updateProfile.dto";
 
 // calls para recuperar info de user
 
@@ -94,5 +96,29 @@ export function profile(app: FastifyInstance) {
       }
     },
     deleteUserController
+  );
+
+  app.patch(
+    "/users/me/profile",
+    {
+      preHandler: authenticateToken,
+      schema: {
+        summary: "",
+        description: "",
+        tags: [""],
+        body: updateProfileDto,
+        response: {
+          200: userSchema,
+          404: z.object({
+            message: z.string()
+          }),
+          500: z.object({
+            message: z.string(),
+            error: z.string()
+          })
+        }
+      }
+    },
+    updateProfileController
   );
 }

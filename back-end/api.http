@@ -119,7 +119,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkb
 
 ###
 PATCH http://localhost:3333/users/me/general-settings
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0YjZlZjc0OGYyYTU3YTEyMGZlMDJiIiwiaWF0IjoxNzQ5OTExMzczLCJleHAiOjE3NDk5MTE1NTN9.-VYXNSLqM-WlfBsVceFiu2rzf8Etnw8c_-d8pUHIetE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0YjZlZjc0OGYyYTU3YTEyMGZlMDJiIiwiaWF0IjoxNzQ5OTI2MzI0LCJleHAiOjE3NDk5MjY1MDR9.oubT6C6fSXjt1Y-5BSnF2Rk1-V6XJelWsOIXSHFoS-o
 Content-Type: application/json
 
 {
@@ -139,4 +139,15 @@ Content-Type: application/json
 
 {
   "fontFamily": "Inter"
+}
+
+###
+PATCH http://localhost:3333/users/me/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0YjZlZjc0OGYyYTU3YTEyMGZlMDJiIiwiaWF0IjoxNzQ5OTI1MDA4LCJleHAiOjE3NDk5MjUxODh9.RTWQvcrbM8MAwyeVwLrwyBUnpRKQOVFTG8IVaiO2hKY
+Content-Type: application/json
+
+{
+  "username": "adminzada",
+  "status": "focado",
+  "avatar": "http://image"
 }
