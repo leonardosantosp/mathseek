@@ -31,7 +31,7 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3333/user/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0YjZlZjc0OGYyYTU3YTEyMGZlMDJiIiwiaWF0IjoxNzQ5ODUyODY2LCJleHAiOjE3NDk4NTMwNDZ9.N82auDJwrtfhEp52fRyglTRQh1ID8Q4Sr-R89zIyyEo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0YjZlZjc0OGYyYTU3YTEyMGZlMDJiIiwiaWF0IjoxNzQ5OTA0MDk1LCJleHAiOjE3NDk5MDQyNzV9._1xBUbBVy-HfbGfIfkIBc0rp9aP8mNoBUMkJ7pGUwqs
 
 ###
 GET http://localhost:3333/user/search/admin2
@@ -58,11 +58,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkb
 
 ###
 PATCH http://localhost:3333/users/me/history
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0YjZlZjc0OGYyYTU3YTEyMGZlMDJiIiwiaWF0IjoxNzQ5ODUyODY2LCJleHAiOjE3NDk4NTMwNDZ9.N82auDJwrtfhEp52fRyglTRQh1ID8Q4Sr-R89zIyyEo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0YjZlZjc0OGYyYTU3YTEyMGZlMDJiIiwiaWF0IjoxNzQ5OTA0NTU4LCJleHAiOjE3NDk5MDQ3Mzh9.PlsqbncJZrUeeYdFS1drrpaP7zeZl2-vpHisaj_k8Ok
 Content-Type: application/json
 
 {
-  "history": [1, 2, 3, 4]
+  "history": [1, 2, 3, 4, 5]
 } 
 
 ###
@@ -71,16 +71,25 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkb
 
 ###
 PATCH http://localhost:3333/users/me/favorite
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0YjZlZjc0OGYyYTU3YTEyMGZlMDJiIiwiaWF0IjoxNzQ5ODU5MTI3LCJleHAiOjE3NDk4NTkzMDd9.twhnLp5eyzTRQ_xMYF5zcNKkn16JmADbYF5eN245SRM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0YjZlZjc0OGYyYTU3YTEyMGZlMDJiIiwiaWF0IjoxNzQ5OTA0NTU4LCJleHAiOjE3NDk5MDQ3Mzh9.PlsqbncJZrUeeYdFS1drrpaP7zeZl2-vpHisaj_k8Ok
 Content-Type: application/json
 
 {
-  "favorite": [1, 2, 3, 4]
+  "favorite": [1, 2, 3, 4, 9]
 } 
 
 ###
 GET http://localhost:3333/users/me/shortcuts
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMiIsImlkIjoiNjgzODY4YWJlNDRkM2UzNjk1M2U4NmJkIiwiaWF0IjoxNzQ5NDc1MjMxLCJleHAiOjE3NDk0NzU0MTF9.S3Fqw28mzboU8PvAe9OAJ0U32rlkVKJvtCJXVlcWc8Y
+
+###
+PATCH http://localhost:3333/users/me/shortcuts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0YjZlZjc0OGYyYTU3YTEyMGZlMDJiIiwiaWF0IjoxNzQ5OTA0NTU4LCJleHAiOjE3NDk5MDQ3Mzh9.PlsqbncJZrUeeYdFS1drrpaP7zeZl2-vpHisaj_k8Ok
+Content-Type: application/json
+
+{
+  "quickAccess": [1, 4, 5, 10]
+}
 
 ###
 GET http://localhost:3333/users/me/folders
