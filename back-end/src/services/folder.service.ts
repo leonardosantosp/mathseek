@@ -13,6 +13,7 @@ export const updateFoldersService = async (
 ) => {
   const user = await getUserById(id);
   if (!user) throw new Error("User not found");
+
   return await updateUser(id, {
     "config.folders": folders
   });

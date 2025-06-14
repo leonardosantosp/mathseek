@@ -42,7 +42,8 @@ export function historyRoute(app) {
           "Updates the `history` field of the currently authenticated user. The request body must contain an array of numbers representing the new history.",
         tags: ["User", "History"],
         body: z.object({
-          history: updateHistoryDto
+          history: updateHistoryDto,
+          type: z.string()
         }),
         response: {
           200: userSchema,

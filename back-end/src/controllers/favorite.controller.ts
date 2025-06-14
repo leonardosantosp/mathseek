@@ -1,6 +1,6 @@
 import {
-  getFavoritesService,
-  updateFavoriteService
+  addOrRemoveFavoriteService,
+  getFavoritesService
 } from "../services/favorite.service";
 
 export const getFavoriteController = async (request, reply) => {
@@ -20,10 +20,9 @@ export const getFavoriteController = async (request, reply) => {
 
 export const updateFavoriteController = async (request, reply) => {
   const userId = request.user?.id;
-  const { favorite } = request.body;
-
+  const { favorite, type } = request.body;
   try {
-    const updateUser = await updateFavoriteService(userId, favorite);
+    const updateUser = await addOrRemoveFavoriteService(userId, favorite, type);
     return reply.code(200).send(updateUser);
   } catch (error) {
     if (error instanceof Error && error.message === "User not found") {

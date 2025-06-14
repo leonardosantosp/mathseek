@@ -1,5 +1,10 @@
 import { UpdateShortcutsDto } from "../dto/shortcuts/updateShortcuts.dto";
-import { getUserById, updateUser } from "../repository/user.repository";
+import {
+  getUserById,
+  removeUserArrays,
+  updateUser,
+  updateUserArrays
+} from "../repository/user.repository";
 
 export const getShortcutsService = async (id: string) => {
   const user = await getUserById(id);
@@ -7,14 +12,21 @@ export const getShortcutsService = async (id: string) => {
   return user.config.quickAccess;
 };
 
-export const updateShortcutsService = async (
+export const addOrRemoveShortcutsService = async (
   id: string,
-  shortcuts: UpdateShortcutsDto
+  shortcuts: UpdateShortcutsDto,
+  type: string
 ) => {
   const user = await getUserById(id);
   if (!user) throw new Error("User not found");
 
-  return await updateUser(id, {
+  if (type === "add") {
+    return await updateUserArrays(id, {
+      "config.quickAccess": shortcuts
+    });
+  }
+
+  return await removeUserArrays(id, {
     "config.quickAccess": shortcuts
   });
 };

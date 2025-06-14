@@ -1,6 +1,6 @@
 import {
-  getShortcutsService,
-  updateShortcutsService
+  addOrRemoveShortcutsService,
+  getShortcutsService
 } from "../services/shortcut.service";
 
 export const getShortcutsController = async (request, reply) => {
@@ -19,10 +19,10 @@ export const getShortcutsController = async (request, reply) => {
 
 export const updateShortcutsController = async (request, reply) => {
   const id = request.user?.id;
-  const { quickAccess } = request.body;
+  const { quickAccess, type } = request.body;
 
   try {
-    const newUser = await updateShortcutsService(id, quickAccess);
+    const newUser = await addOrRemoveShortcutsService(id, quickAccess, type);
     return reply.code(200).send(newUser);
   } catch (error) {
     if (error instanceof Error && error.message === "User not found") {
