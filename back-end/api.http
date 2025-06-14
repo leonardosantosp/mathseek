@@ -58,11 +58,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkb
 
 ###
 PATCH http://localhost:3333/users/me/history
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0YjZlZjc0OGYyYTU3YTEyMGZlMDJiIiwiaWF0IjoxNzQ5OTA0NTU4LCJleHAiOjE3NDk5MDQ3Mzh9.PlsqbncJZrUeeYdFS1drrpaP7zeZl2-vpHisaj_k8Ok
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0ZGJkMTdmNjAzNTEwYzA5NjM5MTM4IiwiaWF0IjoxNzQ5OTM2NDk4LCJleHAiOjE3NDk5MzY2Nzh9.unHTb95zDmetogHL4k0EV3sCN5SCifqcwZNuqbZpJWA
 Content-Type: application/json
 
 {
-  "history": [1, 2, 3, 4, 5]
+  "history": 2,
+  "type": "add"
 } 
 
 ###
@@ -71,11 +72,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkb
 
 ###
 PATCH http://localhost:3333/users/me/favorite
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0YjZlZjc0OGYyYTU3YTEyMGZlMDJiIiwiaWF0IjoxNzQ5OTA0NTU4LCJleHAiOjE3NDk5MDQ3Mzh9.PlsqbncJZrUeeYdFS1drrpaP7zeZl2-vpHisaj_k8Ok
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0ZGJkMTdmNjAzNTEwYzA5NjM5MTM4IiwiaWF0IjoxNzQ5OTM0NTYzLCJleHAiOjE3NDk5MzQ3NDN9.ITkEt4eAZ5J_WjVBGmLPzQzcVOX6hVixBFwF53Ol_k8
 Content-Type: application/json
 
 {
-  "favorite": [1, 2, 3, 4, 9]
+  "favorite": 11,
+  "type": "add"
 } 
 
 ###
@@ -84,11 +86,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkb
 
 ###
 PATCH http://localhost:3333/users/me/shortcuts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0YjZlZjc0OGYyYTU3YTEyMGZlMDJiIiwiaWF0IjoxNzQ5OTA0NTU4LCJleHAiOjE3NDk5MDQ3Mzh9.PlsqbncJZrUeeYdFS1drrpaP7zeZl2-vpHisaj_k8Ok
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0ZGJkMTdmNjAzNTEwYzA5NjM5MTM4IiwiaWF0IjoxNzQ5OTM2NzQyLCJleHAiOjE3NDk5MzY5MjJ9.wTYoQjnmGKNq7Wn2okDstP2Sx7vmhbNT4djZr2R1npE
 Content-Type: application/json
 
 {
-  "quickAccess": [1, 4, 5, 10]
+  "quickAccess": 2,
+  "type": "remove"
 }
 
 ###
@@ -143,11 +146,11 @@ Content-Type: application/json
 
 ###
 PATCH http://localhost:3333/users/me/profile
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0YjZlZjc0OGYyYTU3YTEyMGZlMDJiIiwiaWF0IjoxNzQ5OTI1MDA4LCJleHAiOjE3NDk5MjUxODh9.RTWQvcrbM8MAwyeVwLrwyBUnpRKQOVFTG8IVaiO2hKY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0YjZlZjc0OGYyYTU3YTEyMGZlMDJiIiwiaWF0IjoxNzQ5OTI2NzYxLCJleHAiOjE3NDk5MjY5NDF9.I3-GnSWnvnS0KIK-2iRe99IOeOVdzWZGU7n5Pwo98MQ
 Content-Type: application/json
 
 {
-  "username": "adminzada",
+  "username": "admin2",
   "status": "focado",
   "avatar": "http://image"
 }

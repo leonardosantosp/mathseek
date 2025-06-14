@@ -41,7 +41,8 @@ export function shortcutRoute(app) {
         description: "",
         tags: [""],
         body: z.object({
-          quickAccess: updateShortcutsDto
+          quickAccess: updateShortcutsDto,
+          type: z.string()
         }),
         response: {
           200: userSchema,

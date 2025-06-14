@@ -41,7 +41,8 @@ export function favoriteRoute(app) {
         description: "",
         tags: [""],
         body: z.object({
-          favorite: updateFavoriteDto
+          favorite: updateFavoriteDto,
+          type: z.string()
         }),
         response: {
           200: userSchema,

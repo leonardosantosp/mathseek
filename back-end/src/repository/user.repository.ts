@@ -24,3 +24,19 @@ export const updateUser = async (id: string, user: any) => {
     { new: true }
   );
 };
+
+export const updateUserArrays = async (id: string, user: any) => {
+  return await UserSchema.findByIdAndUpdate(
+    { _id: id },
+    { $addToSet: user },
+    { new: true }
+  );
+};
+
+export const removeUserArrays = async (id: string, user: any) => {
+  return await UserSchema.findByIdAndUpdate(
+    { _id: id },
+    { $pull: user },
+    { new: true }
+  );
+};
