@@ -1,6 +1,11 @@
 import { z } from "zod";
-import { getFoldersController } from "../controllers/folder.controller";
+import {
+  getFoldersController,
+  updateFoldersController
+} from "../controllers/folder.controller";
 import { authenticateToken } from "../services/registerAuthServer.service";
+import { updateFoldersDto } from "../dto/folders/updateFolders.dto";
+import { userSchema } from "../schemas/user.schema";
 
 export function folderRoute(app) {
   app.get(
@@ -30,5 +35,31 @@ export function folderRoute(app) {
       }
     },
     getFoldersController
+  );
+
+  app.patch(
+    "/users/me/folders",
+    {
+      preHandler: authenticateToken,
+      schema: {
+        summary: "",
+        description: "",
+        tags: [""],
+        body: z.object({
+          folders: z.array(updateFoldersDto)
+        }),
+        response: {
+          200: userSchema,
+          404: z.object({
+            message: z.string()
+          }),
+          500: z.object({
+            message: z.string(),
+            error: z.string()
+          })
+        }
+      }
+    },
+    updateFoldersController
   );
 }

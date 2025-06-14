@@ -8,8 +8,8 @@ const configSchema = z.object({
   favorite: z.array(z.number()),
   folders: z.array(
     z.object({
-      foldernName: z.string(),
-      list: z.array(z.number())
+      folderName: z.string(),
+      wikipages: z.array(z.number())
     })
   ),
   quickAccess: z.array(z.number())
