@@ -1,4 +1,9 @@
-import { getFavoriteController } from "../controllers/favorite.controller";
+import {
+  getFavoriteController,
+  updateFavoriteController
+} from "../controllers/favorite.controller";
+import { updateFavoriteDto } from "../dto/favorite/updateFavorite.dto";
+import { userSchema } from "../schemas/user.schema";
 import { authenticateToken } from "../services/registerAuthServer.service";
 import { z } from "zod";
 
@@ -25,5 +30,31 @@ export function favoriteRoute(app) {
       }
     },
     getFavoriteController
+  );
+
+  app.patch(
+    "/users/me/favorite",
+    {
+      preHandler: authenticateToken,
+      schema: {
+        summary: "",
+        description: "",
+        tags: [""],
+        body: z.object({
+          favorite: updateFavoriteDto
+        }),
+        response: {
+          200: userSchema,
+          404: z.object({
+            message: z.string()
+          }),
+          500: z.object({
+            message: z.string(),
+            error: z.string()
+          })
+        }
+      }
+    },
+    updateFavoriteController
   );
 }
