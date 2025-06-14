@@ -1,6 +1,11 @@
-import { getGeneralSettingsController } from "../controllers/generalSettings.controller";
+import {
+  getGeneralSettingsController,
+  updateGeneralSettinsController
+} from "../controllers/generalSettings.controller";
 import { z } from "zod";
 import { authenticateToken } from "../services/registerAuthServer.service";
+import { updateGeneralSettingsDto } from "../dto/generalSettings/UpdateGeneralSettings.dto";
+import { userSchema } from "../schemas/user.schema";
 
 export function generalSettingsRoute(app) {
   app.get(
@@ -29,5 +34,29 @@ export function generalSettingsRoute(app) {
       }
     },
     getGeneralSettingsController
+  );
+
+  app.patch(
+    "/users/me/general-settings",
+    {
+      preHandler: authenticateToken,
+      schema: {
+        summary: "",
+        description: "",
+        tags: [""],
+        body: updateGeneralSettingsDto,
+        response: {
+          200: userSchema,
+          404: z.object({
+            message: z.string()
+          }),
+          500: z.object({
+            message: z.string(),
+            error: z.string()
+          })
+        }
+      }
+    },
+    updateGeneralSettinsController
   );
 }
