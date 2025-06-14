@@ -17,8 +17,6 @@ export const updateFavoriteService = async (
   if (!user) throw new Error("User not found");
 
   return await updateUser(id, {
-    config: {
-      favorite: favorite
-    }
+    "config.favorite": favorite
   });
 };

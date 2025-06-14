@@ -18,5 +18,9 @@ export const deleteUser = async (id: string) => {
 };
 
 export const updateUser = async (id: string, user: any) => {
-  return await UserSchema.findByIdAndUpdate({ _id: id }, user, { new: true });
+  return await UserSchema.findByIdAndUpdate(
+    { _id: id },
+    { $set: user },
+    { new: true }
+  );
 };
