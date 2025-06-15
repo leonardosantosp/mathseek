@@ -52,3 +52,37 @@ export const getUserFolder = async (id: string, folderName: string) => {
     }
   );
 };
+
+export const addItemToFolder = async (
+  id: string,
+  folderName: string,
+  item: number
+) => {
+  return await UserSchema.findOneAndUpdate(
+    { _id: id },
+    {
+      $addToSet: { "config.folders.$[folder].wikipages": item }
+    },
+    {
+      arrayFilters: [{ "folder.folderName": folderName }],
+      new: true
+    }
+  );
+};
+
+export const removeItemFromFolder = async (
+  id: string,
+  folderName: string,
+  item: number
+) => {
+  return await UserSchema.findOneAndUpdate(
+    { _id: id },
+    {
+      $pull: { "config.folders.$[folder].wikipages": item }
+    },
+    {
+      arrayFilters: [{ "folder.folderName": folderName }],
+      new: true
+    }
+  );
+};

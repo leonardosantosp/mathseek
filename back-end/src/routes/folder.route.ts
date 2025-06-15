@@ -1,5 +1,6 @@
 import { z } from "zod";
 import {
+  addOrRemoveItemInFolderController,
   getFolderByFolderNameController,
   getFoldersController,
   updateFoldersController
@@ -92,5 +93,35 @@ export function folderRoute(app) {
       }
     },
     updateFoldersController
+  );
+
+  app.patch(
+    "/users/me/folders/:folderName/items",
+    {
+      preHandler: authenticateToken,
+      schema: {
+        summary: "",
+        description: "",
+        tags: [""],
+        params: z.object({
+          folderName: z.string()
+        }),
+        body: z.object({
+          type: z.string(),
+          item: z.number()
+        }),
+        response: {
+          200: userSchema,
+          404: z.object({
+            message: z.string()
+          }),
+          500: z.object({
+            message: z.string(),
+            error: z.string()
+          })
+        }
+      }
+    },
+    addOrRemoveItemInFolderController
   );
 }
