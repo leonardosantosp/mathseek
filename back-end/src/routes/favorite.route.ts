@@ -33,7 +33,7 @@ export function favoriteRoute(app) {
   );
 
   app.patch(
-    "/users/me/favorite",
+    "/users/me/favorites",
     {
       preHandler: authenticateToken,
       schema: {

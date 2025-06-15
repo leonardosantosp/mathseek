@@ -1,5 +1,11 @@
 import { UpdateFoldersDto } from "../dto/folders/updateFolders.dto";
-import { getUserById, updateUser } from "../repository/user.repository";
+import {
+  getUserById,
+  getUserFolder,
+  removeUserArrays,
+  updateUser,
+  updateUserArrays
+} from "../repository/user.repository";
 
 export const getFoldersService = async (id: string) => {
   const user = await getUserById(id);
@@ -7,14 +13,33 @@ export const getFoldersService = async (id: string) => {
   return user.config.folders;
 };
 
-export const updateFoldersService = async (
+export const getFolderByFolderNameService = async (
   id: string,
-  folders: UpdateFoldersDto
+  folderName: string
 ) => {
   const user = await getUserById(id);
   if (!user) throw new Error("User not found");
 
-  return await updateUser(id, {
+  const folders = await getUserFolder(id, folderName);
+  if (!folders) throw new Error("Folder not found");
+  return folders.config.folders[0];
+};
+
+export const addOrRemoveFoldersService = async (
+  id: string,
+  folders: UpdateFoldersDto,
+  type: string
+) => {
+  const user = await getUserById(id);
+  if (!user) throw new Error("User not found");
+
+  if (type === "add") {
+    return await updateUserArrays(id, {
+      "config.folders": folders
+    });
+  }
+
+  return await removeUserArrays(id, {
     "config.folders": folders
   });
 };

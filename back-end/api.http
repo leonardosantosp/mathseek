@@ -25,13 +25,13 @@ POST http://localhost:3333/login
 Content-Type: application/json
 
 {
-  "username": "adminzada",
+  "username": "admin34",
   "password": "0000"
 }
 
 ###
 GET http://localhost:3333/user/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0YjZlZjc0OGYyYTU3YTEyMGZlMDJiIiwiaWF0IjoxNzQ5OTA0MDk1LCJleHAiOjE3NDk5MDQyNzV9._1xBUbBVy-HfbGfIfkIBc0rp9aP8mNoBUMkJ7pGUwqs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMzQiLCJpZCI6IjY4NGI2ZWY3NDhmMmE1N2ExMjBmZTAyYiIsImlhdCI6MTc0OTk4OTg3MCwiZXhwIjoxNzQ5OTkwMDUwfQ.ayp1W6YVzZAKoCBc1wq8W3uTh6mXjQWT31WYvL3k6XQ
 
 ###
 GET http://localhost:3333/user/search/admin2
@@ -71,7 +71,7 @@ GET http://localhost:3333/users/me/favorites
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMiIsImlkIjoiNjgzODY4YWJlNDRkM2UzNjk1M2U4NmJkIiwiaWF0IjoxNzQ5NDc1MjMxLCJleHAiOjE3NDk0NzU0MTF9.S3Fqw28mzboU8PvAe9OAJ0U32rlkVKJvtCJXVlcWc8Y
 
 ###
-PATCH http://localhost:3333/users/me/favorite
+PATCH http://localhost:3333/users/me/favorites
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0ZGJkMTdmNjAzNTEwYzA5NjM5MTM4IiwiaWF0IjoxNzQ5OTM0NTYzLCJleHAiOjE3NDk5MzQ3NDN9.ITkEt4eAZ5J_WjVBGmLPzQzcVOX6hVixBFwF53Ol_k8
 Content-Type: application/json
 
@@ -96,24 +96,23 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3333/users/me/folders
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMiIsImlkIjoiNjgzODY4YWJlNDRkM2UzNjk1M2U4NmJkIiwiaWF0IjoxNzQ5NDc2NDM5LCJleHAiOjE3NDk0NzY2MTl9.3361RRJEJqcq6tKxm2oD4-8FNzMToDThIAgbrsLl7E8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMzQiLCJpZCI6IjY4NGI2ZWY3NDhmMmE1N2ExMjBmZTAyYiIsImlhdCI6MTc0OTk5MDE5MiwiZXhwIjoxNzQ5OTkwMzcyfQ.DuhY08ECGmmABt67Uzcypa39boUoRoZ0B1iv-9kF5Nk
+
+###
+GET http://localhost:3333/users/me/folders/lidos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMzQiLCJpZCI6IjY4NGI2ZWY3NDhmMmE1N2ExMjBmZTAyYiIsImlhdCI6MTc0OTk5MTA3MiwiZXhwIjoxNzQ5OTkxMjUyfQ.fYpmYbM-FSQzflOhNPSu05th7reUX-BZl5NNmpCteq0
 
 ###
 PATCH http://localhost:3333/users/me/folders
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluemFkYSIsImlkIjoiNjg0YjZlZjc0OGYyYTU3YTEyMGZlMDJiIiwiaWF0IjoxNzQ5OTA5MTI3LCJleHAiOjE3NDk5MDkzMDd9.jWL66YP9lntvyVp9wy2G5VrnTnQfutDhH81Oz7JTmbQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMzQiLCJpZCI6IjY4NGI2ZWY3NDhmMmE1N2ExMjBmZTAyYiIsImlhdCI6MTc0OTk5MTM3MywiZXhwIjoxNzQ5OTkxNTUzfQ.yLBCMiDn8krkC1auaSddhUb6y-cBCB-SxKq3XsWHDcc
 Content-Type: application/json
 
 {
-  "folders": [
-  {
-    "folderName": "favoritos",
-    "wikipages": [1, 2, 3]
-  },
-  {
-    "folderName": "lidos",
-    "wikipages": [1, 10, 61]
+  "type": "remove",
+  "folders": {
+    "folderName": "teste2",
+  "wikipages": [1, 2, 3, 5]
   }
-  ]
 }
 
 ###
