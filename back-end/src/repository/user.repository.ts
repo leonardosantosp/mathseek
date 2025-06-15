@@ -40,3 +40,15 @@ export const removeUserArrays = async (id: string, user: any) => {
     { new: true }
   );
 };
+
+export const getUserFolder = async (id: string, folderName: string) => {
+  return await UserSchema.findOne(
+    {
+      _id: id,
+      "config.folders.folderName": folderName
+    },
+    {
+      "config.folders.$": 1
+    }
+  );
+};

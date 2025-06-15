@@ -1,5 +1,6 @@
 import { z } from "zod";
 import {
+  getFolderByFolderNameController,
   getFoldersController,
   updateFoldersController
 } from "../controllers/folder.controller";
@@ -21,7 +22,7 @@ export function folderRoute(app) {
           200: z.array(
             z.object({
               folderName: z.string(),
-              list: z.array(z.number())
+              wikipages: z.array(z.number())
             })
           ),
           404: z.object({
@@ -37,6 +38,35 @@ export function folderRoute(app) {
     getFoldersController
   );
 
+  app.get(
+    "/users/me/folders/:folderName",
+    {
+      preHandler: authenticateToken,
+      schema: {
+        summary: "",
+        description: "",
+        tags: [""],
+        params: z.object({
+          folderName: z.string()
+        }),
+        response: {
+          200: z.object({
+            folderName: z.string(),
+            wikipages: z.array(z.number())
+          }),
+          404: z.object({
+            message: z.string()
+          }),
+          500: z.object({
+            message: z.string(),
+            error: z.string()
+          })
+        }
+      }
+    },
+    getFolderByFolderNameController
+  );
+
   app.patch(
     "/users/me/folders",
     {
@@ -46,7 +76,8 @@ export function folderRoute(app) {
         description: "",
         tags: [""],
         body: z.object({
-          folders: z.array(updateFoldersDto)
+          folders: updateFoldersDto,
+          type: z.string()
         }),
         response: {
           200: userSchema,
