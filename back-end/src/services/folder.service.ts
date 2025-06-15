@@ -1,7 +1,9 @@
 import { UpdateFoldersDto } from "../dto/folders/updateFolders.dto";
 import {
+  addItemToFolder,
   getUserById,
   getUserFolder,
+  removeItemFromFolder,
   removeUserArrays,
   updateUser,
   updateUserArrays
@@ -42,4 +44,19 @@ export const addOrRemoveFoldersService = async (
   return await removeUserArrays(id, {
     "config.folders": folders
   });
+};
+
+export const addOrRemoveItemInFolderService = async (
+  id: string,
+  folderName: string,
+  type: string,
+  item: number
+) => {
+  await getFolderByFolderNameService(id, folderName);
+
+  if (type === "add") {
+    return await addItemToFolder(id, folderName, item);
+  }
+
+  return await removeItemFromFolder(id, folderName, item);
 };
