@@ -9,6 +9,10 @@ export const getUserByUsername = async (username: string) => {
   return await UserSchema.findOne({ username: username });
 };
 
+export const getUserByEmail = async (email: string) => {
+  return await UserSchema.findOne({ email: email });
+};
+
 export const createUser = async (user: any) => {
   return await UserSchema.create(user);
 };

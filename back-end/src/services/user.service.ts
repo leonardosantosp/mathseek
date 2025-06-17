@@ -3,6 +3,7 @@ import { CreateUserDto } from "../dto/user/createUser.dto";
 import {
   createUser,
   deleteUser,
+  getUserByEmail,
   getUserById,
   getUserByUsername,
   updateUser
@@ -21,9 +22,16 @@ export const getUserByUsernameService = async (username: string) => {
   return user;
 };
 
-export const createUserService = async (user: CreateUserDto) => {
-  const existUser = await getUserByUsername(user.username);
+const verifyUserExists = async (username: string, email: string) => {
+  let existUser = await getUserByUsername(username);
   if (existUser) throw new Error("User already exists");
+  existUser = await getUserByEmail(email);
+  if (existUser) throw new Error("User already exists");
+  return existUser;
+};
+
+export const createUserService = async (user: CreateUserDto) => {
+  await verifyUserExists(user.username, user.email);
 
   const newUser = {
     username: user.username,
