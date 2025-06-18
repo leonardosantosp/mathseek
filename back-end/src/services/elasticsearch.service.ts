@@ -1,62 +1,89 @@
-import { Client, errors } from '@elastic/elasticsearch'
+import { Client, errors } from "@elastic/elasticsearch";
 
 type WikipediaDocument = {
-  title: string
-  url: string
-  content: string
-  dt_creation: string
-  reading_time: number
-  access_count?: number
-}
+  title: string;
+  url: string;
+  content: string;
+  dt_creation: string;
+  reading_time: number;
+  access_count?: number;
+};
 
 export const elasticClient = new Client({
-  node: 'https://localhost:9200',
+  node: "https://localhost:9200",
   auth: {
-    username: 'elastic',
-    password: 'user123'
+    username: "elastic",
+    password: "user123"
   },
   tls: {
     rejectUnauthorized: false
   }
-})
+});
 
 export const getDocsWikipediaService = async (
   query: string,
   page: number,
   pageSize: number
 ) => {
+  const isExactPhrase = query.match(/^".+"$/);
+
+  const elasticQuery = isExactPhrase
+    ? {
+        bool: {
+          should: [
+            {
+              match_phrase: {
+                content: {
+                  query: query.replace(/"/g, ""),
+                  boost: 2
+                }
+              }
+            },
+            {
+              match: {
+                content: {
+                  query,
+                  boost: 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    : {
+        match: {
+          content: query
+        }
+      };
+
   const results = await elasticClient.search<WikipediaDocument>({
-    index: 'wikipedia',
+    index: "wikipedia",
     from: (page - 1) * pageSize,
     size: pageSize,
-    query: {
-      match: {
-        content: query
-      }
-    }
-  })
+    query: elasticQuery
+  });
 
   return {
     total:
-      typeof results.hits.total === 'number'
+      typeof results.hits.total === "number"
         ? results.hits.total
         : results.hits.total?.value,
     results: results.hits.hits.map(item => ({
       _id: item._id,
       ...item._source
     }))
-  }
-}
+  };
+};
 
 export const getDocByIdWikipediaService = async (id: string) => {
   try {
     const result = await elasticClient.get({
-      index: 'wikipedia',
+      index: "wikipedia",
       id
-    })
+    });
 
-    const _id = result._id
-    const resultSource = result._source as WikipediaDocument
+    const _id = result._id;
+    const resultSource = result._source as WikipediaDocument;
 
     return {
       _id,
@@ -68,61 +95,61 @@ export const getDocByIdWikipediaService = async (id: string) => {
         ? resultSource.access_count + 1
         : 1,
       dt_creation: resultSource.dt_creation
-    }
+    };
   } catch (error) {
     if (error instanceof errors.ResponseError && error.statusCode === 404) {
-      throw new Error('document not found')
+      throw new Error("document not found");
     }
   }
-}
+};
 
 export const getMostViewedDocsWikipediaService = async (limit: number) => {
   const results = await elasticClient.search<WikipediaDocument>({
-    index: 'wikipedia',
+    index: "wikipedia",
     size: limit,
     sort: [
       {
         access_count: {
-          order: 'desc',
-          missing: '_last'
+          order: "desc",
+          missing: "_last"
         }
       },
       {
         dt_creation: {
-          order: 'desc'
+          order: "desc"
         }
       }
     ],
     query: {
       match_all: {}
     }
-  })
+  });
 
   return results.hits.hits.map(item => ({
     _id: item._id,
     ...item._source
-  }))
-}
+  }));
+};
 
 export const addNumViewDocService = async (id: string) => {
   try {
-    const response = await addNumView(id)
-    return response
+    const response = await addNumView(id);
+    return response;
   } catch (error) {
     if (error instanceof errors.ResponseError && error.statusCode === 404) {
-      throw new Error('document not found')
+      throw new Error("document not found");
     }
   }
-}
+};
 
 export const addNumView = async (id: string) => {
   await elasticClient.update({
-    index: 'wikipedia',
+    index: "wikipedia",
     id,
     script: {
       source:
-        'ctx._source.access_count = (ctx._source.access_count != null ? ctx._source.access_count : 0) + 1',
-      lang: 'painless'
+        "ctx._source.access_count = (ctx._source.access_count != null ? ctx._source.access_count : 0) + 1",
+      lang: "painless"
     }
-  })
-}
+  });
+};
