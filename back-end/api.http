@@ -11,12 +11,20 @@ GET http://localhost:3333/wikipedia/mostViews/9
 PATCH http://localhost:3333/wikipedia/increment/332
 
 ###
+POST http://localhost:3333/wikipedia/semantic_search
+Content-Type: application/json
+
+{
+  "query": "Quero documentos que falem sobre machine learning"
+}
+
+###
 POST http://localhost:3333/signup
 Content-Type: application/json
 
 {
-  "username": "adminzada",
-  "email": "meu@emailzada.com",
+  "username": "adminzada222",
+  "email": "meu2@emailzada.com",
   "password": "0000"
 }
 
