@@ -1,4 +1,5 @@
 import { Client, errors } from "@elastic/elasticsearch";
+import { buildElasticQuery } from "../utils/generateQuery";
 
 type WikipediaDocument = {
   title: string;
@@ -25,36 +26,7 @@ export const getDocsWikipediaService = async (
   page: number,
   pageSize: number
 ) => {
-  const isExactPhrase = query.match(/^".+"$/);
-
-  const elasticQuery = isExactPhrase
-    ? {
-        bool: {
-          should: [
-            {
-              match_phrase: {
-                content: {
-                  query: query.replace(/"/g, ""),
-                  boost: 2
-                }
-              }
-            },
-            {
-              match: {
-                content: {
-                  query,
-                  boost: 1
-                }
-              }
-            }
-          ]
-        }
-      }
-    : {
-        match: {
-          content: query
-        }
-      };
+  const elasticQuery = buildElasticQuery(query);
 
   const results = await elasticClient.search<WikipediaDocument>({
     index: "wikipedia",
