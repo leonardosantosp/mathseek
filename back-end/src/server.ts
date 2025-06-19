@@ -19,6 +19,7 @@ import { shortcutRoute } from "./routes/shortcut.route";
 import { folderRoute } from "./routes/folder.route";
 import { generalSettingsRoute } from "./routes/generalSettings.route";
 import { cardSettingsRoute } from "./routes/cardSettings.route";
+import { semanticSearch } from "./routes/semanticSearch.route";
 
 // criando conexao com mongo
 
@@ -36,6 +37,7 @@ app.register(shortcutRoute);
 app.register(folderRoute);
 app.register(generalSettingsRoute);
 app.register(cardSettingsRoute);
+app.register(semanticSearch)
 
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
