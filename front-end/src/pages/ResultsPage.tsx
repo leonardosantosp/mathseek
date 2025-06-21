@@ -1,29 +1,32 @@
-import { SearchBar } from '../components/SearchBar'
-import { ResultDocument } from '../components/ResultDocument'
-import { useEffect, useState } from 'react'
-import { Pagination } from '../components/Pagination'
-import { useSearchParams } from 'react-router-dom'
-import { searchDocs, type Result } from '../api-client/elastic'
-import blackHole from '../assets/black-hole.png'
+import { SearchBar } from "../components/SearchBar";
+import { ResultDocument } from "../components/ResultDocument";
+import { useEffect, useState } from "react";
+import { Pagination } from "../components/Pagination";
+import { useSearchParams } from "react-router-dom";
+import { searchDocs, type Result } from "../api-client/elastic";
+import blackHole from "../assets/black-hole.png";
+import { Loading } from "../components/Loading";
 
 export const ResultPages = () => {
-  const [searchParams, setSearchParams] = useSearchParams()
-  const query = searchParams.get('query') || ''
-  const page = parseInt(searchParams.get('page') || '1', 10)
-  const pageSize = parseInt(searchParams.get('pageSize') || '10', 10)
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query") || "";
+  const page = parseInt(searchParams.get("page") || "1", 10);
+  const pageSize = parseInt(searchParams.get("pageSize") || "10", 10);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const [results, setResults] = useState<Result[]>([])
-  const [total, setTotal] = useState(0)
+  const [results, setResults] = useState<Result[]>([]);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     const fetchDocuments = async () => {
-      const response = await searchDocs(query, page, pageSize)
-      setResults(response.results)
-      setTotal(response.total)
-    }
+      const response = await searchDocs(query, page, pageSize);
+      setResults(response.results);
+      setTotal(response.total);
+      setIsLoading(false);
+    };
 
-    fetchDocuments()
-  }, [query, page, pageSize])
+    fetchDocuments();
+  }, [query, page, pageSize]);
 
   const updatePagination = (
     newPage: number,
@@ -33,10 +36,10 @@ export const ResultPages = () => {
       query,
       page: newPage.toString(),
       pageSize: newPageSize.toString()
-    })
-  }
+    });
+  };
 
-  const numberPages = Math.ceil(total / pageSize)
+  const numberPages = Math.ceil(total / pageSize);
 
   return (
     <>
@@ -47,7 +50,7 @@ export const ResultPages = () => {
             {[5, 10, 15].map(size => (
               <button
                 key={size}
-                className={pageSize === size ? 'active' : ''}
+                className={pageSize === size ? "active" : ""}
                 onClick={() => updatePagination(1, size)}
               >
                 {size}
@@ -64,24 +67,30 @@ export const ResultPages = () => {
           </div>
           <SearchBar />
         </div>
-        <div className="query-container">
-          <h1 className="results__query">{query}</h1>
-          <p className="total-results">Total Results: {total}</p>
-        </div>
-        <div className="results-item__container">
-          {results.map(item => (
-            <ResultDocument key={item._id} result={item} />
-          ))}
-        </div>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            <div className="query-container">
+              <h1 className="results__query">{query}</h1>
+              <p className="total-results">Total Results: {total}</p>
+            </div>
+            <div className="results-item__container">
+              {results.map(item => (
+                <ResultDocument key={item._id} result={item} />
+              ))}
+            </div>
 
-        <Pagination
-          changePage={(newPage: number) => updatePagination(newPage)}
-          numPages={numberPages}
-          page={page}
-          pageInfo={true}
-          showNumbers={true}
-        />
+            <Pagination
+              changePage={(newPage: number) => updatePagination(newPage)}
+              numPages={numberPages}
+              page={page}
+              pageInfo={true}
+              showNumbers={true}
+            />
+          </>
+        )}
       </div>
     </>
-  )
-}
+  );
+};

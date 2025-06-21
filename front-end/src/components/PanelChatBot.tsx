@@ -13,6 +13,7 @@ export const PanelChatBot = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [documents, setDocuments] = useState<Result[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,6 +34,7 @@ export const PanelChatBot = () => {
           type: "response"
         }
       ]);
+      setLoading(false);
     } catch (error) {
       setMessages(prev => [
         ...prev,
@@ -63,6 +65,7 @@ export const PanelChatBot = () => {
                 />
               );
             })}
+          {loading && <ChatBubble type="load" />}
         </div>
         <div className="search-mode__chat--query">
           {messages
@@ -86,7 +89,9 @@ export const PanelChatBot = () => {
             <SendHorizonal
               className="input-icon"
               cursor="pointer"
-              onClick={e => handleSubmit(e)}
+              onClick={e => {
+                handleSubmit(e), setLoading(true);
+              }}
             />
           </div>
         </div>
