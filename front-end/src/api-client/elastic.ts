@@ -37,5 +37,5 @@ export const semanticSearch = async (query: string): Promise<Results> => {
 };
 
 export const addNumViewDoc = async (id: string) => {
-  await API.get(`/wikipedia/increment/${id}`);
+  await API.patch(`/wikipedia/increment/${id}`);
 };
