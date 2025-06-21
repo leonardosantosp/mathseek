@@ -3,6 +3,7 @@ import { ChatBubble } from "./ChatBubble";
 import { useState } from "react";
 import { semanticSearch } from "../api-client/elastic";
 import type { Result } from "../api-client/elastic";
+import chatIcon from "../assets/chat-bot-icon.png";
 
 type Message = {
   text: string;
@@ -14,6 +15,7 @@ export const PanelChatBot = () => {
   const [inputValue, setInputValue] = useState("");
   const [documents, setDocuments] = useState<Result[]>([]);
   const [loading, setLoading] = useState(false);
+  const [send, setSend] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,33 +49,49 @@ export const PanelChatBot = () => {
   return (
     <div className="panel__search-mode">
       <div className="search-mode__chat">
-        <div className="search-mode__chat--response">
-          {messages
-            .filter(m => m.type === "response")
-            .map((msg, i) => {
-              // Pega os documentos correspondentes a esta resposta (3 por grupo)
-              const startIndex = i * 3;
-              const endIndex = startIndex + 3;
-              const currentResults = documents.slice(startIndex, endIndex);
+        {messages.length === 0 && (
+          <div className="chat-initial__container">
+            <div className="chat-initial__title">
+              <img src={chatIcon} alt="chat icon" height={30} width={30} />
+              <h3>Search with AI:</h3>
+            </div>
+            <p>
+              The system understands the meaning behind your words, not just the
+              exact text.
+            </p>
+          </div>
+        )}
+        {send && (
+          <>
+            <div className="search-mode__chat--response">
+              {messages
+                .filter(m => m.type === "response")
+                .map((msg, i) => {
+                  // Pega os documentos correspondentes a esta resposta (3 por grupo)
+                  const startIndex = i * 3;
+                  const endIndex = startIndex + 3;
+                  const currentResults = documents.slice(startIndex, endIndex);
 
-              return (
-                <ChatBubble
-                  key={i}
-                  type={msg.type}
-                  text={msg.text}
-                  results={currentResults}
-                />
-              );
-            })}
-          {loading && <ChatBubble type="load" />}
-        </div>
-        <div className="search-mode__chat--query">
-          {messages
-            .filter(m => m.type === "query")
-            .map((msg, i) => (
-              <ChatBubble key={i} type={msg.type} text={msg.text} />
-            ))}
-        </div>
+                  return (
+                    <ChatBubble
+                      key={i}
+                      type={msg.type}
+                      text={msg.text}
+                      results={currentResults}
+                    />
+                  );
+                })}
+              {loading && <ChatBubble type="load" />}
+            </div>
+            <div className="search-mode__chat--query">
+              {messages
+                .filter(m => m.type === "query")
+                .map((msg, i) => (
+                  <ChatBubble key={i} type={msg.type} text={msg.text} />
+                ))}
+            </div>
+          </>
+        )}
       </div>
 
       <div className="input-wrapper">
@@ -90,7 +108,7 @@ export const PanelChatBot = () => {
               className="input-icon"
               cursor="pointer"
               onClick={e => {
-                handleSubmit(e), setLoading(true);
+                handleSubmit(e), setLoading(true), setSend(true);
               }}
             />
           </div>
