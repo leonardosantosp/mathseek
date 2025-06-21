@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Pontano+Sans:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Noto+Serif&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Pontano+Sans:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Noto+Serif&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap");
 
 :root {
   --background-dark: #030014;
@@ -7,7 +7,7 @@
   --default-border-color-light: #babfc9;
   --border-dark: 2px solid var(--default-border-color-dark);
   --border-light: 2px solid var(--default-border-color-light);
-  --font: 'Poppins', sans-serif;
+  --font: "Poppins", sans-serif;
   --text-gradient: linear-gradient(
     90deg,
     #e59cff 0%,
@@ -29,8 +29,8 @@ h1 {
   border: none !important;
 }
 
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -519,7 +519,7 @@ body.light-theme .panel__search-mode--favorites-item p {
 
 .panel__clock {
   font-size: 80px;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   text-align: center;
   color: white;
   margin-top: 30px;
@@ -549,7 +549,7 @@ body.light-theme .weather-icon {
   color: rgba(255, 255, 255, 0.4);
   margin-right: 15px;
   gap: 2px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background: var(--text-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -709,6 +709,7 @@ body.light-theme .panel__shortcuts--card p {
   color: white;
   display: flex;
   flex-direction: column;
+  gap: 30%;
 }
 
 .search-mode__chat--response {
@@ -736,6 +737,8 @@ body.light-theme .panel__shortcuts--card p {
   position: relative;
   z-index: 1;
   margin-right: 20px;
+  background-color: #434345;
+  border-radius: 25px 0 25px 25px;
 }
 
 .search-mode__chat--response .chat-bubble {
@@ -743,33 +746,12 @@ body.light-theme .panel__shortcuts--card p {
   margin: 5px 0 0 5px;
   z-index: 1;
   max-width: 300px;
+  background-color: #434345;
+  border-radius: 0 25px 25px 25px;
 }
 
 .chat--response-item {
   margin-top: 50px;
-}
-
-.search-mode__chat--query .chat-bubble::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url('./assets/Rectangle 32.png');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: center;
-  transform: rotateY(180deg);
-  z-index: -1;
-}
-
-.search-mode__chat--response .chat-bubble::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url('./assets/Rectangle 32.png');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: center;
-  z-index: -1;
 }
 
 .bot-results {
@@ -840,6 +822,10 @@ body.light-theme .input-container input:focus {
   box-shadow: 0 0 5px 6px rgba(156, 65, 189, 0.33);
 }
 
+.input-icon {
+  pointer-events: auto;
+}
+
 .input-icon__container {
   position: absolute;
   width: 90%;
@@ -847,8 +833,8 @@ body.light-theme .input-container input:focus {
   height: 100%;
   display: flex;
   justify-content: space-between;
-  pointer-events: none;
   color: white;
+  pointer-events: none;
   align-items: center;
 }
 
@@ -1274,7 +1260,7 @@ body.light-theme .result-page__number-of-results__buttons .active {
   align-items: center;
   gap: 10px;
   background: var(--text-gradient);
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bold;
@@ -1288,7 +1274,7 @@ body.light-theme .header-content__title {
 }
 
 .header-content__link p {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 10px;
   font-weight: bold;
   color: #5435c3 !important;
@@ -1306,7 +1292,7 @@ body.light-theme .header-content__link p {
 }
 
 .results__item--content {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 12px;
   width: 100%;
 }
@@ -1381,7 +1367,7 @@ body.light-theme .wiki {
 
 .wiki__header h2 {
   border: none;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 30px;
   font-weight: bold;
 }
@@ -1402,7 +1388,7 @@ body.light-theme .wiki {
 }
 
 .wiki__content {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   padding: 60px !important;
   border: var(--border-dark);
   border-radius: 3.5px;
@@ -1448,7 +1434,7 @@ body.dark-theme .wiki__content a {
 }
 
 body.dark-theme .infobox th,
-body.dark-theme .infobox td[class=''] {
+body.dark-theme .infobox td[class=""] {
   background-color: #54567f78 !important;
 }
 
@@ -1458,7 +1444,7 @@ body.dark-theme .infobox td[class=''] {
 .hatnote,
 .mobile-stack,
 .navbox,
-[data-mw-section-id='-1'],
+[data-mw-section-id="-1"],
 .navigation-box {
   display: none;
 }
@@ -1482,7 +1468,7 @@ body.dark-theme .mw-invert {
   width: 100%;
   border-collapse: collapse;
   margin: 1rem 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 14px;
   background-color: #1e1e2e;
   color: #ffffff;
@@ -1525,7 +1511,7 @@ body.light-theme .wikitable {
   width: 100%;
   border-collapse: collapse;
   margin: 1rem 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 14px;
   background-color: #ffffff;
   color: #111111;
@@ -1639,7 +1625,7 @@ body.light-theme .wikitable tbody tr:hover {
   width: 100%;
   height: 100vh;
   background-color: #0f0f0f;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
 
 .login-page__title {

@@ -1,24 +1,22 @@
-import { UserCircle2, LinkIcon } from 'lucide-react'
+import { UserCircle2, LinkIcon } from "lucide-react";
 
-import chatIcon from '../assets/chat-bot-icon.png'
-import { SearchDocument } from './SearchDocument'
+import chatIcon from "../assets/chat-bot-icon.png";
+import { SearchDocument } from "./SearchDocument";
 
 type ChatBubbleProps = {
-  type: 'response' | 'query' | 'load'
-}
+  type: "response" | "query" | "load";
+  text?: string;
+};
 
-export const ChatBubble = ({ type }: ChatBubbleProps) => {
+export const ChatBubble = ({ type, text }: ChatBubbleProps) => {
   return (
     <>
-      {type === 'query' ? (
+      {type === "query" ? (
         <div className="chat--query-item">
           <UserCircle2 />
-          <div className="chat-bubble">
-            Como faço para evitar que meu notebook fique lento depois de algumas
-            horas ligado?
-          </div>
+          <div className="chat-bubble">{text}</div>
         </div>
-      ) : type === 'response' ? (
+      ) : type === "response" ? (
         <div className="chat--response-item">
           <img src={chatIcon} alt="" />
 
@@ -44,5 +42,5 @@ export const ChatBubble = ({ type }: ChatBubbleProps) => {
         <SearchDocument />
       )}
     </>
-  )
-}
+  );
+};
