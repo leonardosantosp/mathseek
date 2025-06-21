@@ -2,13 +2,15 @@ import { UserCircle2, LinkIcon } from "lucide-react";
 
 import chatIcon from "../assets/chat-bot-icon.png";
 import { SearchDocument } from "./SearchDocument";
+import type { Result } from "../api-client/elastic";
 
 type ChatBubbleProps = {
   type: "response" | "query" | "load";
   text?: string;
+  results?: Result[];
 };
 
-export const ChatBubble = ({ type, text }: ChatBubbleProps) => {
+export const ChatBubble = ({ type, text, results }: ChatBubbleProps) => {
   return (
     <>
       {type === "query" ? (
@@ -21,21 +23,17 @@ export const ChatBubble = ({ type, text }: ChatBubbleProps) => {
           <img src={chatIcon} alt="" />
 
           <div className="chat-bubble">
-            Aqui estão alguns resultados:
-            <div className="bot-results">
-              <span>
-                <LinkIcon size={10} />
-                Como Posso melhorar o desempenho do meu Notebook?
-              </span>
-              <span>
-                <LinkIcon size={10} />
-                Como Posso melhorar o desempenho do meu Notebook?
-              </span>
-              <span>
-                <LinkIcon size={10} />
-                Como Posso melhorar o desempenho do meu Notebook?
-              </span>
-            </div>
+            {text}
+            {results && results.length > 0 && (
+              <div className="bot-results">
+                {results.map((item, index) => (
+                  <span key={index}>
+                    <LinkIcon size={10} />
+                    {item.title}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       ) : (
