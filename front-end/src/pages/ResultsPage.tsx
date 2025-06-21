@@ -1,11 +1,13 @@
 import { SearchBar } from "../components/SearchBar";
 import { ResultDocument } from "../components/ResultDocument";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Pagination } from "../components/Pagination";
 import { useSearchParams } from "react-router-dom";
 import { searchDocs, type Result } from "../api-client/elastic";
 import blackHole from "../assets/black-hole.png";
+import blackHoleWhite from "../assets/black-hole-white.png";
 import { Loading } from "../components/Loading";
+import { ThemeContext } from "../context/ThemeContext";
 
 export const ResultPages = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -16,6 +18,7 @@ export const ResultPages = () => {
 
   const [results, setResults] = useState<Result[]>([]);
   const [total, setTotal] = useState(0);
+  const { isLight } = useContext(ThemeContext);
 
   useEffect(() => {
     const fetchDocuments = async () => {
@@ -63,7 +66,15 @@ export const ResultPages = () => {
       <div className="results-container">
         <div className="search-container">
           <div className="black-hole-container">
-            <img src={blackHole} alt="black hole" className="black-hole" />
+            {isLight ? (
+              <img
+                src={blackHoleWhite}
+                alt="black hole"
+                className="black-hole-white-result"
+              />
+            ) : (
+              <img src={blackHole} alt="black hole" className="black-hole" />
+            )}
           </div>
           <SearchBar />
         </div>
