@@ -762,23 +762,23 @@ body.light-theme .panel__shortcuts--card p {
   color: #5c62cd;
 }
 
-.bot-results span {
-  cursor: pointer;
+.bot-results a {
+  color: #5c62cd;
 }
 
-body.light-theme .bot-results span {
+body.light-theme .bot-results a {
   color: rgb(52, 59, 176);
 }
 
-.bot-results span svg {
+.bot-results a svg {
   margin-right: 2px;
 }
 
-.bot-results span:hover {
+.bot-results a:hover {
   color: rgb(127, 132, 237);
 }
 
-body.light-theme .bot-results span:hover {
+body.light-theme .bot-results a:hover {
   color: rgb(10, 15, 116);
 }
 

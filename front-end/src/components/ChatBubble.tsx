@@ -3,6 +3,7 @@ import { UserCircle2, LinkIcon } from "lucide-react";
 import chatIcon from "../assets/chat-bot-icon.png";
 import { SearchDocument } from "./SearchDocument";
 import type { Result } from "../api-client/elastic";
+import { Link } from "react-router-dom";
 
 type ChatBubbleProps = {
   type: "response" | "query" | "load";
@@ -26,11 +27,11 @@ export const ChatBubble = ({ type, text, results }: ChatBubbleProps) => {
             {text}
             {results && results.length > 0 && (
               <div className="bot-results">
-                {results.map((item, index) => (
-                  <span key={index}>
+                {results.map(item => (
+                  <Link to={`/wiki/${item.title}`} target="_blank">
                     <LinkIcon size={10} />
                     {item.title}
-                  </span>
+                  </Link>
                 ))}
               </div>
             )}
