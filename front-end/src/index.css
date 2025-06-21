@@ -918,6 +918,12 @@ body.dark-theme .typing-effect {
   transform: translateY(2%);
 }
 
+body.light-theme .black-hole-container .black-hole-white-result {
+  position: absolute;
+  width: 20%;
+  margin-left: 15px;
+}
+
 .black-hole-container .black-hole-white {
   transform: translateY(-2%);
 }
