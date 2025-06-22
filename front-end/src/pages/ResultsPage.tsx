@@ -1,4 +1,3 @@
-import { SearchBar } from "../components/SearchBar";
 import { ResultDocument } from "../components/ResultDocument";
 import { useContext, useEffect, useState } from "react";
 import { Pagination } from "../components/Pagination";
@@ -8,6 +7,7 @@ import blackHole from "../assets/black-hole.png";
 import blackHoleWhite from "../assets/black-hole-white.png";
 import { Loading } from "../components/Loading";
 import { ThemeContext } from "../context/ThemeContext";
+import { SearchBar } from "../components/SearchBar";
 
 export const ResultPages = () => {
   const [searchParams, setSearchParams] = useSearchParams();

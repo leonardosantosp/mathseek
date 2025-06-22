@@ -104,7 +104,6 @@ export const PanelCard = () => {
                     Advanced Configs
                   </div>
                 </div>
-                <div className="side-bar__menu--items"></div>
               </div>
             </div>
           </div>

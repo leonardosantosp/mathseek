@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom'
-import { SearchBar } from './SearchBar'
-import { WeatherInfo } from './WeatherInfo'
-import wiki_icon from '../assets/wiki_icon.png'
+import { Link } from "react-router-dom";
+import { WeatherInfo } from "./WeatherInfo";
+import wiki_icon from "../assets/wiki_icon.png";
 import {
   EllipsisVertical,
   History,
@@ -10,14 +9,15 @@ import {
   Pencil,
   Folders,
   X
-} from 'lucide-react'
+} from "lucide-react";
+import { SearchBar } from "./SearchBar";
 
 type PanelSearchProps = {
-  sidebarSearchMode: boolean
-  setSidebarSearchMode: (mode: boolean) => void
-  formatDateTime: (type: string) => string
-  setViewSidebar: (view: boolean) => void
-}
+  sidebarSearchMode: boolean;
+  setSidebarSearchMode: (mode: boolean) => void;
+  formatDateTime: (type: string) => string;
+  setViewSidebar: (view: boolean) => void;
+};
 
 export const PanelSearch = ({
   sidebarSearchMode,
@@ -28,13 +28,13 @@ export const PanelSearch = ({
   return (
     <>
       <div className="panel__search-mode">
-        <div className={`${sidebarSearchMode && 'sidebar-search-mode'}`}>
+        <div className={`${sidebarSearchMode && "sidebar-search-mode"}`}>
           <div className="search__side-bar">
             <div className="search__side-bar--header">
               <X
                 className="close-icon"
                 onClick={() => setSidebarSearchMode(false)}
-                cursor={'pointer'}
+                cursor={"pointer"}
               />
             </div>
             <div className="search__side-bar--menu">
@@ -89,14 +89,14 @@ export const PanelSearch = ({
           <EllipsisVertical
             className="panel__search-mode--header-more-icon"
             onClick={() => {
-              setSidebarSearchMode(true)
-              setViewSidebar(false)
+              setSidebarSearchMode(true);
+              setViewSidebar(false);
             }}
           />
         </div>
 
         <div className="panel__clock--weather--info">
-          <p className="panel__clock">{formatDateTime('hour')}</p>
+          <p className="panel__clock">{formatDateTime("hour")}</p>
           <WeatherInfo />
         </div>
 
@@ -130,5 +130,5 @@ export const PanelSearch = ({
         </div>
       </div>
     </>
-  )
-}
+  );
+};
