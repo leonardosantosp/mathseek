@@ -32,7 +32,7 @@ export const PanelChatBot = () => {
       setMessages(prev => [
         ...prev,
         {
-          text: "Aqui estão alguns resultados:",
+          text: "Here are some results:",
           type: "response"
         }
       ]);
@@ -40,8 +40,9 @@ export const PanelChatBot = () => {
     } catch (error) {
       setMessages(prev => [
         ...prev,
-        { text: "Ocorreu um erro na busca.", type: "response" }
+        { text: "An error occurred while searching", type: "response" }
       ]);
+      setLoading(false);
     }
     setInputValue("");
   };

@@ -1,7 +1,7 @@
 import { ResultDocument } from "../components/ResultDocument";
 import { useContext, useEffect, useState } from "react";
 import { Pagination } from "../components/Pagination";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { searchDocs, type Result } from "../api-client/elastic";
 import blackHole from "../assets/black-hole.png";
 import blackHoleWhite from "../assets/black-hole-white.png";
@@ -10,6 +10,7 @@ import { ThemeContext } from "../context/ThemeContext";
 import { SearchBar } from "../components/SearchBar";
 
 export const ResultPages = () => {
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query") || "";
   const page = parseInt(searchParams.get("page") || "1", 10);
@@ -19,6 +20,26 @@ export const ResultPages = () => {
   const [results, setResults] = useState<Result[]>([]);
   const [total, setTotal] = useState(0);
   const { isLight } = useContext(ThemeContext);
+
+  useEffect(() => {
+    if (isNaN(page) || page <= 0) {
+      navigate(`/search?query=${query}&page=1&pageSize=10`, {
+        replace: true
+      });
+    }
+
+    if (isNaN(pageSize) || pageSize <= 0) {
+      navigate(`/search?query=${query}&page=${page}&pageSize=10`, {
+        replace: true
+      });
+    }
+
+    if (pageSize > 100) {
+      navigate(`/search?query=${query}&page=${page}&pageSize=100`, {
+        replace: true
+      });
+    }
+  }, [page, pageSize, navigate]);
 
   useEffect(() => {
     const fetchDocuments = async () => {
@@ -80,7 +101,7 @@ export const ResultPages = () => {
         </div>
         {isLoading ? (
           <Loading />
-        ) : (
+        ) : total > 0 ? (
           <>
             <div className="query-container">
               <h1 className="results__query">{query}</h1>
@@ -100,6 +121,10 @@ export const ResultPages = () => {
               showNumbers={true}
             />
           </>
+        ) : (
+          <div className="query-container">
+            <h1 className="results__query">No Results</h1>
+          </div>
         )}
       </div>
     </>
