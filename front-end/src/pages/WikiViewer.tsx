@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { ScrollText, Route, Star } from "lucide-react";
-import { SearchBar } from "../components/SearchBar";
 import { useLocation, useParams } from "react-router-dom";
 import { addNumViewDoc } from "../api-client/elastic";
 import { Loading } from "../components/Loading";
+import { SearchBar } from "../components/SearchBar";
 
 export const WikiViewer = () => {
   const location = useLocation();
@@ -47,9 +47,9 @@ export const WikiViewer = () => {
   return (
     <>
       <div className="result-page--wrapper">
-        <span className="result-page__search-bar-container">
+        <div className="result-page--container">
           <SearchBar />
-        </span>
+        </div>
       </div>
 
       {isLoading ? (

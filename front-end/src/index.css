@@ -562,44 +562,59 @@ body.light-theme .panel__weather--info-item {
   color: #908989;
 }
 
+.panel__search--container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .panel__search--box {
   position: relative;
+  z-index: 10;
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: white;
-  margin-bottom: 20px;
-  width: 100%;
-}
-
-body.light-theme .panel__search--box {
-  color: rgb(131, 128, 128);
-}
-
-#panel__search--bar {
-  width: 60%;
-  height: 30px;
+  justify-content: space-between;
+  border: var(--border-dark);
   padding: 10px 15px 10px 45px;
   border-radius: 100px;
-  border: var(--border-dark);
-  background: none;
   color: white;
-  margin-right: 10px;
+  width: 60%;
+  gap: 20px;
+  margin-bottom: 20px;
   transition: 0.5s ease;
 }
 
-#panel__search--bar:focus {
+.panel__search--box:focus-within {
   border-color: #e59cff;
   outline: none;
   box-shadow: 0 0 5px 6px #e59cff55;
 }
 
-body.light-theme #panel__search--bar {
+#panel__search--bar {
+  border: none;
+  width: 100%;
+  background: none;
+  color: white;
+}
+
+#panel__search--bar:focus {
+  border: none;
+  outline: none;
+}
+
+body.light-theme
+  .panel__search--container
+  .panel__search--box
+  #panel__search--bar {
+  color: rgb(131, 128, 128);
+}
+
+body.light-theme .panel__search--box {
   border: var(--border-light);
   color: #787878;
 }
 
-body.light-theme #panel__search--bar:focus {
+body.light-theme .panel__search--box:focus-within {
   border-color: #8b6ec9;
   outline: none;
   box-shadow: 0 0 3px 4px rgba(79, 51, 138, 0.3);
@@ -613,14 +628,6 @@ body.light-theme input:-webkit-autofill {
 body.light-theme input:-webkit-autofill:focus {
   -webkit-text-fill-color: black !important;
   transition: background-color 5000s ease-in-out 0s !important;
-}
-
-.panel__search--search-icon-container {
-  position: absolute;
-  display: flex;
-  justify-content: space-between;
-  width: 63%;
-  pointer-events: none;
 }
 
 .icon-container__send-icon {
@@ -1181,7 +1188,7 @@ body.dark-theme .math-topics__card-item--text p {
   margin-top: 0;
 }
 
-.results-container .search-container .panel__search--box #panel__search--bar {
+.results-container .panel__search--box {
   background-color: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -1236,18 +1243,17 @@ body.dark-theme .math-topics__card-item--text p {
   justify-content: center;
 }
 
+.result-page--container {
+  width: 50%;
+}
+
 .result-page__search-bar-container {
   display: flex;
   justify-content: flex-end;
 }
 
-.result-page__search-bar-container .panel__search--search-icon-container {
-  width: 78%;
-}
-
-.result-page__search-bar-container input {
-  padding: 15px 60px 10px 55px !important;
-  text-align: center;
+.result-page__search-bar-container .search-container-test {
+  width: 100%;
 }
 
 .result-page__number-of-results {
