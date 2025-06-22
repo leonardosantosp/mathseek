@@ -21,6 +21,19 @@
   padding: 0;
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 a {
   text-decoration: none;
 }
@@ -1053,6 +1066,14 @@ body.light-theme .black-hole-container .black-hole-white-result {
   border-radius: 3px;
 }
 
+.pagination__info input:focus {
+  outline: var(--border-dark);
+}
+
+body.light-theme .pagination__info input:focus {
+  outline: var(--border-light);
+}
+
 body.light-theme .pagination__info input {
   background-color: var(--default-border-color-light);
   color: rgba(0, 0, 0, 0.7);
@@ -1146,6 +1167,9 @@ body.dark-theme .math-topics__card-item--text p {
 /* Footer */
 
 .footer {
+  margin-top: auto;
+  text-align: center;
+  width: 100%;
   background-color: #020422;
   margin-top: 80px;
   display: flex;
@@ -1237,6 +1261,7 @@ body.dark-theme .math-topics__card-item--text p {
   }
 }
 .result-page--wrapper {
+  flex: 1;
   width: 100%;
   display: flex;
   align-items: center;
@@ -1315,6 +1340,7 @@ body.light-theme .result-page__number-of-results__buttons .active {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 1;
 }
 
 .query-container {

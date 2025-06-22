@@ -1,5 +1,5 @@
-import { Copyright } from 'lucide-react'
-import piLogo from '../assets/piLogo.png'
+import { Copyright } from "lucide-react";
+import piLogo from "../assets/piLogo.png";
 export const Footer = () => {
   return (
     <div className="footer">
@@ -12,5 +12,5 @@ export const Footer = () => {
         <p>2025 MathSeek. All rights reserved.</p>
       </div>
     </div>
-  )
-}
+  );
+};
