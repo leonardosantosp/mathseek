@@ -730,6 +730,7 @@ body.light-theme .panel__shortcuts--card p {
   display: flex;
   flex-direction: column;
   gap: 30%;
+  height: 100%;
 }
 
 .search-mode__chat--response {
@@ -764,6 +765,14 @@ body.light-theme .chat-bubble {
   margin-right: 20px;
   background-color: #434345;
   border-radius: 25px 0 25px 25px;
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  padding: 15px 25px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  line-height: 1.5;
+  white-space: pre-wrap;
 }
 
 .search-mode__chat--response .chat-bubble {
@@ -821,7 +830,7 @@ body.light-theme .chat--response-item img {
 }
 
 .bot-results a {
-  color: #5c62cd;
+  color: #7d82d5;
 }
 
 body.light-theme .bot-results a {
@@ -833,7 +842,7 @@ body.light-theme .bot-results a {
 }
 
 .bot-results a:hover {
-  color: rgb(127, 132, 237);
+  color: rgb(102, 107, 196);
 }
 
 body.light-theme .bot-results a:hover {
@@ -851,49 +860,48 @@ body.light-theme .bot-results a:hover {
   position: absolute;
   display: flex;
   align-items: center;
+  gap: 10px;
   width: 40%;
-}
-
-.input-container input {
-  position: relative;
-  width: 100%;
-  padding: 12px;
+  padding: 7px 15px 7px 15px;
   background: none;
   border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 30px;
+  text-align: center;
   color: white;
+}
+
+.input-container:focus-within {
+  border-color: #e59cff;
+  box-shadow: 0 0 5px 6px #e59cff55;
+}
+
+.input-container input {
+  width: 100%;
+  color: white;
+  background: none;
+  border: none;
   text-align: center;
 }
 
-body.light-theme .input-container input {
+body.light-theme .input-container {
   border: 2px solid rgba(7, 7, 7, 0.3);
+  color: black;
+}
+body.light-theme .input-container input {
   color: black;
 }
 
 .input-container input:focus {
-  border-color: #e59cff;
   outline: none;
-  box-shadow: 0 0 5px 6px #e59cff55;
 }
 
-body.light-theme .input-container input:focus {
+body.light-theme .input-container:focus-within {
+  border-color: rgb(101, 36, 231);
   box-shadow: 0 0 5px 6px rgba(156, 65, 189, 0.33);
 }
 
 .input-icon {
   pointer-events: auto;
-}
-
-.input-icon__container {
-  position: absolute;
-  width: 90%;
-  padding: 0 20px;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  color: white;
-  pointer-events: none;
-  align-items: center;
 }
 
 .search-document__bubble {

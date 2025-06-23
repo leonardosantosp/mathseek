@@ -97,23 +97,24 @@ export const PanelChatBot = () => {
 
       <div className="input-wrapper">
         <div className="input-container">
+          <MessageCircleMore className="input-icon" />
+
           <input
             type="text"
             placeholder="Ask me a question"
             value={inputValue}
             onChange={e => setInputValue(e.target.value)}
           />
-          <div className="input-icon__container">
-            <MessageCircleMore className="input-icon" />
-            <SendHorizonal
-              className="input-icon"
-              cursor="pointer"
-              onClick={e => {
-                handleSubmit(e), setLoading(true), setSend(true);
-              }}
-            />
-          </div>
+          {/* <div className="input-icon__container"> */}
+          <SendHorizonal
+            className="input-icon"
+            cursor="pointer"
+            onClick={e => {
+              handleSubmit(e), setLoading(true), setSend(true);
+            }}
+          />
         </div>
+        {/* </div> */}
       </div>
     </div>
   );
