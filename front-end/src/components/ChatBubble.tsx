@@ -17,7 +17,9 @@ export const ChatBubble = ({ type, text, results }: ChatBubbleProps) => {
       {type === "query" ? (
         <div className="chat--query-item">
           <UserCircle2 />
-          <div className="chat-bubble">{text}</div>
+          <div className="chat-bubble">
+            <p>{text}</p>
+          </div>
         </div>
       ) : type === "response" ? (
         <div className="chat--response-item">
