@@ -583,7 +583,7 @@ body.light-theme .panel__weather--info-item {
 
 .panel__search--box {
   position: relative;
-  z-index: 10;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1849,6 +1849,7 @@ body.light-theme .wikitable tbody tr:hover {
   border: none;
   color: white;
   font-size: 15px;
+  cursor: pointer;
 }
 
 .login-button:hover {
@@ -1877,6 +1878,15 @@ body.light-theme .wikitable tbody tr:hover {
 
 .input-signup:focus {
   border: 2px solid #2e4cee !important;
+}
+
+.error {
+  border: 2px solid rgb(192, 50, 50) !important;
+}
+
+.error-message {
+  color: rgb(213, 40, 40) !important;
+  font-size: 12px;
 }
 
 .forgot-no-account__container {

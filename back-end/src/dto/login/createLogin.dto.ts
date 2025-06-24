@@ -1,6 +1,6 @@
-import { z } from 'zod'
+import { z } from "zod";
 
 export const createLoginDto = z.object({
-  username: z.string(),
+  username: z.string().email(),
   password: z.string()
-})
+});

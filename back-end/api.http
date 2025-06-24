@@ -23,8 +23,8 @@ POST http://localhost:3333/signup
 Content-Type: application/json
 
 {
-  "username": "adminzada222",
-  "email": "meu2@emailzada.com",
+  "username": "admaasiz",
+  "email": "meu@email.com",
   "password": "0000"
 }
 

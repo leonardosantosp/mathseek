@@ -12,8 +12,6 @@ export const WikiViewer = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { title } = useParams();
 
-  console.log(documentId);
-
   useEffect(() => {
     if (!title) return;
     const fetchWiki = async () => {
