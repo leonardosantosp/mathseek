@@ -1,15 +1,14 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
-import { Header } from './components/Header.tsx'
-import { ThemeProvider } from './context/ThemeContext.tsx'
-import { Footer } from './components/Footer.tsx'
-import { BrowserRouter, useLocation } from 'react-router-dom'
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.tsx";
+import { Header } from "./components/Header.tsx";
+import { ThemeProvider } from "./context/ThemeContext.tsx";
+import { Footer } from "./components/Footer.tsx";
+import { BrowserRouter, useLocation } from "react-router-dom";
 
 function LayoutWrapper() {
-  const location = useLocation()
-  const hideLayout = location.pathname === '/login'
+  const location = useLocation();
+  const hideLayout = location.pathname === "/login";
 
   return (
     <>
@@ -17,15 +16,15 @@ function LayoutWrapper() {
       <App />
       {!hideLayout && <Footer />}
     </>
-  )
+  );
 }
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+createRoot(document.getElementById("root")!).render(
+  <>
     <BrowserRouter>
       <ThemeProvider>
         <LayoutWrapper />
       </ThemeProvider>
     </BrowserRouter>
-  </StrictMode>
-)
+  </>
+);

@@ -3,6 +3,7 @@ import google from "../assets/google.png";
 import { useState } from "react";
 import { login } from "../api-client/auth";
 import { useNavigate } from "react-router-dom";
+import { setCookie } from "../utils/cookieHandler";
 
 type LoginInputProps = {
   viewPassword: boolean;
@@ -48,9 +49,10 @@ export const LoginInput = ({
 
       // Armazenando tokens
       sessionStorage.setItem("accessToken", response.accessToken);
-      document.cookie = `refreshToken=${
-        response.refreshToken
-      }; path=/; max-age=${7 * 24 * 60 * 60}; Secure; SameSite=Strict`;
+      setCookie("refreshToken", response.refreshToken, {
+        days: 7,
+        path: "/"
+      });
 
       navigate("/");
     } catch (error: any) {
