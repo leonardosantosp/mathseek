@@ -36,6 +36,7 @@ export const PanelSearch = ({
   useEffect(() => {
     const fetchFavorites = async () => {
       try {
+        // Pegando usuário
         const userData = await getUser();
         setUser(userData);
 
