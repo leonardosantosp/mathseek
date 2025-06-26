@@ -11,6 +11,11 @@ import {
   X
 } from "lucide-react";
 import { SearchBar } from "./SearchBar";
+import { useEffect, useState } from "react";
+import type { Result } from "../api-client/elastic";
+import { getFavorites } from "../api-client/favorite";
+import type { User } from "../api-client/auth";
+import { getUser } from "../api-client/user";
 
 type PanelSearchProps = {
   sidebarSearchMode: boolean;
@@ -25,6 +30,33 @@ export const PanelSearch = ({
   formatDateTime,
   setViewSidebar
 }: PanelSearchProps) => {
+  const [favorites, setFavorites] = useState<Result[]>([]);
+  const [user, setUser] = useState<User>();
+
+  useEffect(() => {
+    const fetchFavorites = async () => {
+      try {
+        // Pegando usuário
+        const userData = await getUser();
+        setUser(userData);
+
+        if (userData?.config?.favorite?.length) {
+          const favoritesResponse = await getFavorites(
+            userData.config.favorite
+          );
+          setFavorites(favoritesResponse || []);
+        } else {
+          setFavorites([]);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setFavorites([]);
+      }
+    };
+
+    fetchFavorites();
+  }, []);
+
   return (
     <>
       <div className="panel__search-mode">
@@ -63,28 +95,21 @@ export const PanelSearch = ({
         </div>
         <div className="panel__search-mode--header">
           <div className="panel__search-mode--favorites">
-            <Link to="/result">
-              <div className="panel__search-mode--favorites-item">
-                <img
-                  src={wiki_icon}
-                  alt="wikipedia icon"
-                  width={20}
-                  height={18}
-                />
-                <p>Ciência da Computação</p>
-              </div>
-            </Link>
-            <Link to="/result">
-              <div className="panel__search-mode--favorites-item">
-                <img
-                  src={wiki_icon}
-                  alt="wikipedia icon"
-                  width={20}
-                  height={18}
-                />
-                <p>Ciência da Computação</p>
-              </div>
-            </Link>
+            <>
+              {favorites.map(item => (
+                <Link to={`/wiki/${item.title}`}>
+                  <div className="panel__search-mode--favorites-item">
+                    <img
+                      src={wiki_icon}
+                      alt="wikipedia icon"
+                      width={20}
+                      height={18}
+                    />
+                    <p>{item.title}</p>
+                  </div>
+                </Link>
+              ))}
+            </>
           </div>
           <EllipsisVertical
             className="panel__search-mode--header-more-icon"
