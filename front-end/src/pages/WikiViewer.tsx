@@ -4,6 +4,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { addNumViewDoc } from "../api-client/elastic";
 import { Loading } from "../components/Loading";
 import { SearchBar } from "../components/SearchBar";
+import { addToFavorites } from "../api-client/favorite";
 
 export const WikiViewer = () => {
   const location = useLocation();
@@ -11,6 +12,14 @@ export const WikiViewer = () => {
   const [htmlContent, setHtmlContent] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const { title } = useParams();
+
+  const handleAddFavorite = async () => {
+    try {
+      await addToFavorites(parseInt(documentId));
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     if (!title) return;
@@ -63,7 +72,9 @@ export const WikiViewer = () => {
                 <div className="wiki__header--menu">
                   <ScrollText className="menu-item" />
                   <Route className="menu-item" />
-                  <Star className="menu-item" />
+                  <button className="menu-button" onClick={handleAddFavorite}>
+                    <Star className="menu-item" />
+                  </button>
                 </div>
               </div>
 
