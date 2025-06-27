@@ -20,13 +20,14 @@ import { folderRoute } from "./routes/folder.route";
 import { generalSettingsRoute } from "./routes/generalSettings.route";
 import { cardSettingsRoute } from "./routes/cardSettings.route";
 import { semanticSearch } from "./routes/semanticSearch.route";
-
+import formBody from "@fastify/formbody";
 // criando conexao com mongo
 
 connectDb();
 
 const app = fastify();
 
+app.register(formBody);
 app.register(signRoute);
 app.register(loginRoute);
 app.register(profile);
@@ -37,14 +38,15 @@ app.register(shortcutRoute);
 app.register(folderRoute);
 app.register(generalSettingsRoute);
 app.register(cardSettingsRoute);
-app.register(semanticSearch)
+app.register(semanticSearch);
 
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
 
 app.register(cors, {
   origin: "http://localhost:5173",
-  methods: ["GET", "POST", "DELETE", "PUT", "PATCH"]
+  methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 });
 
 app.register(fastifySwagger, {

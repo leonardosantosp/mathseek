@@ -287,6 +287,16 @@ body.light-theme .sidebar-search-mode .search__side-bar {
   cursor: pointer;
 }
 
+.menu-button {
+  background: none;
+  color: white;
+  border: none;
+}
+
+body.light-theme .menu-button {
+  color: black;
+}
+
 .side-bar--menu-item:hover {
   background-color: #535557;
 }

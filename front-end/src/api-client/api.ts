@@ -18,7 +18,6 @@ API.interceptors.request.use(config => {
   return config;
 });
 
-// Interceptor para tratar erros de token expirado
 API.interceptors.response.use(
   response => response,
   async error => {

@@ -21,6 +21,14 @@ export const getFavoriteController = async (request, reply) => {
 export const updateFavoriteController = async (request, reply) => {
   const userId = request.user?.id;
   const { favorite, type } = request.body;
+
+  if (!favorite || !type) {
+    console.log("Invalid payload structure:", { favorite, type });
+    return reply.code(400).send({
+      message: "Payload must contain {favorite: number, type: string}"
+    });
+  }
+
   try {
     const updateUser = await addOrRemoveFavoriteService(userId, favorite, type);
     return reply.code(200).send(updateUser);
