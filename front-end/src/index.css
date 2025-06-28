@@ -372,6 +372,92 @@ body.light-theme .side-bar__menu--items:hover {
   align-items: center;
 }
 
+.config-menu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font);
+  padding-left: 30px;
+}
+
+.config-menu__input-wraper {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.config-menu__input-wraper label {
+  color: white;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.radio-input {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  position: relative;
+  transition: border 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.radio-input::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background-color: #41469a;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+.radio-input:checked {
+  border-color: rgb(68, 72, 157);
+  box-shadow: 0 0 0 3px rgba(65, 70, 154, 0.2);
+}
+
+.radio-input:checked::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.radio-input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(65, 70, 154, 0.4);
+}
+
+body.light-theme .config-menu__input-wraper label {
+  color: black;
+}
+
+.config-menu h3 {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.config-menu__save {
+  margin-top: 20px;
+  width: 30%;
+  padding: 2px;
+  border-radius: 10px;
+  border: none;
+  background-color: #41469a;
+  color: white;
+  cursor: pointer;
+}
+
+.config-menu__save:hover {
+  background-color: rgb(76, 81, 180);
+}
+
 body.light-theme .panel__side-bar--header {
   color: #2f2e35;
 }
