@@ -1,6 +1,6 @@
 import { UserCircle2, LinkIcon } from "lucide-react";
 
-import chatIcon from "../assets/chat-bot-icon.png";
+import chatIcon from "../public/assets/chat-bot-icon.png";
 import { SearchDocument } from "./SearchDocument";
 import type { Result } from "../api-client/elastic";
 import { Link } from "react-router-dom";

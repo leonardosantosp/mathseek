@@ -1,11 +1,11 @@
-import { ArrowRight } from 'lucide-react'
-import wiki from '../assets/wiki_icon.png'
-import type { Result } from '../api-client/elastic'
-import { Link } from 'react-router-dom'
+import { ArrowRight } from "lucide-react";
+import wiki from "../public/assets/wiki_icon.png";
+import type { Result } from "../api-client/elastic";
+import { Link } from "react-router-dom";
 
 type ResultDocumentProps = {
-  result: Result
-}
+  result: Result;
+};
 
 export const ResultDocument = ({ result }: ResultDocumentProps) => {
   return (
@@ -31,5 +31,5 @@ export const ResultDocument = ({ result }: ResultDocumentProps) => {
         </div>
       </Link>
     </div>
-  )
-}
+  );
+};

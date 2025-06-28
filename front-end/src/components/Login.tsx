@@ -1,19 +1,19 @@
-import { useState } from 'react'
-import planetPurple from '../assets/planet-purple.png'
-import planetPink from '../assets/planet-pink.png'
-import planetBlue from '../assets/planet-blue.png'
-import { LoginInput } from './LoginInput'
-import { ForgotPasswordInput } from './ForgotPasswordInput'
-import { SignupInput } from './SignupInput'
+import { useState } from "react";
+import planetPurple from "../public/assets/planet-purple.png";
+import planetPink from "../public/assets/planet-pink.png";
+import planetBlue from "../public/assets/planet-blue.png";
+import { LoginInput } from "./LoginInput";
+import { ForgotPasswordInput } from "./ForgotPasswordInput";
+import { SignupInput } from "./SignupInput";
 
 type LoginProps = {
-  title: string
-  subtitle: string
-  titleCard: string
-  subtitleCard: string
-  type: 'login' | 'signup' | 'forgot'
-  setType: (type: 'login' | 'signup' | 'forgot') => void
-}
+  title: string;
+  subtitle: string;
+  titleCard: string;
+  subtitleCard: string;
+  type: "login" | "signup" | "forgot";
+  setType: (type: "login" | "signup" | "forgot") => void;
+};
 
 export const Login = ({
   title,
@@ -23,11 +23,11 @@ export const Login = ({
   titleCard,
   subtitleCard
 }: LoginProps) => {
-  const [viewPassword, setViewPassword] = useState(false)
+  const [viewPassword, setViewPassword] = useState(false);
 
   const handdleViewPassword = () => {
-    setViewPassword(!viewPassword)
-  }
+    setViewPassword(!viewPassword);
+  };
 
   return (
     <>
@@ -44,9 +44,9 @@ export const Login = ({
           </div>
           <img
             src={
-              type === 'login'
+              type === "login"
                 ? planetPurple
-                : type === 'signup'
+                : type === "signup"
                 ? planetBlue
                 : planetPink
             }
@@ -58,29 +58,29 @@ export const Login = ({
           <div className="login-page__card">
             <h2>{titleCard}</h2>
             <p>{subtitleCard}</p>
-            {type === 'login' ? (
+            {type === "login" ? (
               <LoginInput
                 viewPassword={viewPassword}
                 handdleViewPassword={() => handdleViewPassword()}
-                setType={(type: 'login' | 'signup' | 'forgot') => setType(type)}
+                setType={(type: "login" | "signup" | "forgot") => setType(type)}
               />
-            ) : type === 'signup' ? (
+            ) : type === "signup" ? (
               <SignupInput
                 viewPassword={viewPassword}
                 handdleViewPassword={() => handdleViewPassword()}
-                setType={(type: 'login' | 'signup' | 'forgot') => setType(type)}
+                setType={(type: "login" | "signup" | "forgot") => setType(type)}
               />
             ) : (
               <ForgotPasswordInput
-                setType={(type: 'login' | 'signup' | 'forgot') => setType(type)}
+                setType={(type: "login" | "signup" | "forgot") => setType(type)}
               />
             )}
           </div>
           <img
             src={
-              type === 'login'
+              type === "login"
                 ? planetPurple
-                : type === 'signup'
+                : type === "signup"
                 ? planetBlue
                 : planetPink
             }
@@ -92,5 +92,5 @@ export const Login = ({
         </div>
       </div>
     </>
-  )
-}
+  );
+};

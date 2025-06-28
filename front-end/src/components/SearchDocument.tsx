@@ -1,4 +1,4 @@
-import chatIcon from "../assets/chat-bot-icon.png";
+import chatIcon from "../public/assets/chat-bot-icon.png";
 import { ChatbBotLoading } from "./ChatBotLoading";
 export const SearchDocument = () => {
   return (

@@ -3,7 +3,7 @@ import { ChatBubble } from "./ChatBubble";
 import { useState } from "react";
 import { semanticSearch } from "../api-client/elastic";
 import type { Result } from "../api-client/elastic";
-import chatIcon from "../assets/chat-bot-icon.png";
+import chatIcon from "../public/assets/chat-bot-icon.png";
 
 type Message = {
   text: string;
