@@ -1,5 +1,5 @@
 import { Copyright } from "lucide-react";
-import piLogo from "../assets/piLogo.png";
+import piLogo from "../public/assets/piLogo.png";
 export const Footer = () => {
   return (
     <div className="footer">

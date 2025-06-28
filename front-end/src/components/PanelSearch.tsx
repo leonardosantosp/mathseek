@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { WeatherInfo } from "./WeatherInfo";
-import wiki_icon from "../assets/wiki_icon.png";
+import wiki_icon from "../public/assets/wiki_icon.png";
 import {
   EllipsisVertical,
   History,

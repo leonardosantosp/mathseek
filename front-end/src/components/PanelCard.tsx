@@ -1,20 +1,13 @@
 import { useState, useContext, useEffect } from "react";
 import { ThemeContext } from "../context/ThemeContext";
-import {
-  FileSearch,
-  BotMessageSquare,
-  Cog,
-  X,
-  ImagePlus,
-  MonitorCog,
-  ChevronDown,
-  ChevronUp
-} from "lucide-react";
+import { FileSearch, BotMessageSquare, Cog } from "lucide-react";
 
-import blackHole from "../assets/black-hole.png";
-import blackHoleWhite from "../assets/black-hole-white.png";
+import blackHole from "../public/assets/black-hole.png";
+import blackHoleWhite from "../public/assets/black-hole-white.png";
 import { PanelSearch } from "./PanelSearch";
 import { PanelChatBot } from "./PanelChatBot";
+import { MenuSidebar } from "./Sidebar";
+import { CustomizeCard } from "./CustomizeCard";
 
 export const PanelCard = () => {
   const [dateTime, setDateTime] = useState(new Date());
@@ -22,7 +15,9 @@ export const PanelCard = () => {
   const [sidebarSearchMode, setSidebarSearchMode] = useState(false);
   const { isLight } = useContext(ThemeContext);
   const [searchMode, setSearchMode] = useState<"search" | "chatbot">("search");
-  const [configs, setConfigs] = useState(false);
+  const [panel, setPanel] = useState<"Personalization" | "standard">(
+    "standard"
+  );
 
   const months = [
     "JAN",
@@ -85,111 +80,64 @@ export const PanelCard = () => {
 
       <div className="container__panel">
         <div className="panel-background">
-          <div className={`${viewSidebar && "sidebar-blur__active"}`}>
-            <div className="panel__side-bar">
-              <div className="panel__side-bar--header">
-                <X
-                  className="close-icon"
-                  onClick={() => {
-                    setViewSidebar(false);
-                    setConfigs(true);
-                  }}
-                  cursor={"pointer"}
-                />
-              </div>
-              <div className="side-bar__menu">
-                <div className="side-bar__menu--items">
-                  <div className="menu--items-container">
-                    <ImagePlus />
-                    Customize
+          <MenuSidebar
+            viewSidebar={viewSidebar}
+            setViewSidebar={(value: boolean) => setViewSidebar(value)}
+            setPanel={(item: "Personalization" | "standard") => setPanel(item)}
+          />
+
+          {panel === "standard" ? (
+            <div className="panel">
+              <>
+                <div className="panel__header">
+                  <div className="panel__header--mode">
+                    <div
+                      className={`panel__header--mode-item ${
+                        searchMode === "search" && "search-active"
+                      }`}
+                      onClick={() => setSearchMode("search")}
+                    >
+                      <FileSearch />
+                    </div>
+                    <div
+                      className={`panel__header--mode-item ${
+                        searchMode === "chatbot" && "chatbot-active"
+                      }`}
+                      onClick={() => setSearchMode("chatbot")}
+                    >
+                      <BotMessageSquare />
+                    </div>
                   </div>
-                </div>
-                <div className="side-bar__menu--items">
-                  <div
-                    className="menu--items-container"
-                    onClick={() => setConfigs(!configs)}
-                  >
-                    <MonitorCog />
-                    Advanced Configs
-                    {configs ? <ChevronDown /> : <ChevronUp />}
-                  </div>
-                </div>
-                <div
-                  className="config-menu"
-                  style={{ opacity: configs ? 0 : 1 }}
-                >
-                  <h3>Results location:</h3>
-                  <div className="config-menu__input-wraper">
-                    <input
-                      type="radio"
-                      id="inline-cards"
-                      value="inline"
-                      name="results-location"
-                      className="radio-input"
+                  <div className="panel__header--info">
+                    <p>{formatDateTime("day")}</p>
+                    <p>{formatDateTime("month")}</p>
+                    <p>{formatDateTime("hour")}</p>
+                    <Cog
+                      className="panel__header--info-config"
+                      onClick={() => {
+                        setViewSidebar(true);
+                        setSidebarSearchMode(false);
+                      }}
                     />
-                    <label htmlFor="inline-cards">Inline cards</label>
                   </div>
-                  <div className="config-menu__input-wraper">
-                    <input
-                      type="radio"
-                      id="results-page"
-                      value="page"
-                      name="results-location"
-                      className="radio-input"
-                    />
-                    <label htmlFor="results-page">Dedicated results page</label>
-                  </div>
-                  <button className="config-menu__save">Save</button>
                 </div>
-              </div>
+                {searchMode === "search" ? (
+                  <PanelSearch
+                    formatDateTime={(type: string) => formatDateTime(type)}
+                    setSidebarSearchMode={(type: boolean) =>
+                      setSidebarSearchMode(type)
+                    }
+                    sidebarSearchMode={sidebarSearchMode}
+                    setViewSidebar={(type: boolean) => setViewSidebar(type)}
+                  />
+                ) : (
+                  <PanelChatBot />
+                )}
+              </>
             </div>
-          </div>
-          <div className="panel">
-            <div className="panel__header">
-              <div className="panel__header--mode">
-                <div
-                  className={`panel__header--mode-item ${
-                    searchMode === "search" && "search-active"
-                  }`}
-                  onClick={() => setSearchMode("search")}
-                >
-                  <FileSearch />
-                </div>
-                <div
-                  className={`panel__header--mode-item ${
-                    searchMode === "chatbot" && "chatbot-active"
-                  }`}
-                  onClick={() => setSearchMode("chatbot")}
-                >
-                  <BotMessageSquare />
-                </div>
-              </div>
-              <div className="panel__header--info">
-                <p>{formatDateTime("day")}</p>
-                <p>{formatDateTime("month")}</p>
-                <p>{formatDateTime("hour")}</p>
-                <Cog
-                  className="panel__header--info-config"
-                  onClick={() => {
-                    setViewSidebar(true);
-                    setSidebarSearchMode(false);
-                  }}
-                />
-              </div>
-            </div>
-            {searchMode === "search" ? (
-              <PanelSearch
-                formatDateTime={(type: string) => formatDateTime(type)}
-                setSidebarSearchMode={(type: boolean) =>
-                  setSidebarSearchMode(type)
-                }
-                sidebarSearchMode={sidebarSearchMode}
-                setViewSidebar={(type: boolean) => setViewSidebar(type)}
-              />
-            ) : (
-              <PanelChatBot />
-            )}
-          </div>
+          ) : (
+            <CustomizeCard color="#00bfff" apply={() => setPanel("standard")} />
+          )}
         </div>
       </div>
     </>

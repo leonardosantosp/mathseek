@@ -1,5 +1,5 @@
 import { ArrowRight, Eye, EyeClosed } from "lucide-react";
-import google from "../assets/google.png";
+import google from "../public/assets/google.png";
 import { useState } from "react";
 import { login } from "../api-client/auth";
 import { useNavigate } from "react-router-dom";

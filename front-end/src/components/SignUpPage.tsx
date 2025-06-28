@@ -1,5 +1,5 @@
 import { useState } from "react";
-import googleLogo from "../assets/google-icon.png";
+import googleLogo from "../public/assets/google-icon.png";
 import { createUser } from "../api-client/user";
 
 const SignUpPage = () => {
