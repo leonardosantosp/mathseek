@@ -5,7 +5,7 @@ import { EllipsisVertical, X } from "lucide-react";
 import { SearchBar } from "./SearchBar";
 import { useEffect, useState } from "react";
 import type { Result } from "../api-client/elastic";
-import { getFavorites } from "../api-client/favorite";
+import { getFavorites, removeFromFavorites } from "../api-client/favorite";
 import type { User } from "../api-client/auth";
 import { getUser } from "../api-client/user";
 import { SidebarPanelSearch } from "./SidebarPanelSearch";
@@ -51,7 +51,12 @@ export const PanelSearch = ({
     };
 
     fetchFavorites();
-  }, []);
+  }, [favorites]);
+
+  const handleRemoveFromFavorite = async (documentId: number) => {
+    const id = documentId.toString();
+    return await removeFromFavorites(id);
+  };
 
   return (
     <>
@@ -80,25 +85,47 @@ export const PanelSearch = ({
                   | "Folders"
                   | "Menu"
               ) => setMode(item)}
+              favorites={favorites}
+              removeFromFavorites={handleRemoveFromFavorite}
             />
           </div>
         </div>
         <div className="panel__search-mode--header">
           <div className="panel__search-mode--favorites">
             <>
-              {favorites.map(item => (
-                <Link to={`/wiki/${item.title}`}>
-                  <div className="panel__search-mode--favorites-item">
-                    <img
-                      src={wiki_icon}
-                      alt="wikipedia icon"
-                      width={20}
-                      height={18}
-                    />
-                    <p>{item.title}</p>
-                  </div>
-                </Link>
+              {favorites.slice(0, 6).map(item => (
+                <div className="panel__search-mode--favorites-item">
+                  <Link to={`/wiki/${item.title}`}>
+                    <div className="favorites-item__title">
+                      <img
+                        src={wiki_icon}
+                        alt="wikipedia icon"
+                        width={20}
+                        height={18}
+                      />
+                      {item.title.length <= 20 ? (
+                        <p>{item.title}</p>
+                      ) : (
+                        <p>{item.title.substring(0, 20) + "..."}</p>
+                      )}
+                    </div>
+                  </Link>
+                  <X
+                    size={15}
+                    className="remove-favorites"
+                    onClick={() => handleRemoveFromFavorite(item._id)}
+                  />
+                </div>
               ))}
+              <p
+                className="shor-more"
+                onClick={() => {
+                  setMode("Favorites");
+                  setSidebarSearchMode(true);
+                }}
+              >
+                {favorites.length > 6 && <p>ver mais</p>}
+              </p>
             </>
           </div>
           <EllipsisVertical
