@@ -1,21 +1,14 @@
 import { Link } from "react-router-dom";
 import { WeatherInfo } from "./WeatherInfo";
 import wiki_icon from "../public/assets/wiki_icon.png";
-import {
-  EllipsisVertical,
-  History,
-  Star,
-  RouteIcon,
-  Pencil,
-  Folders,
-  X
-} from "lucide-react";
+import { EllipsisVertical, X } from "lucide-react";
 import { SearchBar } from "./SearchBar";
 import { useEffect, useState } from "react";
 import type { Result } from "../api-client/elastic";
 import { getFavorites } from "../api-client/favorite";
 import type { User } from "../api-client/auth";
 import { getUser } from "../api-client/user";
+import { SidebarPanelSearch } from "./SidebarPanelSearch";
 
 type PanelSearchProps = {
   sidebarSearchMode: boolean;
@@ -32,6 +25,9 @@ export const PanelSearch = ({
 }: PanelSearchProps) => {
   const [favorites, setFavorites] = useState<Result[]>([]);
   const [user, setUser] = useState<User>();
+  const [mode, setMode] = useState<
+    "History" | "Favorites" | "Shortcuts" | "Edit" | "Folders" | "Menu"
+  >("Menu");
 
   useEffect(() => {
     const fetchFavorites = async () => {
@@ -63,34 +59,28 @@ export const PanelSearch = ({
         <div className={`${sidebarSearchMode && "sidebar-search-mode"}`}>
           <div className="search__side-bar">
             <div className="search__side-bar--header">
+              <h3>{mode}</h3>
               <X
                 className="close-icon"
-                onClick={() => setSidebarSearchMode(false)}
+                onClick={() => {
+                  setSidebarSearchMode(false);
+                  setMode("Menu");
+                }}
                 cursor={"pointer"}
               />
             </div>
-            <div className="search__side-bar--menu">
-              <div className="side-bar--menu-item">
-                <History />
-                <p>History</p>
-              </div>
-              <div className="side-bar--menu-item">
-                <Star />
-                <p>Favorites</p>
-              </div>
-              <div className="side-bar--menu-item">
-                <RouteIcon />
-                <p>Shortcuts</p>
-              </div>
-              <div className="side-bar--menu-item">
-                <Pencil />
-                <p>Edit</p>
-              </div>
-              <div className="side-bar--menu-item">
-                <Folders />
-                <p>Folders</p>
-              </div>
-            </div>
+            <SidebarPanelSearch
+              mode={mode}
+              setMode={(
+                item:
+                  | "History"
+                  | "Favorites"
+                  | "Shortcuts"
+                  | "Edit"
+                  | "Folders"
+                  | "Menu"
+              ) => setMode(item)}
+            />
           </div>
         </div>
         <div className="panel__search-mode--header">
