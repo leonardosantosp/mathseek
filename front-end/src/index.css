@@ -266,8 +266,13 @@ body.light-theme .sidebar-search-mode .search__side-bar {
 .search__side-bar--header {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
-  margin: 10px 0 0 -15px;
+  justify-content: space-between;
+  margin: 10px 10px 0 0;
+}
+
+.search__side-bar--header h3 {
+  margin-left: 20px;
+  font-family: "Orbitron", sans-serif;
 }
 
 .search__side-bar--menu {
@@ -287,6 +292,38 @@ body.light-theme .sidebar-search-mode .search__side-bar {
   justify-content: center;
   padding: 10px;
   cursor: pointer;
+  font-family: "Orbitron", sans-serif;
+}
+
+.side-bar__panel-card--menu {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.remove-icon {
+  opacity: 0;
+}
+
+.side-bar__panel-card--menu-item {
+  display: flex;
+  align-items: center;
+  padding: 5px 20px;
+  gap: 10px;
+  justify-content: space-between;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 12px;
+  font-family: "Orbitron", sans-serif;
+}
+
+.side-bar__panel-card--menu-item:hover {
+  background-color: #535557;
+}
+
+.side-bar__panel-card--menu-item:hover .remove-icon {
+  opacity: 1;
 }
 
 .menu-button {
@@ -368,6 +405,7 @@ body.light-theme .side-bar__menu--items:hover {
 }
 
 .menu--items-container {
+  font-family: "Orbitron", sans-serif;
   width: 80%;
   display: flex;
   gap: 20px;
@@ -391,6 +429,8 @@ body.light-theme .side-bar__menu--items:hover {
 }
 
 .config-menu__input-wraper label {
+  font-family: "Orbitron", sans-serif;
+
   color: white;
   font-size: 10px;
   cursor: pointer;
@@ -441,6 +481,8 @@ body.light-theme .config-menu__input-wraper label {
 }
 
 .config-menu h3 {
+  font-family: "Orbitron", sans-serif;
+
   font-size: 13px;
   font-weight: 400;
 }
