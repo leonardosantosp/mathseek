@@ -32,13 +32,19 @@ export const loginService = async (username: string, password: string) => {
 };
 
 export const refreshService = async (refreshToken: string) => {
-  jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, user => {
-    const newAccessToken = jwt.sign(
-      { user: user.username },
-      process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: "15m" }
-    );
+  return new Promise((resolve, reject) => {
+    jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+      if (err) return reject(new Error("Invalid refresh token"));
 
-    return { new_access_token: newAccessToken };
+      const newAccessToken = jwt.sign(
+        { user: user.username },
+        process.env.ACCESS_TOKEN_SECRET,
+        { expiresIn: "1m" }
+      );
+
+      resolve({
+        accessToken: newAccessToken
+      });
+    });
   });
 };
