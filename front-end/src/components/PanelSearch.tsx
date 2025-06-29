@@ -51,11 +51,27 @@ export const PanelSearch = ({
     };
 
     fetchFavorites();
-  }, [favorites]);
+  }, []);
 
   const handleRemoveFromFavorite = async (documentId: number) => {
     const id = documentId.toString();
-    return await removeFromFavorites(id);
+    try {
+      await removeFromFavorites(id);
+      setFavorites(prevFavorites =>
+        prevFavorites.filter(item => item._id !== documentId)
+      );
+      if (user) {
+        setUser({
+          ...user,
+          config: {
+            ...user.config,
+            favorite: user.config.favorite.filter(fav => fav !== parseInt(id))
+          }
+        });
+      }
+    } catch (error) {
+      console.error("Failed to remove favorite:", error);
+    }
   };
 
   return (

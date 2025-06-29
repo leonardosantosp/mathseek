@@ -32,13 +32,13 @@ export const loginService = async (username: string, password: string) => {
 };
 
 export const refreshService = async (refreshToken: string) => {
-  jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, user => {
+  await jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, user => {
     const newAccessToken = jwt.sign(
       { user: user.username },
       process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: "15m" }
     );
 
-    return { new_access_token: newAccessToken };
+    return { access_token: newAccessToken };
   });
 };
