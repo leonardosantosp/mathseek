@@ -8,21 +8,22 @@ import {
   Star,
   XCircle
 } from "lucide-react";
+import type { Result } from "../api-client/elastic";
 
 type SidebarPanelSearchProps = {
-  onClick?: () => void;
   mode: "History" | "Favorites" | "Shortcuts" | "Edit" | "Folders" | "Menu";
   setMode: (
     item: "History" | "Favorites" | "Shortcuts" | "Edit" | "Folders" | "Menu"
   ) => void;
+  favorites: Result[];
+  removeFromFavorites: (documentId: number) => void;
 };
 
-type LucideIconProps = SVGProps<SVGSVGElement>;
-
 export const SidebarPanelSearch = ({
-  onClick,
   mode,
-  setMode
+  favorites,
+  setMode,
+  removeFromFavorites
 }: SidebarPanelSearchProps) => {
   return (
     <>
@@ -67,17 +68,20 @@ export const SidebarPanelSearch = ({
             <p>Machine Learning</p>
             <XCircle onClick={() => {}} className="remove-icon" size={18} />
           </div>
-          <div className="side-bar__panel-card--menu-item">
-            <p>Artificial Inteligence</p>
-            <XCircle onClick={() => {}} className="remove-icon" size={18} />
-          </div>
-          <div className="side-bar__panel-card--menu-item">
-            <p>Quadratic Equation</p>
-            <XCircle onClick={() => {}} className="remove-icon" size={18} />
-          </div>
         </div>
       ) : mode == "Favorites" ? (
-        <></>
+        <>
+          {favorites.map(item => (
+            <div className="side-bar__panel-card--menu-item">
+              <p>{item.title}</p>
+              <XCircle
+                onClick={() => removeFromFavorites(item._id)}
+                className="remove-icon"
+                size={18}
+              />
+            </div>
+          ))}
+        </>
       ) : mode === "Shortcuts" ? (
         <></>
       ) : mode === "Edit" ? (
