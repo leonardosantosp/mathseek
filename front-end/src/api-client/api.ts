@@ -23,7 +23,7 @@ API.interceptors.response.use(
   async error => {
     const originalRequest = error.config;
 
-    if (error.response.status === 401 && !originalRequest._retry) {
+    if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
       try {
@@ -36,17 +36,21 @@ API.interceptors.response.use(
           return Promise.reject(error);
         }
 
-        const response = await axios.post("http://localhost:3333/refresh", {
+        const response = await API.post("/refresh", {
           refreshToken
         });
 
+        if (!response.data?.accessToken) {
+          throw new Error("Invalid token response");
+        }
+
         // Armazena o novo token
         sessionStorage.setItem("accessToken", response.data.accessToken);
-        setCookie("refreshToken", response.data.refreshToken, { days: 7 }); // Se necessário
+        // setCookie("refreshToken", response.data.refreshToken, { days: 7 }); // Se necessário
 
         // Repete a requisição original com o novo token
         originalRequest.headers.Authorization = `Bearer ${response.data.accessToken}`;
-        return axios(originalRequest);
+        return API(originalRequest);
       } catch (refreshError) {
         // Se falhar, limpa os tokens e redireciona
         sessionStorage.removeItem("accessToken");
