@@ -67,10 +67,14 @@ export const PanelCard = () => {
 
   return (
     <>
-      <div className="black-hole-container">
-        {!isLight ? (
+      {!isLight && (
+        <div className="black-hole-container">
           <img src={blackHole} alt="black hole" className="black-hole" />
-        ) : (
+        </div>
+      )}
+
+      {isLight && (
+        <div className="black-hole-container">
           <img
             src={blackHoleWhite}
             alt="black hole"
@@ -78,8 +82,8 @@ export const PanelCard = () => {
             width={800}
             height={502}
           />
-        )}
-      </div>
+        </div>
+      )}
 
       <div className="container__panel">
         <div
@@ -96,7 +100,9 @@ export const PanelCard = () => {
             <div
               className="panel"
               style={{
-                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(src/public/assets/card-backgrounds/${background})`,
+                backgroundImage: !isLight
+                  ? `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(src/public/assets/card-backgrounds/${background})`
+                  : "",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
                 backgroundSize: "cover",
