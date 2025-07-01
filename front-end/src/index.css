@@ -333,6 +333,7 @@ body.light-theme .side-bar__panel-card--menu-item:hover {
   background: none;
   color: white;
   border: none;
+  cursor: pointer;
 }
 
 body.light-theme .menu-button {
@@ -823,7 +824,7 @@ body.light-theme input:-webkit-autofill:focus {
 }
 
 .panel__shortcuts--card {
-  padding: 20px;
+  padding: 15px 20px 20px 20px;
   border-radius: 20px;
   border: var(--border-dark);
   width: 60px;
@@ -857,6 +858,12 @@ body.light-theme .panel__shortcuts--card p {
   background: none;
   -webkit-background-clip: initial;
   -webkit-text-fill-color: initial;
+}
+
+.shortcuts__card--header {
+  width: 122%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 /* Panel ChatBot */

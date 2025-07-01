@@ -9,6 +9,7 @@ import { getFavorites, removeFromFavorites } from "../api-client/favorite";
 import type { User } from "../api-client/auth";
 import { getUser } from "../api-client/user";
 import { SidebarPanelSearch } from "./SidebarPanelSearch";
+import { getShortcuts, removeFromShortcuts } from "../api-client/shortcut";
 
 type PanelSearchProps = {
   sidebarSearchMode: boolean;
@@ -24,6 +25,7 @@ export const PanelSearch = ({
   setViewSidebar
 }: PanelSearchProps) => {
   const [favorites, setFavorites] = useState<Result[]>([]);
+  const [shortcuts, setShortcuts] = useState<Result[]>([]);
   const [user, setUser] = useState<User>();
   const [mode, setMode] = useState<
     "History" | "Favorites" | "Shortcuts" | "Edit" | "Folders" | "Menu"
@@ -41,6 +43,15 @@ export const PanelSearch = ({
             userData.config.favorite
           );
           setFavorites(favoritesResponse || []);
+        } else {
+          setFavorites([]);
+        }
+
+        if (userData?.config?.quickAccess?.length) {
+          const shortcutsResponse = await getShortcuts(
+            userData.config.quickAccess
+          );
+          setShortcuts(shortcutsResponse || []);
         } else {
           setFavorites([]);
         }
@@ -73,6 +84,28 @@ export const PanelSearch = ({
       console.error("Failed to remove favorite:", error);
     }
   };
+  const handleRemoveFromShortcuts = async (documentId: number) => {
+    const id = documentId.toString();
+    try {
+      await removeFromShortcuts(id);
+      setShortcuts(prevShortcuts =>
+        prevShortcuts.filter(item => item._id !== documentId)
+      );
+      if (user) {
+        setUser({
+          ...user,
+          config: {
+            ...user.config,
+            quickAccess: user.config.quickAccess.filter(
+              short => short !== parseInt(id)
+            )
+          }
+        });
+      }
+    } catch (error) {
+      console.error("Failed to remove shortcuts:", error);
+    }
+  };
 
   return (
     <>
@@ -102,7 +135,9 @@ export const PanelSearch = ({
                   | "Menu"
               ) => setMode(item)}
               favorites={favorites}
+              shortcuts={shortcuts}
               removeFromFavorites={handleRemoveFromFavorite}
+              removeFromShortcuts={handleRemoveFromShortcuts}
             />
           </div>
         </div>
@@ -161,30 +196,35 @@ export const PanelSearch = ({
         <SearchBar />
 
         <div className="panel__shortcuts">
-          <div className="panel__shortcuts--card">
-            <img src={wiki_icon} alt="Article Image" width={40} height={37} />
-            <p>Mathematics in Nature</p>
-          </div>
-          <div className="panel__shortcuts--card">
-            <img src={wiki_icon} alt="Article Image" width={40} height={37} />
-            <p>Complex Numbers</p>
-          </div>
-          <div className="panel__shortcuts--card">
-            <img src={wiki_icon} alt="Article Image" width={40} height={37} />
-            <p>Complex Numbers</p>
-          </div>
-          <div className="panel__shortcuts--card">
-            <img src={wiki_icon} alt="Article Image" width={40} height={37} />
-            <p>Complex Numbers</p>
-          </div>
-          <div className="panel__shortcuts--card">
-            <img src={wiki_icon} alt="Article Image" width={40} height={37} />
-            <p>Complex Numbers</p>
-          </div>
-          <div className="panel__shortcuts--card">
-            <img src={wiki_icon} alt="Article Image" width={40} height={37} />
-            <p>Complex Numbers</p>
-          </div>
+          {shortcuts.slice(0, 6).map(item => (
+            <div className="panel__shortcuts--card">
+              <div className="shortcuts__card--header">
+                <X
+                  size={15}
+                  className="remove-favorites"
+                  onClick={() => handleRemoveFromShortcuts(item._id)}
+                />
+              </div>
+              <Link to={`/wiki/${item.title}`}>
+                <img
+                  src={wiki_icon}
+                  alt="Article Image"
+                  width={40}
+                  height={37}
+                />
+                <p>{item.title.substring(0, 7) + "..."}</p>
+              </Link>
+            </div>
+          ))}
+          <p
+            className="shor-more"
+            onClick={() => {
+              setMode("Shortcuts");
+              setSidebarSearchMode(true);
+            }}
+          >
+            {shortcuts.length > 6 && <p>ver mais</p>}
+          </p>
         </div>
       </div>
     </>

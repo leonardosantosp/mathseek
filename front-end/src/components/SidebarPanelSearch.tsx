@@ -16,6 +16,8 @@ type SidebarPanelSearchProps = {
     item: "History" | "Favorites" | "Shortcuts" | "Edit" | "Folders" | "Menu"
   ) => void;
   favorites: Result[];
+  shortcuts: Result[];
+  removeFromShortcuts: (documentId: number) => void;
   removeFromFavorites: (documentId: number) => void;
 };
 
@@ -23,7 +25,9 @@ export const SidebarPanelSearch = ({
   mode,
   favorites,
   setMode,
-  removeFromFavorites
+  removeFromFavorites,
+  shortcuts,
+  removeFromShortcuts
 }: SidebarPanelSearchProps) => {
   return (
     <>
@@ -83,7 +87,18 @@ export const SidebarPanelSearch = ({
           ))}
         </>
       ) : mode === "Shortcuts" ? (
-        <></>
+        <>
+          {shortcuts.map(item => (
+            <div className="side-bar__panel-card--menu-item">
+              <p>{item.title}</p>
+              <XCircle
+                onClick={() => removeFromShortcuts(item._id)}
+                className="remove-icon"
+                size={18}
+              />
+            </div>
+          ))}
+        </>
       ) : mode === "Edit" ? (
         <></>
       ) : (
