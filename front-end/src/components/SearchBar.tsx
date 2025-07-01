@@ -1,10 +1,12 @@
 import { Search, SendHorizonal } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../context/UserContex";
 
 export const SearchBar = () => {
   const [input, setInput] = useState("");
   const navigate = useNavigate();
+  const { themeColor } = useUser();
 
   const handleSearch = async () => {
     if (!input.trim()) return;
@@ -15,7 +17,10 @@ export const SearchBar = () => {
 
   return (
     <div className="panel__search--container">
-      <div className="panel__search--box">
+      <div
+        className="panel__search--box"
+        style={{ "--theme-color": themeColor } as React.CSSProperties}
+      >
         <Search className="icon-container__search-icon" />
 
         <input

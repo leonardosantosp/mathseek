@@ -193,7 +193,6 @@ body.dark-theme h3 {
   border: 2px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(4px);
-  box-shadow: 0 0 40px #41469a;
 }
 
 .panel {
@@ -767,9 +766,9 @@ body.light-theme .panel__weather--info-item {
 }
 
 .panel__search--box:focus-within {
-  border-color: #e59cff;
   outline: none;
-  box-shadow: 0 0 5px 6px #e59cff55;
+  border-color: var(--theme-color);
+  box-shadow: 0 0 5px 6px var(--theme-color);
 }
 
 #panel__search--bar {

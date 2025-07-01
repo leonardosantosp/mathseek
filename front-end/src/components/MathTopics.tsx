@@ -1,26 +1,28 @@
-import { Search } from 'lucide-react'
-import { Pagination } from './Pagination'
-import { useEffect, useState } from 'react'
-import { type Result, getMostViewedDocs } from '../api-client/elastic'
-import { Link } from 'react-router-dom'
+import { Search } from "lucide-react";
+import { Pagination } from "./Pagination";
+import { useEffect, useState } from "react";
+import { type Result, getMostViewedDocs } from "../api-client/elastic";
+import { Link } from "react-router-dom";
+import { useUser } from "../context/UserContex";
 
 export const MathTopics = () => {
-  const [page, setPage] = useState(1)
-  const size = 3
-  const [documents, setDocuments] = useState<Result[]>([])
-  const totalDocuments = 9
-  const numPages = Math.ceil(totalDocuments / size)
+  const [page, setPage] = useState(1);
+  const size = 3;
+  const [documents, setDocuments] = useState<Result[]>([]);
+  const totalDocuments = 9;
+  const numPages = Math.ceil(totalDocuments / size);
+  const { themeColor } = useUser();
 
   useEffect(() => {
     const fetchMostViewDocuments = async () => {
-      const response = await getMostViewedDocs(totalDocuments)
-      setDocuments(response)
-    }
-    fetchMostViewDocuments()
-  }, [])
+      const response = await getMostViewedDocs(totalDocuments);
+      setDocuments(response);
+    };
+    fetchMostViewDocuments();
+  }, []);
 
-  const firstIndex = (page - 1) * size
-  const lastIndex = page * size
+  const firstIndex = (page - 1) * size;
+  const lastIndex = page * size;
 
   return (
     <>
@@ -36,7 +38,10 @@ export const MathTopics = () => {
                     to={`/wiki/${document.title}`}
                     state={{ id: document._id }}
                   >
-                    <Search className="math-topics__card-item--search" />
+                    <Search
+                      className="math-topics__card-item--search"
+                      style={{ backgroundColor: themeColor }}
+                    />
                   </Link>
                 </div>
                 <div className="math-topics__card-item--text">
@@ -56,5 +61,5 @@ export const MathTopics = () => {
         />
       </div>
     </>
-  )
-}
+  );
+};

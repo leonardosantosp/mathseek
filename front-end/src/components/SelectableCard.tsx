@@ -3,13 +3,19 @@ type SelectableCardProps = {
   name: string;
   background?: string;
   font?: string;
+  value: string;
+  selected?: boolean;
+  onSelect: (value: string) => void;
 };
 
 export const SelectableCard = ({
   color,
   name,
   background,
-  font
+  font,
+  onSelect,
+  selected,
+  value
 }: SelectableCardProps) => {
   const hexToRgb = (hex: string) => {
     const r = parseInt(hex.slice(1, 3), 16);
@@ -40,8 +46,10 @@ export const SelectableCard = ({
       <div className="selectable-card__input">
         <input
           type="radio"
-          id={name}
-          value={name}
+          id={value}
+          value={value}
+          checked={selected}
+          onChange={() => onSelect(value)}
           name={background ? "custom-background" : "custom-theme"}
           className="radio-input-card"
           style={
@@ -53,7 +61,7 @@ export const SelectableCard = ({
             } as React.CSSProperties
           }
         />
-        <label htmlFor="inline-cards">{name}</label>
+        <label htmlFor={value}>{name}</label>
       </div>
     </div>
   );
