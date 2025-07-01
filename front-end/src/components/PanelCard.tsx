@@ -8,6 +8,7 @@ import { PanelSearch } from "./PanelSearch";
 import { PanelChatBot } from "./PanelChatBot";
 import { MenuSidebar } from "./Sidebar";
 import { CustomizeCard } from "./CustomizeCard";
+import { useUser } from "../context/UserContex";
 
 export const PanelCard = () => {
   const [dateTime, setDateTime] = useState(new Date());
@@ -35,6 +36,8 @@ export const PanelCard = () => {
   ];
 
   const days = ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SAB"];
+
+  const { background, themeColor } = useUser();
 
   const formatDateTime = (type: string) => {
     if (type === "day") {
@@ -79,7 +82,10 @@ export const PanelCard = () => {
       </div>
 
       <div className="container__panel">
-        <div className="panel-background">
+        <div
+          className="panel-background"
+          style={{ boxShadow: `0 0 20px ${themeColor}` }}
+        >
           <MenuSidebar
             viewSidebar={viewSidebar}
             setViewSidebar={(value: boolean) => setViewSidebar(value)}
@@ -87,7 +93,16 @@ export const PanelCard = () => {
           />
 
           {panel === "standard" ? (
-            <div className="panel">
+            <div
+              className="panel"
+              style={{
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(src/public/assets/card-backgrounds/${background})`,
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                filter: "blur(0.4px)"
+              }}
+            >
               <>
                 <div className="panel__header">
                   <div className="panel__header--mode">
@@ -136,7 +151,7 @@ export const PanelCard = () => {
               </>
             </div>
           ) : (
-            <CustomizeCard color="#00bfff" apply={() => setPanel("standard")} />
+            <CustomizeCard apply={() => setPanel("standard")} />
           )}
         </div>
       </div>

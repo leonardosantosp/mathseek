@@ -10,6 +10,7 @@ import type { User } from "../api-client/auth";
 import { getUser } from "../api-client/user";
 import { SidebarPanelSearch } from "./SidebarPanelSearch";
 import { getShortcuts, removeFromShortcuts } from "../api-client/shortcut";
+import { useUser } from "../context/UserContex";
 
 type PanelSearchProps = {
   sidebarSearchMode: boolean;
@@ -26,10 +27,11 @@ export const PanelSearch = ({
 }: PanelSearchProps) => {
   const [favorites, setFavorites] = useState<Result[]>([]);
   const [shortcuts, setShortcuts] = useState<Result[]>([]);
-  const [user, setUser] = useState<User>();
+  // const [user, setUser] = useState<User>();
   const [mode, setMode] = useState<
     "History" | "Favorites" | "Shortcuts" | "Edit" | "Folders" | "Menu"
   >("Menu");
+  const { user, setUser } = useUser();
 
   useEffect(() => {
     const fetchFavorites = async () => {
