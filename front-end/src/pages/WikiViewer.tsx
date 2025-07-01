@@ -5,6 +5,7 @@ import { addNumViewDoc } from "../api-client/elastic";
 import { Loading } from "../components/Loading";
 import { SearchBar } from "../components/SearchBar";
 import { addToFavorites } from "../api-client/favorite";
+import { addToShortcuts } from "../api-client/shortcut";
 
 export const WikiViewer = () => {
   const location = useLocation();
@@ -16,6 +17,14 @@ export const WikiViewer = () => {
   const handleAddFavorite = async () => {
     try {
       await addToFavorites(parseInt(documentId));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleAddShortcuts = async () => {
+    try {
+      await addToShortcuts(parseInt(documentId));
     } catch (error) {
       console.error(error);
     }
@@ -71,7 +80,9 @@ export const WikiViewer = () => {
                 <h2>{title.replace(/_/g, " ")}</h2>
                 <div className="wiki__header--menu">
                   <ScrollText className="menu-item" />
-                  <Route className="menu-item" />
+                  <button className="menu-button" onClick={handleAddShortcuts}>
+                    <Route className="menu-item" />
+                  </button>
                   <button className="menu-button" onClick={handleAddFavorite}>
                     <Star className="menu-item" />
                   </button>
