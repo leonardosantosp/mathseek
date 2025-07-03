@@ -9,16 +9,21 @@ import { PanelChatBot } from "./PanelChatBot";
 import { MenuSidebar } from "./Sidebar";
 import { CustomizeCard } from "./CustomizeCard";
 import { useUser } from "../context/UserContex";
+import { ResultComponent } from "./ResultComponent";
+import { useQuery } from "../context/Query";
 
 export const PanelCard = () => {
   const [dateTime, setDateTime] = useState(new Date());
   const [viewSidebar, setViewSidebar] = useState(false);
   const [sidebarSearchMode, setSidebarSearchMode] = useState(false);
   const { isLight } = useContext(ThemeContext);
-  const [searchMode, setSearchMode] = useState<"search" | "chatbot">("search");
+  const [searchMode, setSearchMode] = useState<"search" | "chatbot" | "result">(
+    "search"
+  );
   const [panel, setPanel] = useState<"Personalization" | "standard">(
     "standard"
   );
+  const { query } = useQuery();
 
   const months = [
     "JAN",
@@ -151,8 +156,10 @@ export const PanelCard = () => {
                     sidebarSearchMode={sidebarSearchMode}
                     setViewSidebar={(type: boolean) => setViewSidebar(type)}
                   />
-                ) : (
+                ) : searchMode === "chatbot" ? (
                   <PanelChatBot />
+                ) : (
+                  <ResultComponent query={query} />
                 )}
               </>
             </div>
