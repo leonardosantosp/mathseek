@@ -6,7 +6,6 @@ import { SearchBar } from "./SearchBar";
 import { useEffect, useState } from "react";
 import type { Result } from "../api-client/elastic";
 import { getFavorites, removeFromFavorites } from "../api-client/favorite";
-import type { User } from "../api-client/auth";
 import { getUser } from "../api-client/user";
 import { SidebarPanelSearch } from "./SidebarPanelSearch";
 import { getShortcuts, removeFromShortcuts } from "../api-client/shortcut";
@@ -31,7 +30,7 @@ export const PanelSearch = ({
   const [mode, setMode] = useState<
     "History" | "Favorites" | "Shortcuts" | "Edit" | "Folders" | "Menu"
   >("Menu");
-  const { user, setUser } = useUser();
+  const { user, setUser, setOutputMethod } = useUser();
 
   useEffect(() => {
     const fetchFavorites = async () => {
@@ -39,6 +38,7 @@ export const PanelSearch = ({
         // Pegando usuário
         const userData = await getUser();
         setUser(userData);
+        setOutputMethod(userData?.config?.outputMethod);
 
         if (userData?.config?.favorite?.length) {
           const favoritesResponse = await getFavorites(

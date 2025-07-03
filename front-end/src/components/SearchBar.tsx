@@ -2,17 +2,22 @@ import { Search, SendHorizonal } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserContex";
+import { useQuery } from "../context/Query";
 
 export const SearchBar = () => {
   const [input, setInput] = useState("");
   const navigate = useNavigate();
   const { themeColor } = useUser();
+  const { setQuery } = useQuery();
+  const { outputMethod } = useUser();
 
   const handleSearch = async () => {
     if (!input.trim()) return;
-
-    // Redireciona para a página de resultados, enviando os dados
-    navigate(`/search?query=${encodeURIComponent(input)}&page=1&pageSize=10`);
+    setQuery(input);
+    if (!outputMethod || outputMethod === "diffScreen") {
+      // Redireciona para a página de resultados, enviando os dados
+      navigate(`/search?query=${encodeURIComponent(input)}&page=1&pageSize=10`);
+    }
   };
 
   return (
