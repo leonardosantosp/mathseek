@@ -156,6 +156,7 @@ export const PanelCard = () => {
                     }
                     sidebarSearchMode={sidebarSearchMode}
                     setViewSidebar={(type: boolean) => setViewSidebar(type)}
+                    setSearchMode={() => setSearchMode("result")}
                   />
                 ) : searchMode === "chatbot" ? (
                   <PanelChatBot />
