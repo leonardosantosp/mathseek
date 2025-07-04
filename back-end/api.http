@@ -137,7 +137,7 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3333/users/me/general-settings
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMiIsImlkIjoiNjgzODY4YWJlNDRkM2UzNjk1M2U4NmJkIiwiaWF0IjoxNzQ5NDc4MTQ3LCJleHAiOjE3NDk0NzgzMjd9.reqi-kPIanNruZaiSCYFo3Zt497sqHgFtR_X7gzPMS0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMzQiLCJpZCI6IjY4NGI2ZWY3NDhmMmE1N2ExMjBmZTAyYiIsImlhdCI6MTc1MTU4ODc5NCwiZXhwIjoxNzUxNTkxMTk0fQ.VK50oUces2etWiPl3RADeiNj_Ck6K9OnM6tBFS7wl78
 
 ###
 PATCH http://localhost:3333/users/me/general-settings
