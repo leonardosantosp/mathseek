@@ -6,6 +6,12 @@ type UpdateGeneralSettings = {
   outputMethod?: string;
 };
 
+export type GeneralSettings = {
+  backgroundImage: string;
+  themeColor: string;
+  outputMethod: string;
+};
+
 export const getGeneralSettings = async () => {
   return API.get(`/users/me/general-settings`);
 };

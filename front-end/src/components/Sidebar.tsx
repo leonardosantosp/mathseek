@@ -1,5 +1,10 @@
 import { X, ImagePlus, MonitorCog, ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {
+  getGeneralSettings,
+  updateGeneralSettings
+} from "../api-client/general-settings";
+import { useUser } from "../context/UserContex";
 
 type MenuSidebarProps = {
   viewSidebar: boolean;
@@ -13,6 +18,22 @@ export const MenuSidebar = ({
   setPanel
 }: MenuSidebarProps) => {
   const [configs, setConfigs] = useState(true);
+
+  const { outputMethod, setOutputMethod } = useUser();
+
+  const handleSave = async () => {
+    await updateGeneralSettings({
+      outputMethod: outputMethod
+    });
+  };
+
+  useEffect(() => {
+    const fetchGeneralSettings = async () => {
+      const data = await getGeneralSettings();
+      setOutputMethod(data.data.outputMethod || "sameScreen");
+    };
+    fetchGeneralSettings();
+  }, []);
 
   return (
     <div className={`${viewSidebar && "sidebar-blur__active"}`}>
@@ -56,24 +77,30 @@ export const MenuSidebar = ({
             <div className="config-menu__input-wraper">
               <input
                 type="radio"
-                id="inline-cards"
+                id="sameScreen"
                 value="inline"
                 name="results-location"
                 className="radio-input"
+                checked={outputMethod === "sameScreen"}
+                onChange={() => setOutputMethod("sameScreen")}
               />
-              <label htmlFor="inline-cards">Inline cards</label>
+              <label htmlFor="sameScreen">Inline cards</label>
             </div>
             <div className="config-menu__input-wraper">
               <input
                 type="radio"
-                id="results-page"
+                id="diffScreen"
                 value="page"
                 name="results-location"
                 className="radio-input"
+                checked={outputMethod === "diffScreen"}
+                onChange={() => setOutputMethod("diffScreen")}
               />
-              <label htmlFor="results-page">Dedicated results page</label>
+              <label htmlFor="diffScren">Dedicated results page</label>
             </div>
-            <button className="config-menu__save">Save</button>
+            <button className="config-menu__save" onClick={() => handleSave()}>
+              Save
+            </button>
           </div>
         </div>
       </div>
