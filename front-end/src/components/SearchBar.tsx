@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserContex";
 import { useQuery } from "../context/Query";
 
-export const SearchBar = () => {
+type SearchBarProps = {
+  setSearchMode: () => void;
+};
+
+export const SearchBar = ({ setSearchMode }: SearchBarProps) => {
   const [input, setInput] = useState("");
   const navigate = useNavigate();
   const { themeColor } = useUser();
@@ -17,6 +21,8 @@ export const SearchBar = () => {
     if (!outputMethod || outputMethod === "diffScreen") {
       // Redireciona para a página de resultados, enviando os dados
       navigate(`/search?query=${encodeURIComponent(input)}&page=1&pageSize=10`);
+    } else {
+      setSearchMode();
     }
   };
 

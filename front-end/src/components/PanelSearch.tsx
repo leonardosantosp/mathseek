@@ -16,13 +16,15 @@ type PanelSearchProps = {
   setSidebarSearchMode: (mode: boolean) => void;
   formatDateTime: (type: string) => string;
   setViewSidebar: (view: boolean) => void;
+  setSearchMode: () => void;
 };
 
 export const PanelSearch = ({
   sidebarSearchMode,
   setSidebarSearchMode,
   formatDateTime,
-  setViewSidebar
+  setViewSidebar,
+  setSearchMode
 }: PanelSearchProps) => {
   const [favorites, setFavorites] = useState<Result[]>([]);
   const [shortcuts, setShortcuts] = useState<Result[]>([]);
@@ -195,7 +197,7 @@ export const PanelSearch = ({
           <WeatherInfo />
         </div>
 
-        <SearchBar />
+        <SearchBar setSearchMode={setSearchMode} />
 
         <div className="panel__shortcuts">
           {shortcuts.slice(0, 6).map(item => (
