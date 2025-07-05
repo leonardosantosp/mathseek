@@ -21,6 +21,7 @@ export const ResultComponent = ({ query }: ResultComponentProps) => {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
+    console.log(query);
     const fetchDocuments = async () => {
       const response = await searchDocs(query, page, 10);
       setResults(response.results);
