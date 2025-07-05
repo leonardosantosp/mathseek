@@ -6,6 +6,7 @@ import { ThemeProvider } from "./context/ThemeContext.tsx";
 import { Footer } from "./components/Footer.tsx";
 import { BrowserRouter, useLocation } from "react-router-dom";
 import { UserProvider } from "./context/UserContex.tsx";
+import { QueryProvider } from "./context/Query.tsx";
 
 function LayoutWrapper() {
   const location = useLocation();
@@ -24,9 +25,11 @@ createRoot(document.getElementById("root")!).render(
   <>
     <BrowserRouter>
       <UserProvider>
-        <ThemeProvider>
-          <LayoutWrapper />
-        </ThemeProvider>
+        <QueryProvider>
+          <ThemeProvider>
+            <LayoutWrapper />
+          </ThemeProvider>
+        </QueryProvider>
       </UserProvider>
     </BrowserRouter>
   </>

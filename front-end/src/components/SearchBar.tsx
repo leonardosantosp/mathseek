@@ -5,7 +5,7 @@ import { useUser } from "../context/UserContex";
 import { useQuery } from "../context/Query";
 
 type SearchBarProps = {
-  setSearchMode: () => void;
+  setSearchMode?: () => void;
 };
 
 export const SearchBar = ({ setSearchMode }: SearchBarProps) => {
@@ -22,6 +22,7 @@ export const SearchBar = ({ setSearchMode }: SearchBarProps) => {
       // Redireciona para a página de resultados, enviando os dados
       navigate(`/search?query=${encodeURIComponent(input)}&page=1&pageSize=10`);
     } else {
+      if (!setSearchMode) return;
       setSearchMode();
     }
   };

@@ -15,7 +15,7 @@ export const QueryContext = createContext<QueryContextType>({
 // Hook personalizado para usar o contexto
 export const useQuery = () => useContext(QueryContext);
 
-export function UserProvider({ children }: { children: ReactNode }) {
+export function QueryProvider({ children }: { children: ReactNode }) {
   const [query, setQuery] = useState("");
 
   const value = {

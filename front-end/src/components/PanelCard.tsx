@@ -17,7 +17,6 @@ export const PanelCard = () => {
   const [viewSidebar, setViewSidebar] = useState(false);
   const [sidebarSearchMode, setSidebarSearchMode] = useState(false);
   const { isLight } = useContext(ThemeContext);
-  const { outputMethod } = useUser();
   const [searchMode, setSearchMode] = useState<"search" | "chatbot" | "result">(
     "search"
   );
